@@ -1,0 +1,70 @@
+
+.logo {
+  color: #F77E22;
+  font-size: 36px;
+  font-family: 'yg-jalnan';
+  margin-top: 7%;
+  margin-bottom: 23px;
+}
+
+.code {
+  width: 421px;
+  height: 39px;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 13px;
+}
+
+.sent {
+  color: green;
+  font-size: 15px;
+  margin-top: 141px;
+  margin-left: -220px;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.time {
+  width: 112px;
+  height: 44px;
+  margin-left: 6px;
+  margin-bottom: 42px;
+  vertical-align: 3px;
+  font-size: 11px;
+  background-color: rgba(250, 194, 20, 1);
+  border-color: rgba(221, 172, 18, 1);
+  border-style: solid;
+  cursor: pointer;
+}
+
+.done {
+  width: 539px;
+  height: 57px;
+  font-size: 20px;
+  background-color: rgba(250, 194, 20, 1);
+  border-color: rgba(221, 172, 18, 1);
+  border-style: solid;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.sendEmail {
+  text-decoration: none;
+  font-size: 13px;
+  color: rgba(129, 129, 129, 1);
+}
+
+
+
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}

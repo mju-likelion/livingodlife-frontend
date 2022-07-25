@@ -1,0 +1,280 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.jalan {
+    font-family: 'yg-jalnan';
+}
+
+.GmarketS {
+    font-family: 'GmarketSansLight';
+}
+
+.GmarketM {
+    font-family: 'GmarketSansMedium';
+}
+
+
+.testTitle {
+    margin-top: 300px;
+    color: #F77E22;
+    font-size: 50px;
+}
+
+#testContent {
+    margin-top: 50px;
+    color: #696969;
+    font-size: 30px;
+}
+
+#startBtn {
+    width: 250px;
+    height: 85px;
+    font-size: 25px;
+    background: #FFFFFF;
+    border: 5px solid #FAC214;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding-left: 25px;
+    margin-top: 40px;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover{
+        background: #FAC214;
+        color: white;
+            transition: all 0.5s;
+
+        #circle{
+            background: white;
+            
+        }
+        #imgArrow{
+            content: url(../image/icon_arrow_hover.png);
+
+        }
+        
+    }
+
+
+}
+
+#imgArrow {
+    margin-top: 5px;
+    transition: all 1s;
+}
+
+#circle {
+    margin-left: 15px;
+    border-radius: 100%;
+    width: 60px;
+    height: 61px;
+    left: 799px;
+    top: 645px;
+    background: linear-gradient(90deg, #FAC214 0%, #F77E22 153.41%);
+    transition: all 1s;
+}
+
+
+
+#qnaPage {
+    display: none;
+
+}
+
+#sidePage{
+    display: flex;
+    color: #F77E22;
+    margin-left: 50px;
+    font-size: 35px;
+}
+
+.sideBtn{
+    background-color: #FFFFFF;
+    border: none;
+    display: flex;
+    margin-left: 50px;
+    font-size: 25px;
+    color: #BA5B13;
+    cursor: pointer;
+}
+
+.count{
+    margin-top: 150px;
+    font-size: 25px;
+    color: #696969;
+}
+
+.question {
+    margin-top: 20px;
+    font-size: 50px;
+    color: black;
+}
+
+
+.answer {
+    text-align:center
+}
+
+.answerList {
+    border: 1px solid #868686;
+    border-radius: 100%;
+    font-size: 20px;
+    color: black;
+    background-color: white;
+    font-family: 'GmarketSansLight';
+    display: inline-block;
+    margin: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:nth-child(5n+1) {
+        border: 2px solid green;
+        width: 130px;
+        height: 130px;
+        margin-top: 50px;
+    }
+
+    &:nth-child(5n+2) {
+        border: 2px solid #98C994;
+        width: 120px;
+        height: 120px;
+    }
+
+    &:nth-child(5n+3) {
+        border: 2px solid #C8C8C8;
+        width: 120px;
+        height: 120px;
+    }
+
+    &:nth-child(5n+4) {
+        border: 2px solid #FF8787;
+        width: 120px;
+        height: 120px;
+    }
+
+    &:nth-child(5n) {
+        border: 2px solid red;
+        width: 130px;
+        height: 130px;
+    }
+}
+
+.answerList:link {
+    color: black;
+    border: 1px solid #868686;
+    text-decoration: none;
+    border: none;
+}
+
+.answerList:hover,
+.answerList:focus {
+    color: white;
+
+    &:nth-child(5n+1) {
+        background-color: green;
+    }
+
+    &:nth-child(5n+2) {
+        background-color: #98C994;
+    }
+
+    &:nth-child(5n+3) {
+        background-color: #C8C8C8;
+    }
+
+    &:nth-child(5n+4) {
+        background-color: #FF8787;
+    }
+
+    &:nth-child(5n) {
+        background-color: red;
+    }
+}
+
+#resultPage {
+    display: none;
+}
+
+.resultTitle{
+    color: black;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.resultName{
+    margin-top: 100px;
+    color: #F77E22;
+    font-size: 50px;
+}
+
+.resultNameIntro{
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.resultCont1{
+    font-size: 25px;
+}
+
+.resultCont2{
+    font-size: 25px;
+}
+.resultCont3{
+    font-size: 25px;
+}
+
+.resultCont4{
+    font-size: 25px;
+}
+
+.subTitle {
+    color: #F77E22;
+    font-size: 40px;
+    margin-top: 50px;
+}
+
+.challengeName{
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.challengeBtn{
+    font-size: 25px;
+    width: 130px;
+    height: 70px;
+    color: white;
+    background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
+    border-radius: 50px;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+}

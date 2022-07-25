@@ -1,0 +1,83 @@
+
+.logo {
+  color: #F77E22;
+  font-size: 36px;
+  font-family: 'yg-jalnan';
+  margin-top: 7%;
+  margin-bottom: 25px;
+}
+
+.mail,
+.pw {
+  margin-bottom: 20px;
+  width: 539px;
+  height: 44px;
+  font-size: 20px;
+  text-align: left;
+  padding-left: 13px;
+}
+
+
+.login-btn {
+  margin-top: 19px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+  width: 539px;
+  height: 53px;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 15px;
+  margin: 8px 15%;
+}
+.hr-sect::before,
+.hr-sect::after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 16px;
+}
+
+.kakao {
+  margin-top: 34px;
+  margin-bottom: 32px;
+  width: 539px;
+  height: 57px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgba(248, 223, 0, 1);
+  border-style: solid;
+  border-color: rgba(215, 193, 0, 1);
+  cursor: pointer;
+}
+
+.forgot-pw,
+.sign-up {
+  font-size: 15px;
+  color: rgba(129, 129, 129, 1);
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
