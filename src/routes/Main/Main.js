@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './Main.css';
-import Header from "./Header";
+import './Main.scss';
+import Header from "../../Components/Header/Header";
 
 
 function Main() {

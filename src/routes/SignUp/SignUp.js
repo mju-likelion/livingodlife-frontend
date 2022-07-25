@@ -1,4 +1,4 @@
-import './SignUp.css';
+import './SignUp.scss';
 import { Link } from "react-router-dom";
 
 

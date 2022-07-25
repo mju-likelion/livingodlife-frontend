@@ -1,7 +1,7 @@
-import './Login.css';
+import './Login.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Kakao from '../image/kakao-icon.png';
+import Kakao from '../../image/kakao-icon.png';
 
 function Login() {
 

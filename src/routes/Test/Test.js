@@ -1,7 +1,7 @@
 import './Test.scss';
-import imgArrow from '../image/icon_arrow.png';
+import imgArrow from '../../image/icon_arrow.png';
 import { useState, useRef } from 'react';
-import { qnaList, resultList, challengeList } from '../atoms/data.js';
+import { qnaList, resultList, challengeList } from '../../data/data.js';
 
 //챌린지 카테고리 5개
 //0 : 수면

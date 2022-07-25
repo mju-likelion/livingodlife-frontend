@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Header from "./Components/Header"
-import Test from "./Components/Test"
-import Login from "./Components/Login"
-import SignUp from "./Components/SignUp"
-import VerifyEmail from "./Components/VerifyEmail"
-import Main from './Components/Main';
-import Challenge from './Components/Challenge';
-import Routine from './Components/Routine';
+import Header from "./Components/Header/Header"
+import Test from "./routes/Test/Test"
+import Login from "./routes/Login/Login"
+import SignUp from "./routes/SignUp/SignUp"
+import VerifyEmail from "./routes/VerifyEmail/VerifyEmail"
+import Main from './routes/Main/Main';
+import Challenge from './routes/Challenge/Challenge';
+import Routine from './routes/Routine/Routine';
 
 
 const App = () => {

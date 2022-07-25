@@ -1,4 +1,4 @@
-import './VerifyEmail.css';
+import './VerifyEmail.scss';
 import React, { useState, useEffect } from "react";
 
 function VerifyEmail() {

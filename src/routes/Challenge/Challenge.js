@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Challenge.scss";
-import Header from "./Header";
-import imgArrow from '../image/icon_arrow.png';
+import Header from "../../Components/Header/Header";
+import imgArrow from '../../image/icon_arrow.png';
 
 
 function Challenge() {
