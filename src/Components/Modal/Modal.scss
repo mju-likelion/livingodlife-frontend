@@ -1,0 +1,139 @@
+.jalan {
+  font-family: 'yg-jalnan';
+}
+
+.GmarketS {
+  font-family: 'GmarketSansLight';
+}
+
+.GmarketM {
+  font-family: 'GmarketSansMedium';
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  &>section {
+    width: 90%;
+    max-width: 700px;
+    height: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #ffffff;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: 0.3s;
+    overflow: hidden;
+
+    &>header {
+      position: relative;
+      padding: 20px 30px;
+      font-size: 30px;
+
+      & button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        font-size: 21px;
+        font-weight: 700;
+        text-align: center;
+        color: #696969;
+        background-color: transparent;
+      }
+    }
+
+    &>main {
+      padding: 16px;
+      border-bottom: 1px solid #dee2e6;
+      border-top: 1px solid #dee2e6;
+    }
+
+    &>footer {
+      padding: 20px;
+      text-align: center;
+
+      & button {
+        margin-left: 230px;
+        width: 185px;
+        height: 70px;
+        font-size: 20px;
+        background: #FFFFFF;
+        border: 5px solid #FAC214;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+        transition: all 0.5s;
+        cursor: pointer;
+      
+        &:hover {
+          background: #FAC214;
+          color: white;
+          transition: all 0.5s;
+      
+          #circle {
+            background: white;
+      
+          }
+      
+          #imgArrow {
+            content: url(../../image/icon_arrow_hover.png);
+      
+          }
+      
+        }
+      
+      }
+    }
+  }
+
+  & button {
+    outline: none;
+    position: absolute;
+    cursor: pointer;
+    border: 0;
+
+    
+  }
+
+  &.openModal {
+    display: flex;
+    align-items: center;
+    /* 팝업이 열릴때 스르륵 열리는 효과 */
+    animation: modal-bg-show 0.3s;
+  }
+  
+
+}
+
+
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
