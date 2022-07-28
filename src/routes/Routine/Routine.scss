@@ -1,0 +1,30 @@
+
+.routine {
+  margin-left: 55px;
+  text-align: left;
+  font-size: 40px;
+  font-family: GmarketSansMedium;
+}
+
+.progress-bar {
+  width: 1201px;
+  height: 34px;
+  border-radius: 50px;
+  margin: 108px;
+  margin-top: 84px;
+  margin-bottom: 64px;
+  background-color: rgba(217, 217, 217, 1);
+}
+
+@font-face {
+  font-family: 'GmarketSansLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
