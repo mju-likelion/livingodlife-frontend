@@ -3,7 +3,7 @@ import '../Modal/Modal.scss';
 import imgArrow from '../../image/icon_arrow.png';
 
 const Modal = (props) => {
-  const { open, close, title, button } = props;
+  const {open, close, title} = props;
 
   return (
     <div className={open ? 'openModal modal' : 'modal'}>
@@ -15,13 +15,7 @@ const Modal = (props) => {
               &times;
             </button>
           </header>
-          <main className='GmarketS'>{props.children}</main>
-          <footer>
-            <button className="button GmarketS">
-              {button}
-              <div id='circle'><img src={imgArrow} id='imgArrow'></img></div>
-            </button>
-          </footer>
+          <div className='GmarketS'>{props.children}</div>
         </section>
       ) : null}
     </div>

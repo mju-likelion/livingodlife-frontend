@@ -5,12 +5,9 @@ import Header from "../../Components/Header/Header";
 import imgArrow from '../../image/icon_arrow.png';
 import Modal from "../../Components/Modal/Modal";
 
-
-
 function Challenge() {
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [toggleOn, setToggleOn] = useState(false);
   const typeName = ["🥗 식사","💪 운동","🛏 취침","📍 계획","✍ 공부","☀ 아침"];
 
   const openModal = () => {
@@ -21,20 +18,20 @@ function Challenge() {
   };
 
   const handleActive= (e) =>{
-    //한 버튼 클릭시 다른 버튼은 클래스 제외하는 것 구현 어떻게 하지
-
-    if(toggleOn==false){
-      setToggleOn(true);
-      e.target.className="clicked GmarketS"
+    const selectedItem = document.querySelector('.clicked');
+    console.log(e.target.className);
+    if(e.target.className=='GmarketS type'){
+      e.target.className='GmarketS clicked';
+      selectedItem.classList.remove('clicked');
+      selectedItem.classList.add('type');
     }
     else{
-      setToggleOn(false);
-      e.target.className="type GmarketS"
+      e.target.className='GmarketS type';
     }
 
   }
 
-  const typeList = typeName.map((type) => (<button className="type GmarketS" onClick={handleActive} >{type}</button>))
+  const typeList = typeName.map((type) => (<button className="GmarketS type" onClick={handleActive} >{type}</button>))
   
   return (
     <>
@@ -68,18 +65,21 @@ function Challenge() {
           </tbody>
           </table>
         </div>
-        <button className="GmarketS startBtn" onClick={openModal} >새로운 도전!<div id='circle'><img src={imgArrow} id='imgArrow'></img>
-        </div>
-        
+        <button className="GmarketS newBtn" onClick={openModal} >새로운 도전!<div id='circle'><img src={imgArrow} id='imgArrow'></img></div>
         </button>
-        <Modal open={modalOpen} close={closeModal} title="새로운 도전하기" button="등록하기">
+        <Modal open={modalOpen} close={closeModal} title="새로운 도전하기">
           <p className="modalCont">새로운 챌린지를 추가해보세요!</p>
           <h3 className="modalTitle">카테고리 선택</h3>
           <div>
           {typeList}
           </div>
           <h3 className="modalTitle">도전 제목</h3>
-          <input className="inputTitle GmarketS" type="text" name="title" maxLength={50}></input>
+          <input className="inputTitle GmarketS" type="text" name="title" placeholder="챌린지 제목을 입력하세요"></input>
+          <footer>
+            <button className="regBtn GmarketS"> 등록하기
+              <div id='circle'><img src={imgArrow} id='imgArrow'></img></div>
+            </button>
+          </footer>
         </Modal>
       </div>
     </>
