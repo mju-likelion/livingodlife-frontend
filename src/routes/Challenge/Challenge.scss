@@ -137,10 +137,38 @@ th{
     transition: all 1s;
 }
 
-.modalTitle{
-display: flex;
+.modalCont{
+    font-size: 20px;
 }
 
-.type{
-    margin: auto;
+.modalTitle{
+    float: left;
+    margin-left: 20px;
+    margin-top: 35px;
 }
+
+.type{ 
+    width: 70px;
+    padding: 20px;
+    background-color: white;
+    margin: 5px;
+    font-size: 15px;
+}
+
+.clicked {
+    width: 70px;
+    padding: 20px;
+    background-color: white;
+    margin: 5px;
+    border: 1px solid #F77E22;
+    color:#F77E22;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .inputTitle{
+    width: 400px;
+    margin-top: 35px;
+    margin-bottom: 40px;
+    font-size: 20px;
+  }

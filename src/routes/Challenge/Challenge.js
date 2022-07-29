@@ -10,6 +10,8 @@ import Modal from "../../Components/Modal/Modal";
 function Challenge() {
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [toggleOn, setToggleOn] = useState(false);
+  const typeName = ["🥗 식사","💪 운동","🛏 취침","📍 계획","✍ 공부","☀ 아침"];
 
   const openModal = () => {
     setModalOpen(true);
@@ -17,6 +19,23 @@ function Challenge() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const handleActive= (e) =>{
+    //한 버튼 클릭시 다른 버튼은 클래스 제외하는 것 구현 어떻게 하지
+
+    if(toggleOn==false){
+      setToggleOn(true);
+      e.target.className="clicked GmarketS"
+    }
+    else{
+      setToggleOn(false);
+      e.target.className="type GmarketS"
+    }
+
+  }
+
+  const typeList = typeName.map((type) => (<button className="type GmarketS" onClick={handleActive} >{type}</button>))
+  
   return (
     <>
       <Header />
@@ -54,16 +73,13 @@ function Challenge() {
         
         </button>
         <Modal open={modalOpen} close={closeModal} title="새로운 도전하기" button="등록하기">
-          <p>새로운 챌린지를 추가해보세요!</p>
+          <p className="modalCont">새로운 챌린지를 추가해보세요!</p>
           <h3 className="modalTitle">카테고리 선택</h3>
-          <button className="type">식사</button>
-          <button className="type">운동</button>
-          <button className="type">취침</button>
-          <button className="type">공부</button>
-          <button className="type">아침</button>
-          <button className="type">계획</button>
+          <div>
+          {typeList}
+          </div>
           <h3 className="modalTitle">도전 제목</h3>
-          <input type="text" name="name" value="제목 입력"></input>
+          <input className="inputTitle GmarketS" type="text" name="title" maxLength={50}></input>
         </Modal>
       </div>
     </>

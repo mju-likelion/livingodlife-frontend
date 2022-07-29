@@ -27,7 +27,6 @@
     margin: 0 auto;
     border-radius: 20px;
     background-color: #ffffff;
-    /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: 0.3s;
     overflow: hidden;
 
@@ -88,33 +87,22 @@
             content: url(../../image/icon_arrow_hover.png);
       
           }
-      
         }
-      
       }
     }
   }
 
   & button {
-    outline: none;
-    position: absolute;
     cursor: pointer;
-    border: 0;
-
-    
+    border: white;    
   }
 
   &.openModal {
     display: flex;
     align-items: center;
-    /* 팝업이 열릴때 스르륵 열리는 효과 */
-    animation: modal-bg-show 0.3s;
+    animation: 0.3s;
   }
-  
-
 }
-
-
 
 @keyframes modal-show {
   from {
