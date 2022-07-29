@@ -1,15 +1,10 @@
 .card {
   width: 380px;
   margin-left: 23px;
-}
-
-.alarm {
-  max-height: 20.99px;
-  max-width: 22.61px;
-  margin-bottom: -1px;
-  margin-right: 5px;
-  opacity: 0.5;
-  font-family: GmarketSansMedium;
+  margin-bottom: 50px;
+  list-style-type: none;
+  float: left;
+  cursor: pointer;
 }
 
 .card_body {
@@ -19,9 +14,10 @@
   // padding: 10px 26px;
   padding-top: 13px;
   padding-bottom: 10px;
-  padding-left: 26px;
-  // 이것도 원래 19px 26px인데 이것도 얼추 비슷해보기에 수정했어요
-  margin-left: 75px;
+  padding-left: 20px;
+  // 이것도 원래 padding 19px 26px인데 이것도 얼추 비슷해보기에 수정했어요
+  // margin-left: 75px;
+  margin-top: -18px;
   margin-bottom: 29px;
 
   border-radius: 20px;
@@ -36,7 +32,7 @@
   display: flex;
 }
 
-.routine-icon {
+.routine_icon {
   width: 75px;
   height: 54px;
   font-size: 54px;
@@ -47,16 +43,27 @@
 
 .routine_title {
   font-size: 30px;
+  margin-top: -16px;
 }
 
 .routine_streaks {
   font-size: 25px;
+  margin-left: -13px;
+}
+
+.alarm {
+  max-height: 20.99px;
+  max-width: 22.61px;
+  margin-bottom: -1px;
+  margin-right: 5px;
+  opacity: 0.5;
 }
 
 .card_alarm {
   font-size: 25px;
   // background-color: orange;
-  margin-left: 205px;
+  // margin-left: 205px;
+  margin-left: 50px;
   margin-top: -12px;
   color: rgba(132, 132, 132, 1);
 }
