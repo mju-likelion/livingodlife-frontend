@@ -1,7 +1,6 @@
 .card {
   width: 380px;
-  margin-left: 23px;
-  margin-bottom: 50px;
+  margin: 0px 0px 50px 23px;
   list-style-type: none;
   float: left;
   cursor: pointer;
@@ -10,15 +9,8 @@
 .card_body {
   width: 380px;
   height: 68px;
-  // 원래 피그마에선 98px인데 사이즈가 이상해서 그냥 얼추 비슷해보이게 수정했어요
-  // padding: 10px 26px;
-  padding-top: 13px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  // 이것도 원래 padding 19px 26px인데 이것도 얼추 비슷해보기에 수정했어요
-  // margin-left: 75px;
-  margin-top: -18px;
-  margin-bottom: 29px;
+  padding: 13px 0px 10px 20px;
+  margin: -18px 0px 29px 0px;
 
   border-radius: 20px;
   border-color: rgba(250, 194, 20, 1);
@@ -37,8 +29,7 @@
   height: 54px;
   font-size: 54px;
   display: flex;
-  margin-top: -4px;
-  margin-left: 6px;
+  margin: -4px 0px 0px 6px;
 }
 
 .routine_title {
@@ -54,8 +45,7 @@
 .alarm {
   max-height: 20.99px;
   max-width: 22.61px;
-  margin-bottom: -1px;
-  margin-right: 5px;
+  margin: 0px 5px -1px 0px;
   opacity: 0.5;
 }
 
