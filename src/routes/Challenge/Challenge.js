@@ -52,14 +52,14 @@ function Challenge() {
               <td>1</td>
               <td>오늘 하루 운동 30분</td>
               <td>
-                <button className="challengeBtn GmarketM">도전!</button>
+                <button className="challengeBtn GmarketM"><Link to={'challengepost'} style={{ textDecoration: 'none', color:'white'}}>도전!</Link></button>
               </td>
             </tr>
             <tr className="challengeList">
               <td>2</td>
               <td>오늘 하루 운동 30분</td>
               <td>
-                <button className="challengeBtn GmarketM">도전!</button>
+                <button className="challengeBtn GmarketM"><Link to={'challengepost'} style={{ textDecoration: 'none', color:'white'}}>도전!</Link></button>
               </td>
             </tr>
           </tbody>

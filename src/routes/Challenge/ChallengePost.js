@@ -40,13 +40,11 @@ function ChallengePost() {
     (img.style.backgroundImage = `url(${reader.result})`);
 
     reader.readAsDataURL(files[0]);
-    console.log(reader);
   }
 
   const handleClick = (e) => {
     const formdata = new FormData();
     formdata.append('uploadImage', files[0]);
-    console.log(files[0]);
 
     const config = {
         Headers: {
