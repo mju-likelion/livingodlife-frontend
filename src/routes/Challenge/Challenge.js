@@ -36,7 +36,7 @@ function Challenge() {
   return (
     <>
       <Header />
-      <div id="wrapContent">
+      <div className="wrapContent">
         <h1 className="challengeTitle GmarketS">Challenge</h1>
         <div className="challengeContent GmarketM">
             <table>

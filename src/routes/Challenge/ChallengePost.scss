@@ -1,5 +1,52 @@
+.wrapContent{
+    background-color: #f5f5f5;
+}
 
-.startBtn {
+.wrapCert {
+    width: max-content;
+    float: left;
+    width: 60%;
+}
+
+.listCert {
+    height: 550px;
+    padding: 0px 50px;
+    margin-top: 50px;
+    margin-left: 70px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: auto;
+}
+
+.listCert::-webkit-scrollbar {
+    display: none;
+}
+
+.certTitle {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.certCont {
+    font-size: 20px;
+    display: flex;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.imgCert img {
+    display: flex;
+    width: 300px;
+    height: 300px;
+}
+
+.certTime {
+    display: inline-block;
+    color: #696969;
+}
+
+
+.certBtn {
     width: 195px;
     height: 70px;
     font-size: 20px;
@@ -11,24 +58,25 @@
     align-items: center;
     margin: auto;
     padding-left: 25px;
-    margin-top: 40px;
+    margin-top: 50px;
     transition: all 0.5s;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         background: #FAC214;
         color: white;
-            transition: all 0.5s;
+        transition: all 0.5s;
 
-        #circle{
+        #circle {
             background: white;
-            
+
         }
-        #imgArrow{
+
+        #imgArrow {
             content: url(../../image/icon_arrow.png);
 
         }
-        
+
     }
 
 
@@ -50,7 +98,7 @@
     transition: all 1s;
 }
 
-.fileImage{
+.fileImage {
     margin: auto;
     width: 100px;
     height: 100px;
@@ -64,7 +112,7 @@ footer {
     text-align: center;
 }
 
-.uploadBtn{
+.uploadBtn {
     margin-left: 230px;
     width: 180px;
     height: 70px;
@@ -97,7 +145,7 @@ footer {
 }
 
 
-.inputCont{
+.inputCont {
     width: 400px;
     height: 70px;
     margin-top: 35px;
@@ -105,4 +153,46 @@ footer {
     border: 1px solid #696969;
     border-radius: 20px;
     padding-left: 10px;
-  }
+}
+
+.wrapRank {
+    display: inline-block;
+    width: 40&;
+}
+
+.rankContent{
+    width: 100%;
+    height: 60%;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: auto;
+    margin-right: 50px;
+}
+
+table{
+    margin: auto;
+    text-align : center;
+}
+
+.rankTitle {
+    color: #F77E22;
+    padding-top: 150px;
+    padding-bottom: 30px;
+    font-size: 40px;
+    margin: auto;
+}
+
+.rankNav{
+    font-size: 25px;
+    color: #696969;
+}
+
+th{
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.rankList{
+    font-size: 25px;
+}
