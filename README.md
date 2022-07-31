@@ -2,13 +2,15 @@
 3조 갓생살기 프론트엔드
 
 ### Commit 컨벤션
-작성|내용|브랜치|
----|---|---|---|
-feat: 내용|새로운 기능 추가|feature/{사용자}/기능|
-fix: 내용 |버그 수정 |feature/{사용자}/기능|
-design: 내용|CSS 등 사용자 UI 디자인 변경|feature/{사용자}/기능|
-refactoring: 내용|결과의 변경 없이 코드의 구조를 재조정|feature/{사용자}/기능|
-docs: 내용|read.me 파일과 주석 같은 문서 수정|main|
+|작성|내용|브랜치|
+|---|---|---|
+|feat: 내용|새로운 기능 추가|feature/{사용자}/기능|
+|fix: 내용 |버그 수정 |feature/{사용자}/기능|
+|design: 내용|CSS 등 사용자 UI 디자인 변경|feature/{사용자}/기능|
+|style: 내용|코드 포맷 변경, 세미 콜론 누락, 코드 수정이 없는 경우|feature/{사용자}/기능|
+|refactoring: 내용|결과의 변경 없이 코드의 구조를 재조정|feature/{사용자}/기능|
+|setting: 내용|패키지 추가 및 변경|main|
+|docs: 내용|read.me 파일과 주석 같은 문서 수정|main|
 
 ### Todo
 
