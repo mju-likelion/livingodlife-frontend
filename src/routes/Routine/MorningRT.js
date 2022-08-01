@@ -1,9 +1,17 @@
-import React from "react"
+import React, { useState } from "react"
 import './MorningRT.scss'
 import Alarm from '../../image/icon-alarm.png';
+import DONE from '../../image/DONE.png';
 
 
 function MorningRT () {
+
+  const [ rtdone, setrtDone ] = useState()
+  function routineDone() {
+    setrtDone(<img src={DONE}
+      style={{ width: '380px', height:'140px'}
+    }/>)
+  }
 
     const MorningRTData = [
       {
@@ -11,7 +19,8 @@ function MorningRT () {
         "routine_icon":"🛏", 
         "routine_title":"매일 아침 이불 정리", 
         "routine_streaks":"15일째🏃‍♀️",
-        "card_alarm":"6:00AM"
+        "card_alarm":"6:00AM",
+        "done":<img src={DONE}/>
       },
       {
         "id":"2" , 
@@ -33,7 +42,9 @@ function MorningRT () {
     <>
       { MorningRTData.map((card)=>{
         return (
-          <ul className="card">
+          <>
+          <ul className="card" onClick={routineDone}>
+          <span>{rtdone}</span>
             <li className="card_body" key={card.id}>
               <div className="routine_icon">{card.routine_icon}</div>
               <dl>
@@ -45,6 +56,7 @@ function MorningRT () {
               <img src={Alarm} className="alarm" />{card.card_alarm}
             </div>
           </ul>
+          </>
           )
       })}
     </>

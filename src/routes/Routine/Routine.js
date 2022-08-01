@@ -5,38 +5,38 @@ import Header from "../../Components/Header/Header";
 import MorningRT from "./MorningRT.js"
 import NightRT from "./NightRT.js"
 import DailyRT from "./DailyRT.js"
+import running from "../../image/running-icon.png"
 
 
 function Routine() {
 
   const Progress = ({ done }) => (
     <div className="progress">
-      <div className="progress-done" style={{opacity: 1, width:`${done}%`}}>
-        { done }%
+      <div className="progress-done" style={{width:`${done}%`}}>
+        <img src={running} style={{width:'50px', float:'right', margin:'-6px -20px'}}/>
+        <br/>
+        <br/>{ done }% 
       </div>
     </div>
   )
+
+  const [count, setCount] = useState(0)
+  function addCount() {
+    setCount(prevCount => prevCount + 10)
+  }
 
   return (
     <>
     <Header/>
 
-    <Progress done="10" />
-
-    {/* <div className="progress-bar">0%</div> */}
-    {/* 일단 생김새(?)만 보려고 잠깐 놔둔거고 바꿀꺼에요 */}
+    <Progress done={count} />
     
-
-    <h1 className="routine">Morning Routine</h1>
-      <MorningRT />
+    <h1 className="routine" onClick={addCount}>Morning Routine</h1>
+      <MorningRT onClick={addCount}/>
     <h1 className="routine">Night Routine</h1>
       <NightRT />
     <h1 className="routine">Daily routine</h1>
       <DailyRT />
-
-
-
-
     </>
   );
 }
