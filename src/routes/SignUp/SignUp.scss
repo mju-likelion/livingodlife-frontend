@@ -1,4 +1,8 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
 
 .logo {
   color: #F77E22;
@@ -8,47 +12,30 @@
   margin-bottom: 25px;
 }
 
-.mail2 {
-  width: 539px;
-  height: 44px;
+.inputForm {
+  margin-top: 10px;
+  width: 500px;
+  height: 40px;
   font-size: 20px;
   text-align: left;
-  padding-left: 13px;
 }
 
-
-input[type=password] {
-  margin-bottom: 13px;
-}
-
-.red,
-.green,
-.wrong {
-  margin-left: -365px;
-  margin-top: 4px;
-  font-weight: bold;
+.errorEmail{
   font-size: 13px;
-}
-
-.red,
-.wrong {
   color: red;
+  font-weight: bold;
 }
 
-.green {
-  color: green;
-  margin-top: -12px;
-  margin-left: -357px;
-}
-
-.wrong {
-  margin-top: -10px;
-  margin-left: -420px;
+.errorPw{
+  font-size: 13px;
+  color: red;
+  font-weight: bold;
 }
 
 .verify-btn {
-  width: 539px;
-  height: 57px;
+  width: 500px;
+  margin-top: 10px;
+  height: 50px;
   font-size: 20px;
   background-color: rgba(250, 194, 20, 1);
   border-color: rgba(221, 172, 18, 1);
