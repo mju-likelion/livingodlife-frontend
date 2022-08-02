@@ -29,9 +29,11 @@ function SignUp() {
       <div className="logo">'GOD생'살기</div>
       <form onSubmit={formik.handleSubmit}>
         <input className="inputForm" id="email" type="email" placeholder="이메일 주소" {...formik.getFieldProps('email')} />
-        {formik.touched.email && formik.errors.email ? (
+        {formik.touched.email && formik.errors.email && !null ? (
       <div className="errorEmail">{formik.errors.email}</div>
-      ) : null}
+      ) : (
+        <div className="correctEmail">유효한 이메일 입니다.</div>
+        )}
         <input className="inputForm"
           id="password"
           name="password"
@@ -41,7 +43,7 @@ function SignUp() {
           value={formik.values.password}
           {...formik.getFieldProps('password')}
         />
-         {formik.touched.password && formik.errors.password ? (
+         {formik.touched.password && formik.errors.password && !null ? (
       <div className="errorPw">{formik.errors.password}</div>
       ) : null}
        <input className="inputForm"
@@ -55,7 +57,9 @@ function SignUp() {
         />
          {formik.touched.passwordCheck && formik.errors.passwordCheck ? (
       <div className="errorPw">{formik.errors.passwordCheck}</div>
-      ) : null}
+      ) : (
+        <div className="correctPw">비밀번호가 일치합니다.</div>
+        )}
         <button className="verify-btn" type="submit"><Link to="/verifyemail" style={{ textDecoration: "none" }}>
           이메일 인증
         </Link></button>
