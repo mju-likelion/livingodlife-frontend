@@ -28,13 +28,13 @@ function SignUp() {
     <div>
       <div className="logo">'GOD생'살기</div>
       <form onSubmit={formik.handleSubmit}>
-        <input className="inputForm" id="email" type="email" placeholder="이메일 주소" {...formik.getFieldProps('email')} />
+        <input className="inputForm notoSans" id="email" type="email" placeholder="이메일 주소" {...formik.getFieldProps('email')} />
         {formik.touched.email && formik.errors.email? (
-      <div className="errorEmail">{formik.errors.email}</div>
+      <div className="errorEmail notoSans">{formik.errors.email}</div>
       ) : formik.touched.email? (
-        <div className="correctEmail">유효한 이메일 입니다.</div>
+        <div className="correctEmail notoSans">유효한 이메일 입니다.</div>
         ):null}
-        <input className="inputForm"
+        <input className="inputForm notoSans"
           id="password"
           name="password"
           type="text"
@@ -44,9 +44,9 @@ function SignUp() {
           {...formik.getFieldProps('password')}
         />
          {formik.touched.password && formik.errors.password ? (
-      <div className="errorPw">{formik.errors.password}</div>
+      <div className="errorPw notoSans">{formik.errors.password}</div>
       ) : null}
-       <input className="inputForm"
+       <input className="inputForm notoSans"
           id="passwordCheck"
           name="passwordCheck"
           type="text"
@@ -56,11 +56,11 @@ function SignUp() {
           {...formik.getFieldProps('passwordCheck')}
         />
          {formik.touched.passwordCheck && formik.errors.passwordCheck ? (
-      <div className="errorPw">{formik.errors.passwordCheck}</div>
+      <div className="errorPw notoSans">{formik.errors.passwordCheck}</div>
       ) : formik.touched.passwordCheck?(
-        <div className="correctPw">비밀번호가 일치합니다.</div>
+        <div className="correctPw notoSans">비밀번호가 일치합니다.</div>
         ): null }
-        <button className="verify-btn" type="submit"><Link to="/verifyemail" style={{ textDecoration: "none" }}>
+        <button className="verify-btn notoSans" type="submit"><Link to="/verifyemail" style={{ textDecoration: "none" }}>
           이메일 인증
         </Link></button>
       </form>

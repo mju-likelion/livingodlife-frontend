@@ -1,7 +1,11 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-.notosanskr * { 
- font-family: 'Noto Sans KR', sans-serif;
+@font-face {
+  font-family: 'Noto Sans KR', sans-serif;
+  src: url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+}
+
+.notoSans {
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .logo {
