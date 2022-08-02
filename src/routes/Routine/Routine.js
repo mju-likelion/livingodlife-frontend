@@ -23,7 +23,11 @@ function Routine() {
   const [count, setCount] = useState(0)
   function addCount() {
     setCount(prevCount => prevCount + 10)
+    if(count >= 100){
+      setCount(100)
+     }
   }
+
 
   return (
     <>
@@ -31,7 +35,7 @@ function Routine() {
 
     <Progress done={count} />
     
-    <h1 className="routine" onClick={addCount}>Morning Routine</h1>
+    <h1 className="routine">Morning Routine</h1>
       <MorningRT onClick={addCount}/>
     <h1 className="routine">Night Routine</h1>
       <NightRT />

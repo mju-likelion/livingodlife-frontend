@@ -6,12 +6,14 @@ import DONE from '../../image/DONE.png';
 
 function MorningRT () {
 
-  const [ rtdone, setrtDone ] = useState()
+  const [ rtdone, setRtDone ] = useState()
   function routineDone() {
-    setrtDone(<img src={DONE}
+    setRtDone(<img src={DONE}
       style={{ width: '380px', height:'140px'}
     }/>)
-  }
+    document.getElementById("done_btn").style.opacity = "0.5";
+  };
+
 
     const MorningRTData = [
       {
@@ -19,8 +21,7 @@ function MorningRT () {
         "routine_icon":"🛏", 
         "routine_title":"매일 아침 이불 정리", 
         "routine_streaks":"15일째🏃‍♀️",
-        "card_alarm":"6:00AM",
-        "done":<img src={DONE}/>
+        "card_alarm":"6:00AM"
       },
       {
         "id":"2" , 
@@ -38,12 +39,13 @@ function MorningRT () {
       }
     ];
 
+
   return (
     <>
       { MorningRTData.map((card)=>{
         return (
           <>
-          <ul className="card" onClick={routineDone}>
+          <ul className="card" id="done_btn" onClick={routineDone}>
           <span>{rtdone}</span>
             <li className="card_body" key={card.id}>
               <div className="routine_icon">{card.routine_icon}</div>
