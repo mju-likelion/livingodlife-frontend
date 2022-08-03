@@ -6,11 +6,13 @@ import * as Yup from 'yup';
 function SignUp() {
   const formik = useFormik({
     initialValues: {
+      name: "",
       email: "",
       password: "",
       passwordCheck: "",
     },
     validationSchema: Yup.object({
+      name: Yup.string().max(20, '20자 이하로 입력해주세요'),
       email: Yup.string().email('잘못된 이메일 주소 입니다.').required('이메일 주소를 입력해주세요.'),
       password: Yup.string()
       .min(6, '6자 이상 작성해주세요.')
@@ -28,6 +30,10 @@ function SignUp() {
     <div>
       <div className="logo">'GOD생'살기</div>
       <form onSubmit={formik.handleSubmit}>
+      <input className="inputForm notoSans" id="name" type="name" placeholder="이름" {...formik.getFieldProps('name')} />
+        {formik.touched.name && formik.errors.name? (
+      <div className="errorEmail notoSans">{formik.errors.name}</div>
+      ) :null}
         <input className="inputForm notoSans" id="email" type="email" placeholder="이메일 주소" {...formik.getFieldProps('email')} />
         {formik.touched.email && formik.errors.email? (
       <div className="errorEmail notoSans">{formik.errors.email}</div>
@@ -60,9 +66,7 @@ function SignUp() {
       ) : formik.touched.passwordCheck?(
         <div className="correctPw notoSans">비밀번호가 일치합니다.</div>
         ): null }
-        <button className="verify-btn notoSans" type="submit"><Link to="/verifyemail" style={{ textDecoration: "none" }}>
-          이메일 인증
-        </Link></button>
+        <button className="verify-btn notoSans" type="submit">회원가입 완료</button>
       </form>
     </div>
   );
