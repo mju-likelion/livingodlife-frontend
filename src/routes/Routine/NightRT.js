@@ -5,6 +5,15 @@ import Alarm from '../../image/icon-alarm.png';
 
 function NightRT () {
 
+  const routineDone = e => {
+    const selectedItem = document.querySelector('.rtDone');
+    console.log(e.target.className);
+    if(e.target.className=='card') {
+      e.target.className='card rtDone';
+      selectedItem.classList.add('.rtDone')
+    }
+  }
+
     const NightRTData = [
       {
         "id":"1" , 
@@ -39,7 +48,7 @@ function NightRT () {
 
       { NightRTData.map((card)=>{
         return (
-          <ul className="card">
+          <ul className="card" onClick={routineDone}>
             <li className="card_body" key={card.id}>
               <div className="routine_icon">{card.routine_icon}</div>
               <dl>

@@ -6,13 +6,34 @@ import DONE from '../../image/DONE.png';
 
 function MorningRT () {
 
-  const [ rtdone, setRtDone ] = useState()
-  function routineDone() {
-    setRtDone(<img src={DONE}
-      style={{ width: '380px', height:'140px'}
-    }/>)
-    document.getElementById("done_btn").style.opacity = "0.5";
-  };
+  // const [ rtdone, setRtDone ] = useState()
+  // function routineDone() {
+  //   setRtDone(<img src={DONE}
+  //     style={{ width: '380px', height:'140px'}
+  //   }/>)
+  //   document.getElementById("done_btn").style.opacity = "0.5";
+  // };
+  // DONE을 과감하게 포기해봤습니다..
+
+
+  // const routineDone = e => {
+  //   const selectedItem = document.querySelector('.testest');
+  //   console.log(e.target.className);
+  //   if(e.target.className=='card') {
+  //     e.target.className='card testest';
+  //     selectedItem.classList.add('.testest')
+  //   }
+  // }
+
+  const routineDone = e => {
+    const selectedItem = document.querySelector('.rtDone');
+    console.log(e.target.className);
+    if(e.target.className=='card') {
+      e.target.className='card rtDone';
+      selectedItem.classList.add('.rtDone')
+    }
+  }
+
 
 
     const MorningRTData = [
@@ -45,8 +66,8 @@ function MorningRT () {
       { MorningRTData.map((card)=>{
         return (
           <>
-          <ul className="card" id="done_btn" onClick={routineDone}>
-          <span>{rtdone}</span>
+          <ul className="card" onClick={routineDone}>
+          {/* <span>{rtdone}</span> */}
             <li className="card_body" key={card.id}>
               <div className="routine_icon">{card.routine_icon}</div>
               <dl>
