@@ -1,41 +1,49 @@
+// import React from "react";
+// import "./Header.css";
+// import {Row,Col} from 'reactstrap'
+// import { Link } from "react-router-dom";
+
+// function Header() {
+//   return (
+//     <><div id="page-header" className="mb-3">
+//       <Row>
+//         <Col md="6" sm="auto" className="text-center m-auto">
+//           <span className="logo"> 'GOD생' 살기 </span>
+//           <span className="mainBtn"><Link to="/" style={{ textDecoration: 'none' }}>Main</Link></span>
+//           <span className="challengeBtn"><Link to="/challenge" style={{ textDecoration: 'none' }}>Challenge</Link></span>
+//           <span className="routineBtn"><Link to="/routine" style={{ textDecoration: 'none' }}>Routine</Link></span>
+//           <span className="loginBtn"><Link to="/login" style={{ textDecoration: 'none' }}>Login</Link></span>
+
+//         </Col>
+//       </Row>
+//     </div></>
+//   );
+// }
+
+// export default Header;
 import React from "react";
-import "./Header.css";
+import "./Header.scss";
 import { Link } from "react-router-dom";
 
 function Header() {
-
-  /*function upnav() {
-    document.addEventListener("scroll", onScroll, { passive: true });
-    var last = 0;
-    const gap = 1;
-    const nav = docunment.querySelector("nav");
-    const headerheight = docunment.querySelector("header").clientHeight;
-
-    function onScroll() {
-      const scrollpositon = pageYOffset;
-      if (Math.abs(last - scrollpositon) <= gap) return;
-      else if (scrollpositon > last || scrollpostion <= headerheight) {
-        nav.classList.remove("downdown");
-      } else if (scrollposion < last) {
-        nav.classList.add("downdown");
-      }
-
-      last = scrollpostion;
-    }
-  }
-
-  upnav();*/
-
   return (
-    <>
-    <h1 className="God"> 'GOD생' 살기 </h1>
-    <nav>
-        <span className="a"><Link to="/" style={{ textDecoration: 'none'}}>Main</Link></span>
-        <span className="b"><Link to="/challenge" style={{ textDecoration: 'none'}}>Challenge</Link></span>
-        <span className="c"><Link to="/routine" style={{ textDecoration: 'none'}}>Routine</Link></span>
-        <span className="d"><Link to="/login" style={{ textDecoration: 'none'}}>Login</Link></span>
-    </nav>
-    </>
+      <div className="header">
+            <div className="logo">'GOD생' 살기 <Link to="/"></Link></div>
+            <div className="routePage">
+              <Link to="/" >
+                <span>Main</span>
+              </Link>
+              <Link to="/challenge">
+                <span>Challenge</span>
+              </Link>
+              <Link to="/routine" >
+                <span>Routine</span>
+              </Link>
+              <Link to="/login">
+                <button className="loginBtn">Login</button>
+              </Link>
+            </div>
+      </div>
   );
 }
 
