@@ -2,8 +2,18 @@ import "./SignUp.scss";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost";
+
+
 
 function SignUp() {
+
+  const signUpClient = async (data) => {
+    return await axios.post('/client', data, {validateStatus: () => true,});
+  }
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -23,6 +33,7 @@ function SignUp() {
     }),
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      signUpClient(JSON.stringify(values, null, 2));
     },
   });
 
