@@ -5,8 +5,7 @@
 
     .logo {
         margin-top: 6px;
-        padding-top: 20px;
-        padding-left: 10px;
+        padding: 20px 0 0 10px;
         width: 282px;
         height: 89px;
         color: #F77E22;
@@ -44,15 +43,15 @@
 
     .loginBtn{
         margin-top:27px;
-        width:104px;
         height:42.08px;
-        margin-left: 1300px; 
+        float:right;
         font-family: 'Noto Sans KR';
         font-style: normal;
         font-weight: 500;
         font-size: 20px;
         line-height: 29px;
         color: #3C3C3C;
-
+        border-radius: 20px;
+        border:1px solid white;
     }
 }
