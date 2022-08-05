@@ -1,0 +1,88 @@
+.card {
+  width: 380px;
+  margin: 0px 0px 50px 69px;
+  padding-left: 0px;
+  list-style-type: none;
+  float: left;
+  cursor: pointer;
+
+}
+
+.rtDone {
+  opacity: 0.5;
+  background-color: white;
+}
+
+
+.card_body {
+  width: 360px;
+  height: 68px;
+  padding: 13px 0px 10px 20px;
+  margin: 0px 0px 29px 0px;
+  color: black;
+
+  border-radius: 20px;
+  border-color: rgba(250, 194, 20, 1);
+  border-style: solid;
+  border-width: 3px;
+
+  box-shadow: 8px 5px 8px rgba(250, 194, 20, 1);
+  background-color: rgba(255, 254, 241, 1);
+
+  font-family: GmarketSansLight;
+  display: flex;
+}
+
+.routine_icon {
+  width: 75px;
+  height: 54px;
+  font-size: 54px;
+  display: flex;
+  margin: -4px -10px 0px 6px;
+
+  position:relative;
+}
+
+.routine_title {
+  font-size: 30px;
+  margin-top: -16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 260px;
+  height: 33px;
+
+  position:relative;
+}
+
+.routine_streaks {
+  font-size: 25px;
+  margin-left: -13px;
+  position:relative;
+}
+
+.alarm {
+  max-height: 20.99px;
+  max-width: 22.61px;
+  margin: 0px 5px -1px 0px;
+  opacity: 0.5;
+}
+
+.card_alarm {
+  font-size: 25px;
+  padding-left: 15px;
+  margin-top: -12px;
+  color: rgba(132, 132, 132, 1);
+  width: 380px;
+  z-index: 1;
+}
+
+.doneClick {
+  width: 400px;
+  height: 160px;
+  margin-top: -90px;
+  margin-left: -95px;
+  position:absolute;
+  opacity: 0.5;
+  z-index: 99;
+}
