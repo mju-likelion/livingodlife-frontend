@@ -31,15 +31,7 @@ function NightRT () {
         "routine_title":"자기 전 스트레칭하기", 
         "routine_streaks":"33일째🚙",
         "card_alarm":"10:30PM"
-      },
-
-      // {
-      //   "id":"3" , 
-      //   "routine_icon":"🥗", 
-      //   "routine_title":"건강한 아침밥 먹기", 
-      //   "routine_streaks":"67일째🔥",
-      //   "card_alarm":"6:30AM"
-      // }
+      }
 
     ];
 

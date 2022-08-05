@@ -36,7 +36,7 @@ function Routine() {
     <Progress done={count} />
     
     <h1 className="routine" onClick={addCount}>Morning Routine</h1>
-      <MorningRT onClick={addCount}/>
+      <MorningRT />
     <h1 className="routine">Night Routine</h1>
       <NightRT />
     <h1 className="routine">Daily routine</h1>
