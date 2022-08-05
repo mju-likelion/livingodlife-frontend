@@ -1,5 +1,4 @@
 import React from "react"
-// import './NightRT.scss'
 import Alarm from '../../image/icon-alarm.png';
 
 
@@ -8,9 +7,12 @@ function NightRT () {
   const routineDone = e => {
     const selectedItem = document.querySelector('.rtDone');
     console.log(e.target.className);
-    if(e.target.className=='card') {
-      e.target.className='card rtDone';
-      selectedItem.classList.add('.rtDone')
+    if(e.target.className=='doneClick') {
+      e.target.className='doneClick rtDone';
+      selectedItem.classList.add('doneClick')
+    }
+    else {
+      e.target.className='doneClick';
     }
   }
 
@@ -48,12 +50,13 @@ function NightRT () {
 
       { NightRTData.map((card)=>{
         return (
-          <ul className="card" onClick={routineDone}>
+          <ul className="card">
             <li className="card_body" key={card.id}>
               <div className="routine_icon">{card.routine_icon}</div>
               <dl>
                 <dt className="routine_title">{card.routine_title}</dt>
                 <dd className="routine_streaks">{card.routine_streaks}</dd>
+                <div className="doneClick" onClick={routineDone}></div>
               </dl>
             </li>
             <div className="card_alarm">

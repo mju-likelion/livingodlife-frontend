@@ -1,21 +1,25 @@
 .card {
   width: 380px;
-  margin: 0px 0px 50px 23px;
+  margin: 0px 0px 50px 69px;
+  padding-left: 0px;
   list-style-type: none;
   float: left;
   cursor: pointer;
-  position: relative;
+
 }
 
 .rtDone {
   opacity: 0.5;
+  background-color: white;
 }
 
+
 .card_body {
-  width: 380px;
+  width: 360px;
   height: 68px;
   padding: 13px 0px 10px 20px;
-  margin: -18px 0px 29px 0px;
+  margin: 0px 0px 29px 0px;
+  color: black;
 
   border-radius: 20px;
   border-color: rgba(250, 194, 20, 1);
@@ -27,6 +31,9 @@
 
   font-family: GmarketSansLight;
   display: flex;
+
+  // position:relative;
+  // z-index: 1;
 }
 
 .routine_icon {
@@ -34,17 +41,27 @@
   height: 54px;
   font-size: 54px;
   display: flex;
-  margin: -4px 0px 0px 6px;
+  margin: -4px -10px 0px 6px;
+
+  position:relative;
 }
 
 .routine_title {
   font-size: 30px;
   margin-top: -16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 260px;
+  height: 33px;
+
+  position:relative;
 }
 
 .routine_streaks {
   font-size: 25px;
   margin-left: -13px;
+  position:relative;
 }
 
 .alarm {
@@ -56,9 +73,20 @@
 
 .card_alarm {
   font-size: 25px;
-  // background-color: orange;
-  // margin-left: 205px;
-  margin-left: 50px;
+  padding-left: 15px;
   margin-top: -12px;
   color: rgba(132, 132, 132, 1);
+  width: 380px;
+  z-index: 1;
+}
+
+.doneClick {
+  // background-color: orange;
+  width: 400px;
+  height: 160px;
+  margin-top: -90px;
+  margin-left: -95px;
+  position:absolute;
+  opacity: 0.5;
+  z-index: 99;
 }
