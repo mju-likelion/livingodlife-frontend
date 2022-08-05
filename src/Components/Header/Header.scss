@@ -16,9 +16,12 @@
     }
 
     .routePage {
+        display:flex;
         margin-top: 27px;
-        width: 927px;
+        margin-left: 210px;
+        width: 480px;
         height: 40px;
+        justify-content: space-between;
 
         :link{
             text-decoration: none;
@@ -26,7 +29,6 @@
         
         span {
             height: 40px;
-            margin-left: 90px;
             font-family: 'Noto Sans KR';
             font-style: normal;
             font-weight: 500;
@@ -42,14 +44,13 @@
     }
 
     .loginBtn{
-        margin-top:27px;
-        height:42.08px;
-        float:right;
+        margin-top: 23px;
+        height:42px;
+        width:104px;
+        margin-left: 344px;
         font-family: 'Noto Sans KR';
-        font-style: normal;
         font-weight: 500;
         font-size: 20px;
-        line-height: 29px;
         color: #3C3C3C;
         border-radius: 20px;
         border:1px solid white;
