@@ -1,4 +1,12 @@
 
+@font-face {
+  font-family: 'Noto Sans KR', sans-serif;
+  src: url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+}
+
+.notoSans {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 
 .logo {
   color: #F77E22;
@@ -8,47 +16,49 @@
   margin-bottom: 25px;
 }
 
-.mail2 {
-  width: 539px;
-  height: 44px;
-  font-size: 20px;
+.inputForm {
+  display: block;
+  margin: auto;  
+  margin-top: 10px;
+  width: 480px;
+  height: 40px;
+  font-size: 15px;
   text-align: left;
-  padding-left: 13px;
+  padding-left: 15px;
 }
 
-
-input[type=password] {
-  margin-bottom: 13px;
+input::placeholder{
+  font-size: 15px;
 }
 
-.red,
-.green,
-.wrong {
-  margin-left: -365px;
-  margin-top: 4px;
-  font-weight: bold;
+.errorEmail{
   font-size: 13px;
-}
-
-.red,
-.wrong {
   color: red;
+  font-weight: bold;
 }
 
-.green {
+.correctEmail{
+  font-size: 13px;
   color: green;
-  margin-top: -12px;
-  margin-left: -357px;
+  font-weight: bold;
 }
 
-.wrong {
-  margin-top: -10px;
-  margin-left: -420px;
+.errorPw{
+  font-size: 13px;
+  color: red;
+  font-weight: bold;
+}
+
+.correctPw{
+  font-size: 13px;
+  color: green;
+  font-weight: bold;
 }
 
 .verify-btn {
-  width: 539px;
-  height: 57px;
+  width: 500px;
+  margin-top: 10px;
+  height: 50px;
   font-size: 20px;
   background-color: rgba(250, 194, 20, 1);
   border-color: rgba(221, 172, 18, 1);
@@ -62,10 +72,4 @@ input[type=password] {
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-}
-
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-.notosanskr * { 
- font-family: 'Noto Sans KR', sans-serif;
 }
