@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Noto Sans KR', sans-serif;
+  src: url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+}
+
+.notoSans {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 
 .logo {
   color: #F77E22;
@@ -7,14 +15,26 @@
   margin-bottom: 25px;
 }
 
-.mail,
-.pw {
-  margin-bottom: 20px;
-  width: 539px;
-  height: 44px;
-  font-size: 20px;
+.mail{
+  display: block;
+  margin: auto;  
+  margin-top: 100px;
+  width: 480px;
+  height: 40px;
+  font-size: 15px;
   text-align: left;
-  padding-left: 13px;
+  padding-left: 15px;
+}
+
+.pw {
+  display: block;
+  margin: auto;  
+  margin-top: 10px;
+  width: 480px;
+  height: 40px;
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15px;
 }
 
 
@@ -44,17 +64,18 @@
   flex-grow: 1;
   background: rgba(0, 0, 0, 0.35);
   height: 1px;
+  width: 0px;
   font-size: 0px;
   line-height: 0px;
-  margin: 0px 16px;
+  margin: 0px 10px;
 }
 
 .kakao {
   margin-top: 34px;
   margin-bottom: 32px;
-  width: 539px;
-  height: 57px;
-  font-size: 18px;
+  width: 500px;
+  height: 50px;
+  font-size: 15px;
   font-weight: bold;
   background-color: rgba(248, 223, 0, 1);
   border-style: solid;
