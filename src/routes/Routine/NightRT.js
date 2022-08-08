@@ -1,65 +1,62 @@
-import React from "react"
-import Alarm from '../../image/icon-alarm.png';
+import React from "react";
+import Alarm from "../../image/icon-alarm.png";
 
-
-function NightRT () {
-
-  const routineDone = e => {
-    const selectedItem = document.querySelector('.rtDone');
+function NightRT() {
+  const routineDone = (e) => {
+    const selectedItem = document.querySelector(".rtDone");
     console.log(e.target.className);
-    if(e.target.className=='doneClick') {
-      e.target.className='doneClick rtDone';
-      selectedItem.classList.add('doneClick')
+    if (e.target.className == "doneClick") {
+      e.target.className = "doneClick rtDone";
+      selectedItem.classList.add("doneClick");
+    } else {
+      e.target.className = "doneClick";
     }
-    else {
-      e.target.className='doneClick';
-    }
-  }
+  };
 
-    const NightRTData = [
-      {
-        "id":"1" , 
-        "routine_icon":"💻", 
-        "routine_title":"매일밤 블로그 업로드", 
-        "routine_streaks":"4일째🚶",
-        "card_alarm":"10:00PM"
-      },
+  const NightRTData = [
+    {
+      id: "1",
+      routine_icon: "💻",
+      routine_title: "매일밤 블로그 업로드",
+      routine_streaks: "4일째🚶",
+      card_alarm: "10:00PM",
+    },
 
-      {
-        "id":"2" , 
-        "routine_icon":"🧘‍♀️", 
-        "routine_title":"자기 전 스트레칭하기", 
-        "routine_streaks":"33일째🚙",
-        "card_alarm":"10:30PM"
-      }
-
-    ];
-
-
+    {
+      id: "2",
+      routine_icon: "🧘‍♀️",
+      routine_title: "자기 전 스트레칭하기",
+      routine_streaks: "33일째🚙",
+      card_alarm: "10:30PM",
+    },
+  ];
 
   return (
     <>
-
-      { NightRTData.map((card)=>{
-        return (
-          <ul className="card">
-            <li className="card_body" key={card.id}>
-              <div className="routine_icon">{card.routine_icon}</div>
-              <dl>
-                <dt className="routine_title">{card.routine_title}</dt>
-                <dd className="routine_streaks">{card.routine_streaks}</dd>
-                <div className="doneClick" onClick={routineDone}></div>
-              </dl>
-            </li>
-            <div className="card_alarm">
-              <img src={Alarm} className="alarm" />{card.card_alarm}
-            </div>
-          </ul>
-          )
-      })}
-
+      <div className="card_scroller">
+        <div className="card_wrapper">
+          {NightRTData.map((card) => {
+            return (
+              <ul className="card">
+                <li className="card_body" key={card.id}>
+                  <div className="routine_icon">{card.routine_icon}</div>
+                  <dl>
+                    <dt className="routine_title">{card.routine_title}</dt>
+                    <dd className="routine_streaks">{card.routine_streaks}</dd>
+                    <div className="doneClick" onClick={routineDone}></div>
+                  </dl>
+                </li>
+                <div className="card_alarm">
+                  <img src={Alarm} className="alarm" />
+                  {card.card_alarm}
+                </div>
+              </ul>
+            );
+          })}
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
 export default NightRT;

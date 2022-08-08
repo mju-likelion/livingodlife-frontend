@@ -1,27 +1,35 @@
 .header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     width: 100%;
     height: 95px;
+    background-color: white;
 
-    .logo {
-        margin-top: 6px;
-        padding: 20px 0 0 10px;
-        width: 282px;
+    .headerLogo {
+        margin-left: 50px;
         height: 89px;
         color: #F77E22;
         font-family: 'Jalnan';
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 36px;
+        font-size: 1.5rem;
+        white-space:nowrap;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .routePage {
+    .headerRoutePage {
         display:flex;
-        margin-top: 27px;
-        margin-left: 210px;
+        margin-left: 10px;
+        margin-right: 10px;
         width: 480px;
-        height: 40px;
+        height: 100%;
         justify-content: space-between;
+        align-items: center;
 
         :link{
             text-decoration: none;
@@ -43,16 +51,42 @@
         }
     }
 
-    .loginBtn{
-        margin-top: 23px;
+    .headerLoginBtn{
+        margin-right: 50px;
         height:42px;
         width:104px;
-        margin-left: 344px;
         font-family: 'Noto Sans KR';
         font-weight: 500;
         font-size: 20px;
         color: #3C3C3C;
         border-radius: 20px;
         border:1px solid white;
+    }
+}
+
+@media (max-width: 660px){
+    .header{
+        flex-direction: column;
+        height:auto;
+
+        .headerLogo{
+            margin-left: 0px;
+        }
+
+        .headerRoutePage{
+            justify-content: space-between;
+            display: flex;
+            width: 100%;
+
+            a{
+                flex: 1;
+            }
+        }
+
+        .headerLoginBtn{
+            margin-top: 25px;
+            margin-right: 0px;
+            margin-bottom: 25px;
+        }
     }
 }
