@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Header from "./Components/Header/Header";
@@ -14,10 +14,11 @@ import Routine from "./routes/Routine/Routine";
 const App = () => {
   let isAuthorized = sessionStorage.getItem("isAuthorized");
   console.log(isAuthorized);
+
   return (
     <div className="App">
       <BrowserRouter>
-        {!isAuthorized ?  <Routes to="/main" />  : <Routes to="/" /> }
+        {!isAuthorized ?  <Routes to="/" />  : <Routes to="/main" /> }
         <Routes>
           <Route path="/" element={<Login />}/>
           <Route path="/signup" element={<SignUp />}/>

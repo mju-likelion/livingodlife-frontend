@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const logout = () => {
-    sessionStorage.setItem("isAuthorized", "false");
+    sessionStorage.setItem("isAuthorized", false);
   }
   return (
       <div className="header">
