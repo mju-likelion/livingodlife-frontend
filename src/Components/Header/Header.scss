@@ -17,8 +17,7 @@
 
     .routePage {
         display:flex;
-        margin-top: 27px;
-        margin-left: 210px;
+        margin: 27px 0 0 210px;
         width: 480px;
         height: 40px;
         justify-content: space-between;
@@ -44,10 +43,9 @@
     }
 
     .loginBtn{
-        margin-top: 23px;
+        margin: 23px 0 0 344px;
         height:42px;
         width:104px;
-        margin-left: 344px;
         font-family: 'Noto Sans KR';
         font-weight: 500;
         font-size: 20px;
