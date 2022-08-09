@@ -1,6 +1,6 @@
 import "./Login.scss";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -8,12 +8,15 @@ import axios from "axios";
 axios.defaults.baseURL = "http://localhost";
 
 function Login() {
+  const navigate = useNavigate();
   const loginClient = async (data) => {
     try {
       const res = await axios.put("/client", data);
 
       const accessToken = res.data.token;
-      console.log(accessToken);
+      localStorage.setItem('login-token', accessToken);
+      sessionStorage.setItem("isAuthorized", "true");
+      navigate("/main");
     } catch (error) {
       const err = error.response.data;
 
@@ -44,7 +47,6 @@ function Login() {
         .required("비밀번호를 입력해주세요."),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       loginClient(values);
     },
   });
