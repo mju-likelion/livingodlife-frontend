@@ -8,36 +8,37 @@ import { Link } from "react-router-dom";
 
 function Challenge() {
   const [ChallengeList, setChallengeList] = useState([]);
-  useEffect(()=>{axios
-    .get("/challenge", {
-      headers: {
-        Authorization: localStorage.getItem("login-token"),
-      },
-    })
-    .then((response) => {
-      const challengeData = response.data;
-      console.log(challengeData);
-      const list = challengeData.map((data,index)=> 
-        <tr className="challengeList" key={index}>
-          <td>{index+1}</td>
-          <td>{data.challengeName}</td>
-          <td>
-            <button className="challengeBtn GmarketM">
-              <Link
-                to={`/challenge/${data._id}`}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                도전!
-              </Link>
-            </button>
-          </td>
-        </tr>
-    )
-    setChallengeList(list);
-    });
-   }, []);
+  useEffect(() => {
+    axios
+      .get("/challenge", {
+        headers: {
+          Authorization: localStorage.getItem("login-token"),
+        },
+      })
+      .then((response) => {
+        const challengeData = response.data;
+        console.log(challengeData);
+        const list = challengeData.map((data, index) => (
+          <tr className="challengeList" key={index}>
+            <td>{index + 1}</td>
+            <td>{data.challengeName}</td>
+            <td>
+              <button className="challengeBtn GmarketM">
+                <Link
+                  to={`/challenge/${data._id}`}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  도전!
+                </Link>
+              </button>
+            </td>
+          </tr>
+        ));
+        setChallengeList(list);
+      });
+  }, []);
 
-   const [challenge, setChallenge] = useState({
+  const [challenge, setChallenge] = useState({
     challengeName: "",
     challengeContents: "내용",
     challengeCategory: "",
@@ -52,9 +53,9 @@ function Challenge() {
 
   console.log(challenge);
 
-   const addChallenge = () => {
+  const addChallenge = () => { //error 콘솔이 안찍힘 문제 해결 필요
     try {
-      axios.post("/challenge",challenge,  {
+      axios.post("/challenge", challenge, {
         headers: {
           Authorization: localStorage.getItem("login-token"),
         },
@@ -90,7 +91,6 @@ function Challenge() {
   };
 
   const handleActive = (e) => {
-   
     if (e.target.className == "GmarketS type") {
       const selectedItem = document.querySelector(".clicked");
       e.target.className = "GmarketS clicked";
@@ -136,22 +136,26 @@ function Challenge() {
           <div>{typeList}</div>
           <h3 className="modalTitle">도전 제목</h3>
           <form>
-          <input
-            className="inputTitle GmarketS"
-            type="text"
-            id="challengeName"
-            name="challengeName"
-            placeholder="챌린지 제목을 입력하세요"
-            onChange={onChangeContent}
-          ></input>
-            <button type="submit" className="regBtn GmarketS" onClick={addChallenge}>
+            <input
+              className="inputTitle GmarketS"
+              type="text"
+              id="challengeName"
+              name="challengeName"
+              placeholder="챌린지 제목을 입력하세요"
+              onChange={onChangeContent}
+            />
+            <button
+              type="submit"
+              className="regBtn GmarketS"
+              onClick={addChallenge}
+            >
               {" "}
               등록하기
               <div id="circle">
                 <img src={imgArrow} id="imgArrow"></img>
               </div>
             </button>
-            </form>
+          </form>
         </Modal>
       </div>
     </>

@@ -21,16 +21,6 @@ html {
     height: 100vh;
 }
 
-#root{
-    width: 100vw;
-    height: 100vh;
-}
-
-.App{
-    width: 100vw;
-    height: 100vh;
-}
-
 .wrapContent{
     background-color: #f5f5f5;
 }
@@ -87,6 +77,10 @@ th{
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 8px;
+    Link {
+        text-decoration: none;
+        color: white;
+    }
 }
 
 .newBtn {
