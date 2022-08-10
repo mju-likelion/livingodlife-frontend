@@ -1,5 +1,4 @@
 import React, { Component, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./ChallengePost.scss";
 import Header from "../../Components/Header/Header";
 import imgArrow from "../../image/icon_arrow.png";
@@ -60,7 +59,7 @@ function ChallengePost() {
       <div className="wrapContent">
         <div className="wrapCert">
           <div className="listCert">
-            <h1 className="certTitle GmarketS">오늘 하루 운동 30분</h1>
+            <h1 className="certTitle GmarketS"></h1>
             <p className="certCont GmarketS">박원호</p>
             <div className="imgCert">
               <img src={imgUpload}></img>

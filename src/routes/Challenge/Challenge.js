@@ -18,13 +18,13 @@ function Challenge() {
       const challengeData = response.data;
       console.log(challengeData);
       const list = challengeData.map((data,index)=> 
-        <tr className="challengeList" key={data.index}>
+        <tr className="challengeList" key={index}>
           <td>{index+1}</td>
           <td>{data.challengeContents}</td>
           <td>
             <button className="challengeBtn GmarketM">
               <Link
-                to={"/challenge/:challengeId"}
+                to={`/challenge/${data._id}`}
                 style={{ textDecoration: "none", color: "white" }}
               >
                 도전!
@@ -33,11 +33,20 @@ function Challenge() {
           </td>
         </tr>
     )
-    console.log(list);
     setChallengeList(list);
     });
    }, []);
-  
+
+   /*axios
+    .post("/challenge", {
+      headers: {
+        Authorization: localStorage.getItem("login-token"),
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+    });
+  */
   const [modalOpen, setModalOpen] = useState(false);
   const typeName = [
     "🥗 식사",
@@ -56,9 +65,9 @@ function Challenge() {
   };
 
   const handleActive = (e) => {
-    const selectedItem = document.querySelector(".clicked");
-    console.log(e.target.className);
+   
     if (e.target.className == "GmarketS type") {
+      const selectedItem = document.querySelector(".clicked");
       e.target.className = "GmarketS clicked";
       selectedItem.classList.remove("clicked");
       selectedItem.classList.add("type");
@@ -67,8 +76,8 @@ function Challenge() {
     }
   };
 
-  const typeList = typeName.map((type) => (
-    <button className="GmarketS type" onClick={handleActive}>
+  const typeList = typeName.map((type, index) => (
+    <button className="GmarketS type" onClick={handleActive} key={index}>
       {type}
     </button>
   ));

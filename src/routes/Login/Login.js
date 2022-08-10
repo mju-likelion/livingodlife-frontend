@@ -15,6 +15,7 @@ function Login() {
 
       const accessToken = res.data.token;
       localStorage.setItem('login-token', accessToken);
+      console.log(accessToken);
       sessionStorage.setItem("isAuthorized", true);
       navigate("/main");
     } catch (error) {
