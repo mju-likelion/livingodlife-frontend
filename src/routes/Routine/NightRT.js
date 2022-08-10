@@ -47,7 +47,7 @@ function NightRT () {
                   </dl>
                 </li>
                 <div className="card_alarm">
-                  <img src={Alarm} className="alarm" />{card.card_alarm}
+                  <img src={Alarm} className="alarm_img" />{card.card_alarm}
                 </div>
               </ul>
               );

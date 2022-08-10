@@ -78,7 +78,7 @@ function MorningRT () {
                     </dd>
                   </div>
 
-                    <div className="doneClick" onClick={openModal}></div>
+                    <div className="doneClick" ondblClick={routineDone} onClick={openModal}></div>
 
                     <Modal open={modalOpen} close={closeModal} key={card.id} title={card.routine_title}>
                       <div className="streaks_detail">(사용자)님은 이 루틴을 {card.routine_streaks} 진행중입니다.</div>
