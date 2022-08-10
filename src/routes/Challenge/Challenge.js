@@ -20,7 +20,7 @@ function Challenge() {
       const list = challengeData.map((data,index)=> 
         <tr className="challengeList" key={index}>
           <td>{index+1}</td>
-          <td>{data.challengeContents}</td>
+          <td>{data.challengeName}</td>
           <td>
             <button className="challengeBtn GmarketM">
               <Link
@@ -37,16 +37,41 @@ function Challenge() {
     });
    }, []);
 
-   /*axios
-    .post("/challenge", {
-      headers: {
-        Authorization: localStorage.getItem("login-token"),
-      },
-    })
-    .then((response) => {
-      console.log(response.data);
+   const [challenge, setChallenge] = useState({
+    challengeName: "",
+    challengeContents: "내용",
+    challengeCategory: "",
+  });
+
+  const onChangeContent = (e) => {
+    setChallenge({
+      ...challenge,
+      [e.target.name]: e.target.value,
     });
-  */
+  };
+
+  console.log(challenge);
+
+   const addChallenge = () => {
+    try {
+      axios.post("/challenge",challenge,  {
+        headers: {
+          Authorization: localStorage.getItem("login-token"),
+        },
+      });
+      alert("챌린지가 추가 되었습니다.");
+    } catch (error) {
+      const err = error.response.data;
+      if (err.errorCode) {
+        switch (err.errorCode) {
+          case "CHALLENGE_ALREADY_EXISTS":
+            alert("이미 존재하는 챌린지입니다.");
+            break;
+        }
+      }
+      console.log(err);
+    }
+  };
   const [modalOpen, setModalOpen] = useState(false);
   const typeName = [
     "🥗 식사",
@@ -110,21 +135,23 @@ function Challenge() {
           <h3 className="modalTitle">카테고리 선택</h3>
           <div>{typeList}</div>
           <h3 className="modalTitle">도전 제목</h3>
+          <form>
           <input
             className="inputTitle GmarketS"
             type="text"
-            name="title"
+            id="challengeName"
+            name="challengeName"
             placeholder="챌린지 제목을 입력하세요"
+            onChange={onChangeContent}
           ></input>
-          <footer>
-            <button className="regBtn GmarketS">
+            <button type="submit" className="regBtn GmarketS" onClick={addChallenge}>
               {" "}
               등록하기
               <div id="circle">
                 <img src={imgArrow} id="imgArrow"></img>
               </div>
             </button>
-          </footer>
+            </form>
         </Modal>
       </div>
     </>
