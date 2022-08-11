@@ -1,12 +1,12 @@
 .header {
     display: flex;
     width: 100%;
-    height: 95px;
+    height: 85px;
 
     .logo {
         margin-top: 6px;
         padding: 20px 0 0 10px;
-        width: 282px;
+        width: 250px;
         height: 89px;
         color: #F77E22;
         font-family: 'Jalnan';
@@ -18,8 +18,8 @@
     .routePage {
         display:flex;
         margin-top: 27px;
-        margin-left: 210px;
-        width: 480px;
+        margin-left: 10vw;
+        width: 40vw;
         height: 40px;
         justify-content: space-between;
 
@@ -42,17 +42,18 @@
             color: #F77E22;
         }
     }
-
-    .loginBtn{
-        margin-top: 23px;
-        height:42px;
-        width:104px;
-        margin-left: 344px;
-        font-family: 'Noto Sans KR';
-        font-weight: 500;
-        font-size: 20px;
-        color: #3C3C3C;
-        border-radius: 20px;
-        border:1px solid white;
-    }
 }
+.loginBtn{
+    margin-left: auto;
+    margin-right: 150px;
+    margin-top: 23px;
+    height:42px;
+    width:100px;
+    font-family: 'Noto Sans KR';
+    font-weight: 500;
+    font-size: 20px;
+    color: #3C3C3C;
+    border-radius: 20px;
+    border:1px solid white;
+}
+

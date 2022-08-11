@@ -25,10 +25,6 @@ html {
     background-color: #f5f5f5;
 }
 
-.wrapContent::-webkit-scrollbar {
-    display: none;
-}
-
 .challengeTitle{
     color: #F77E22;
     padding-top: 50px;
@@ -38,16 +34,21 @@ html {
 }
 
 .challengeContent{
-    width: 80%;
-    height: 60%;
+    width: 75vw;
+    height: 60vh;
     background: white;
     border-radius: 20px;
     padding: 20px;
     margin: auto;
+    overflow: auto;
+}
+
+.challengeContent::-webkit-scrollbar {
+    display: none;
 }
 
 table{
-    width: 80%;
+    width: 75vw;
     margin: auto;
     text-align : center;
 }
@@ -63,12 +64,17 @@ th{
 
 .challengeList{
     font-size: 25px;
+    overflow: auto;
+}
+
+.challengeList::-webkit-scrollbar {
+    display: none;
 }
 
 .challengeBtn{
     font-size: 20px;
-    width: 120px;
-    height: 50px;
+    width: 9vw;
+    height: 7vh;
     color: white;
     background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
@@ -84,8 +90,8 @@ th{
 }
 
 .newBtn {
-    width: 215px;
-    height: 70px;
+    width: 14vw;
+    height: 10vh;
     font-size: 20px;
     background: #FFFFFF;
     border: 5px solid #FAC214;

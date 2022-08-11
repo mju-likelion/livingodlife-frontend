@@ -20,9 +20,9 @@ function Header() {
                 <span>Routine</span>
               </Link>
             </div>
-            <Link to="/">
-              <button className="loginBtn" onClick={logout}>Logout</button>
-            </Link>
+           
+              <button className="loginBtn" onClick={logout}> <Link to="/"  style={{ textDecoration: "none", color: "gray"}}>Logout</Link></button>
+            
       </div>
   );
 }
