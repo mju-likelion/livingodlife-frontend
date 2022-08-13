@@ -6,6 +6,8 @@ import Modal from "../../Components/Modal/Modal";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+axios.defaults.baseURL = "https://api.livingodlife.com";
+
 function Challenge() {
   const [ChallengeList, setChallengeList] = useState([]);
   useEffect(() => {
@@ -23,7 +25,10 @@ function Challenge() {
             <td>{index + 1}</td>
             <td>{data.challengeName}</td>
             <td>
-              <button className="challengeBtn GmarketM">
+              <button
+                className="challengeBtn GmarketM"
+                title={data.challengeName}
+              >
                 <Link
                   to={`/challenge/${data._id}`}
                   style={{ textDecoration: "none", color: "white" }}
@@ -51,11 +56,10 @@ function Challenge() {
     });
   };
 
-  console.log(challenge);
-
-  const addChallenge = () => { //error 콘솔이 안찍힘 문제 해결 필요
+  const addChallenge = async (data) => {
+    //error 콘솔이 안찍힘 문제 해결 필요
     try {
-      axios.post("/challenge", challenge, {
+      axios.post("/challenge", data, {
         headers: {
           Authorization: localStorage.getItem("login-token"),
         },
@@ -72,6 +76,10 @@ function Challenge() {
       }
       console.log(err);
     }
+  };
+
+  const onChallengeSubmit = () => {
+    addChallenge(challenge);
   };
   const [modalOpen, setModalOpen] = useState(false);
   const typeName = [
@@ -113,7 +121,7 @@ function Challenge() {
       <div className="wrapContent">
         <h1 className="challengeTitle GmarketS">Challenge</h1>
         <div className="challengeContent GmarketM">
-          <table>
+          <table className="challengeTable">
             <thead>
               <tr className="challengeNav ">
                 <th>No.</th>
@@ -127,7 +135,7 @@ function Challenge() {
         <button className="GmarketS newBtn" onClick={openModal}>
           새로운 도전!
           <div id="circle">
-            <img src={imgArrow} id="imgArrow"></img>
+            <img src={imgArrow} alt="imgArrow" id="imgArrow"></img>
           </div>
         </button>
         <Modal open={modalOpen} close={closeModal} title="새로운 도전하기">
@@ -147,7 +155,7 @@ function Challenge() {
             <button
               type="submit"
               className="regBtn GmarketS"
-              onClick={addChallenge}
+              onClick={onChallengeSubmit}
             >
               {" "}
               등록하기

@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost";
+axios.defaults.baseURL = "https://api.livingodlife.com";
 
 function Login() {
   const navigate = useNavigate();
@@ -20,17 +20,8 @@ function Login() {
       navigate("/main");
     } catch (error) {
       const err = error.response.data;
-
-      if (err.errorCode) {
-        switch (err.errorCode) {
-          case "WRONG_PASSWORD":
-            alert("잘못된 비밀번호입니다.");
-            break;
-          case "EMAIL_DOES_NOT_EXISTS":
-            alert("가입되지 않은 이메일입니다.");
-            break;
-        }
-      }
+      console.log(err);
+    
     }
   };
 
