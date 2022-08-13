@@ -4,6 +4,7 @@ import Alarm from "../../image/icon-alarm.png";
 import Pic1 from "../../image/profile_pic1.jpg";
 import Pic2 from "../../image/profile_pic2.jpg";
 import Modal from "../../Components/Modal/Modal";
+import axios from "axios";
 
 function MorningRT () {
 
@@ -36,6 +37,10 @@ function MorningRT () {
     e.target.className="active";
   }
 };
+
+axios.get("https://api.livingodlife.com/routine").then(
+  (e)=>console.log(e)
+)
 
     const MorningRTData = [
       {
