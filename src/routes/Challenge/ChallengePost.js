@@ -17,7 +17,14 @@ function ChallengePost() {
   });
   const [challengeCertifyList, setChallengeCertifyList] = useState([]);
   const [rankData, setRankData] = useState([]);
-  const [challengeTitle, setChallengeTitle]= useState("");
+  const [challengeTitle, setChallengeTitle] = useState("");
+  const rankNum = [
+    "🥇",
+    "🥈",
+    "🥉",
+    "4",
+    "5"
+  ];
 
   const location = useLocation();
   useEffect(() => {
@@ -172,13 +179,15 @@ function ChallengePost() {
 
         console.log(rankResult);
         rankResult.map((data, index) => {
-          list.push(
-            <tr className="rankList GmarketS">
-              <td>{index + 1}</td>
-              <td>{data.writerName}</td>
-              <td>{data.challengeCount}일</td>
-            </tr>
-          );
+          if (index < 5) {
+            list.push(
+              <tr className="rankList GmarketS">
+                <td>{rankNum[index]}</td>
+                <td>{data.writerName}</td>
+                <td>{data.challengeCount}일</td>
+              </tr>
+            );
+          }
         });
         console.log(list);
         setRankData(list);
@@ -191,9 +200,9 @@ function ChallengePost() {
       <div className="wrapPostContent">
         <div className="wrapCert">
           <div className="listCert">
-          <h1 className="certTitle GmarketS">{challengeTitle}</h1>
+            <h1 className="certTitle GmarketS">{challengeTitle}</h1>
             {challengeCertifyList}
-            </div>
+          </div>
           <button className="GmarketS certBtn" onClick={openModal}>
             나도 인증!
             <div id="circle">
