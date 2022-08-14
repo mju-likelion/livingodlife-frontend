@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./ChallengePost.scss";
 import Header from "../../Components/Header/Header";
 import imgArrow from "../../image/icon_arrow.png";
@@ -14,12 +15,13 @@ function ChallengePost() {
     imgaeUrl: "",
     certifyingContents: "",
   });
-
   const [challengeCertifyList, setChallengeCertifyList] = useState([]);
+  const [rankData, setRankData] = useState([]);
+
+  const location = useLocation();
   useEffect(() => {
     var challengePath = window.location.pathname;
     var challengeIdPath = challengePath.split("/");
-    console.log(challengeIdPath[2]);
 
     axios
       .get("/challenge/challengecertifies", {
@@ -36,10 +38,11 @@ function ChallengePost() {
         await async.each(certifyData, async (data) => {
           const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
           const date = new Date(data.dateCreated);
+	        const title = location.state.title;
 
           list.push(
             <div>
-              <h1 className="certTitle GmarketS"></h1>
+              <h1 className="certTitle GmarketS">{title}</h1>
               <p className="certCont GmarketS">{data.authorName}</p>
               <div className="imgCert">
                 <img src={url}></img>
@@ -150,10 +153,41 @@ function ChallengePost() {
     }
   };
 
+    useEffect(() => {
+      var challengePath = window.location.pathname;
+      var challengeIdPath = challengePath.split("/");
+  
+      axios
+        .get(`/challenge/getchallengerank/${challengeIdPath[2]}`, {
+          headers: {
+            Authorization: localStorage.getItem("login-token"),
+          },
+        })
+        .then(async (response) => {
+          const rankResult = response.data;
+          const list = [];
+  
+          console.log(rankResult);
+          rankResult.map((data, index) => {
+            list.push(
+              <tr className="rankList GmarketS">
+                <td>{index+1}</td>
+                <td>{data.writerName}</td>
+                <td>{data.challengeCount}일</td>
+              </tr>
+            );
+          });
+          console.log(list);
+          setRankData(list);
+        });
+    }, []);
+  
+
+
   return (
     <>
       <Header />
-      <div className="wrapContent">
+      <div className="wrapPostContent">
         <div className="wrapCert">
           <div className="listCert">{challengeCertifyList}</div>
           <button className="GmarketS certBtn" onClick={openModal}>
@@ -176,21 +210,7 @@ function ChallengePost() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="rankList GmarketS">
-                    <td>🥇</td>
-                    <td>윤혜민</td>
-                    <td>116일</td>
-                  </tr>
-                  <tr className="rankList GmarketS">
-                    <td>🥈</td>
-                    <td>김민규</td>
-                    <td>100일</td>
-                  </tr>
-                  <tr className="rankList GmarketS">
-                    <td>🥉</td>
-                    <td>강민지</td>
-                    <td>98일</td>
-                  </tr>
+                    {rankData}
                 </tbody>
               </table>
             </div>

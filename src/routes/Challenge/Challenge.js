@@ -52,11 +52,11 @@ function Challenge() {
             <td>
               <button
                 className="challengeBtn GmarketM"
-                title={data.challengeName}
               >
                 <Link
                   to={`/challenge/${data._id}`}
                   style={{ textDecoration: "none", color: "white" }}
+                  state={{ title: data.challengeName }}
                 >
                   도전!
                 </Link>
