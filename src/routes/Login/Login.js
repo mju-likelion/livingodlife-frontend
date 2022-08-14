@@ -21,7 +21,14 @@ function Login() {
     } catch (error) {
       const err = error.response.data;
       console.log(err);
-    
+      switch (err.errorCode) {
+        case 'EMAIL_DOES_NOT_EXISTS':
+          alert("존재하지 않는 이메일입니다.");
+          break;
+        case 'EMAIL_DOES_NOT_EXISTS':
+          alert("존재하지 않는 이메일입니다.");
+          break;
+      }
     }
   };
 
