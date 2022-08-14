@@ -17,6 +17,7 @@ function ChallengePost() {
   });
   const [challengeCertifyList, setChallengeCertifyList] = useState([]);
   const [rankData, setRankData] = useState([]);
+  const [challengeTitle, setChallengeTitle]= useState("");
 
   const location = useLocation();
   useEffect(() => {
@@ -40,10 +41,10 @@ function ChallengePost() {
           const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
           const date = new Date(data.dateCreated);
           const title = location.state.title;
+          setChallengeTitle(title);
 
           list.push(
             <div>
-              <h1 className="certTitle GmarketS">{title}</h1>
               <p className="certCont GmarketS">{data.authorName}</p>
               <div className="imgCert">
                 <img src={url}></img>
@@ -189,7 +190,10 @@ function ChallengePost() {
       <Header />
       <div className="wrapPostContent">
         <div className="wrapCert">
-          <div className="listCert">{challengeCertifyList}</div>
+          <div className="listCert">
+          <h1 className="certTitle GmarketS">{challengeTitle}</h1>
+            {challengeCertifyList}
+            </div>
           <button className="GmarketS certBtn" onClick={openModal}>
             나도 인증!
             <div id="circle">
