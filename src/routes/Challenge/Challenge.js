@@ -57,9 +57,8 @@ function Challenge() {
   };
 
   const addChallenge = async (data) => {
-    //error 콘솔이 안찍힘 문제 해결 필요
     try {
-      axios.post("/challenge", data, {
+      await axios.post("/challenge", data, {
         headers: {
           Authorization: localStorage.getItem("login-token"),
         },
@@ -78,8 +77,9 @@ function Challenge() {
     }
   };
 
-  const onChallengeSubmit = () => {
-    addChallenge(challenge);
+  const onChallengeSubmit = async () => {
+    await addChallenge(challenge);
+    setModalOpen(false);
   };
   const [modalOpen, setModalOpen] = useState(false);
   const typeName = [
@@ -123,7 +123,7 @@ function Challenge() {
         <div className="challengeContent GmarketM">
           <table className="challengeTable">
             <thead>
-              <tr className="challengeNav ">
+              <tr className="challengeNav">
                 <th>No.</th>
                 <th>Title</th>
                 <th>Challenge</th>
@@ -143,7 +143,7 @@ function Challenge() {
           <h3 className="modalTitle">카테고리 선택</h3>
           <div>{typeList}</div>
           <h3 className="modalTitle">도전 제목</h3>
-          <form>
+          <div>
             <input
               className="inputTitle GmarketS"
               type="text"
@@ -163,7 +163,7 @@ function Challenge() {
                 <img src={imgArrow} id="imgArrow"></img>
               </div>
             </button>
-          </form>
+          </div>
         </Modal>
       </div>
     </>

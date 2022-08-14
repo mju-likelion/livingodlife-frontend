@@ -34,19 +34,20 @@ function ChallengePost() {
 
         console.log(certifyData);
         await async.each(certifyData, async (data) => {
-          const {url} = (await axios.get(`/file/${data.imageUrl}`)).data
+          const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
+          const date = new Date(data.dateCreated);
 
-          list.push ((
+          list.push(
             <div>
               <h1 className="certTitle GmarketS"></h1>
               <p className="certCont GmarketS">{data.authorName}</p>
               <div className="imgCert">
                 <img src={url}></img>
-                <p className="certTime GmarketS">{data.dateCreated}</p>
+                <p className="certTime GmarketS">{date.toDateString()}</p>
               </div>
               <p className="certCont GmarketS">{data.certifyingContents}</p>
             </div>
-          ));
+          );
         });
         console.log(list);
         setChallengeCertifyList(list);
@@ -196,36 +197,40 @@ function ChallengePost() {
           </div>
         </div>
         <Modal open={modalOpen} close={closeModal} title="인증하기">
-          <p className="modalCont">여러분의 사진을 업로드 해보세요!</p>
-          <div className="wrapImage">
-            <div className="fileImage"></div>
-            <input
-              name="imgaeUrl"
-              type="file"
-              id="imgaeUrl"
-              accept="image/*"
-              onChange={onLoadFile}
-            ></input>
-          </div>
-          <textarea
-            type="text"
-            id="certifyingContents"
-            name="certifyingContents"
-            className="inputCont GmarketS"
-            rows="3"
-            placeholder="본문을 입력해 주세요"
-            onChange={onChangeContent}
-          ></textarea>
-          <button
-            className="uploadBtn GmarketS"
-            type="submit"
-            onClick={handleClick}
-          >
-            업로드 !
-            <div id="circle">
-              <img src={imgArrow} id="imgArrow"></img>
+
+            <p className="modalCont">여러분의 사진을 업로드 해보세요!</p>
+            <div className="wrapCertContent">
+              <div className="wrapImage">
+                <div className="fileImage"></div>
+                <input
+                  name="imgaeUrl"
+                  type="file"
+                  id="imgaeUrl"
+                  accept="image/*"
+                  onChange={onLoadFile}
+                ></input>
+              </div>
+              <textarea
+                type="text"
+                id="certifyingContents"
+                name="certifyingContents"
+                className="inputCont GmarketS"
+                rows="3"
+                placeholder="본문을 입력해 주세요"
+                onChange={onChangeContent}
+              ></textarea>
+              <button
+                className="uploadBtn GmarketS"
+                type="submit"
+                onClick={handleClick}
+              >
+                업로드 !
+                <div id="circle">
+                  <img src={imgArrow} id="imgArrow"></img>
+                </div>
+              </button>
             </div>
-          </button>
+
         </Modal>
       </div>
     </>

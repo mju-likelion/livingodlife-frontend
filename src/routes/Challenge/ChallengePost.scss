@@ -117,8 +117,16 @@ footer {
     text-align: center;
 }
 
+#certifyingContents{
+    resize: none;
+    width: 30vw;
+    height: 10vh;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
 .uploadBtn {
-    margin-left: 230px;
+    margin: 10px auto;
     width: 180px;
     height: 70px;
     font-size: 20px;
