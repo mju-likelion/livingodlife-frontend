@@ -10,6 +10,32 @@ axios.defaults.baseURL = "https://api.livingodlife.com";
 
 function Challenge() {
   const [ChallengeList, setChallengeList] = useState([]);
+  const [challenge, setChallenge] = useState({
+    challengeName: "",
+    challengeContents: "내용",
+    challengeCategory: "",
+  });
+  const [modalOpen, setModalOpen] = useState(false);
+  const typeName = [
+    "🥗 식사",
+    "💪 운동",
+    "🛏 취침",
+    "📍 계획",
+    "✍ 공부",
+    "☀ 아침",
+  ];
+  const [clicked, setClicked] = useState(false);
+  const [selectedType, setSelectedType] = useState();
+  
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setClicked(false);
+  };
+
   useEffect(() => {
     axios
       .get("/challenge", {
@@ -19,7 +45,6 @@ function Challenge() {
       })
       .then((response) => {
         const challengeData = response.data;
-        console.log(challengeData);
         const list = challengeData.map((data, index) => (
           <tr className="challengeList" key={index}>
             <td>{index + 1}</td>
@@ -43,12 +68,6 @@ function Challenge() {
       });
   }, []);
 
-  const [challenge, setChallenge] = useState({
-    challengeName: "",
-    challengeContents: "내용",
-    challengeCategory: "",
-  });
-
   const onChangeContent = (e) => {
     setChallenge({
       ...challenge,
@@ -58,7 +77,11 @@ function Challenge() {
 
   const addChallenge = async (data) => {
     try {
-      await axios.post("/challenge", data, {
+      await axios.post("/challenge", {
+        challengeName: data.challengeName,
+        challengeContents: "내용",
+        challengeCategory: selectedType,
+      }, {
         headers: {
           Authorization: localStorage.getItem("login-token"),
         },
@@ -81,31 +104,21 @@ function Challenge() {
     await addChallenge(challenge);
     setModalOpen(false);
   };
-  const [modalOpen, setModalOpen] = useState(false);
-  const typeName = [
-    "🥗 식사",
-    "💪 운동",
-    "🛏 취침",
-    "📍 계획",
-    "✍ 공부",
-    "☀ 아침",
-  ];
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
 
   const handleActive = (e) => {
     if (e.target.className == "GmarketS type") {
-      const selectedItem = document.querySelector(".clicked");
+      if(clicked==true){
+        const selectedItem = document.querySelector(".clicked");
+        selectedItem.classList.remove("clicked");
+        selectedItem.classList.add("type");
+        setClicked(false);
+      }
+      setClicked(true);
       e.target.className = "GmarketS clicked";
-      selectedItem.classList.remove("clicked");
-      selectedItem.classList.add("type");
+      setSelectedType(e.target.innerText);
     } else {
       e.target.className = "GmarketS type";
+      setClicked(false);
     }
   };
 
