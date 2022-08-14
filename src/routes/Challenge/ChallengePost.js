@@ -222,7 +222,9 @@ function ChallengePost() {
             <div className="wrapCertContent">
               <div className="wrapImage">
                 <div className="fileImage"></div>
+                <label for="imgaeUrl" className="fileUploadBtn">업로드</label>
                 <input
+                  style={{display: "none"}}
                   name="imgaeUrl"
                   type="file"
                   id="imgaeUrl"

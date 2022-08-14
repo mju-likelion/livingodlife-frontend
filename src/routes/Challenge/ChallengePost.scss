@@ -122,6 +122,21 @@ footer {
     padding-left: 15px;
 }
 
+.fileUploadBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100px;
+    height: 25px;
+    border: 1px solid ;
+    border-radius: 20px;
+    color:white;
+    background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
+    font-weight: 800;
+    margin-top: 15px;
+}
+
 .uploadBtn {
     margin: 10px auto;
     width: 180px;
@@ -158,7 +173,7 @@ footer {
 .inputCont {
     width: 400px;
     height: 70px;
-    margin-top: 35px;
+    margin-top: 25px;
     font-size: 15px;
     border: 1px solid #696969;
     border-radius: 20px;
