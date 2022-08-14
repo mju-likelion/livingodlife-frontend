@@ -35,10 +35,11 @@ function ChallengePost() {
         const list = [];
 
         console.log(certifyData);
-        await async.each(certifyData, async (data) => {
+
+        for (const data of certifyData) {
           const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
           const date = new Date(data.dateCreated);
-	        const title = location.state.title;
+          const title = location.state.title;
 
           list.push(
             <div>
@@ -51,7 +52,8 @@ function ChallengePost() {
               <p className="certCont GmarketS">{data.certifyingContents}</p>
             </div>
           );
-        });
+        }
+
         console.log(list);
         setChallengeCertifyList(list);
       });
@@ -153,36 +155,34 @@ function ChallengePost() {
     }
   };
 
-    useEffect(() => {
-      var challengePath = window.location.pathname;
-      var challengeIdPath = challengePath.split("/");
-  
-      axios
-        .get(`/challenge/getchallengerank/${challengeIdPath[2]}`, {
-          headers: {
-            Authorization: localStorage.getItem("login-token"),
-          },
-        })
-        .then(async (response) => {
-          const rankResult = response.data;
-          const list = [];
-  
-          console.log(rankResult);
-          rankResult.map((data, index) => {
-            list.push(
-              <tr className="rankList GmarketS">
-                <td>{index+1}</td>
-                <td>{data.writerName}</td>
-                <td>{data.challengeCount}일</td>
-              </tr>
-            );
-          });
-          console.log(list);
-          setRankData(list);
-        });
-    }, []);
-  
+  useEffect(() => {
+    var challengePath = window.location.pathname;
+    var challengeIdPath = challengePath.split("/");
 
+    axios
+      .get(`/challenge/getchallengerank/${challengeIdPath[2]}`, {
+        headers: {
+          Authorization: localStorage.getItem("login-token"),
+        },
+      })
+      .then(async (response) => {
+        const rankResult = response.data;
+        const list = [];
+
+        console.log(rankResult);
+        rankResult.map((data, index) => {
+          list.push(
+            <tr className="rankList GmarketS">
+              <td>{index + 1}</td>
+              <td>{data.writerName}</td>
+              <td>{data.challengeCount}일</td>
+            </tr>
+          );
+        });
+        console.log(list);
+        setRankData(list);
+      });
+  }, []);
 
   return (
     <>
@@ -209,50 +209,48 @@ function ChallengePost() {
                     <th>Period</th>
                   </tr>
                 </thead>
-                <tbody>
-                    {rankData}
-                </tbody>
+                <tbody>{rankData}</tbody>
               </table>
             </div>
           </div>
         </div>
         <Modal open={modalOpen} close={closeModal} title="인증하기">
-
-            <p className="modalCont">여러분의 사진을 업로드 해보세요!</p>
-            <div className="wrapCertContent">
-              <div className="wrapImage">
-                <div className="fileImage"></div>
-                <label for="imgaeUrl" className="fileUploadBtn">업로드</label>
-                <input
-                  style={{display: "none"}}
-                  name="imgaeUrl"
-                  type="file"
-                  id="imgaeUrl"
-                  accept="image/*"
-                  onChange={onLoadFile}
-                ></input>
-              </div>
-              <textarea
-                type="text"
-                id="certifyingContents"
-                name="certifyingContents"
-                className="inputCont GmarketS"
-                rows="3"
-                placeholder="본문을 입력해 주세요"
-                onChange={onChangeContent}
-              ></textarea>
-              <button
-                className="uploadBtn GmarketS"
-                type="submit"
-                onClick={handleClick}
-              >
-                업로드 !
-                <div id="circle">
-                  <img src={imgArrow} id="imgArrow"></img>
-                </div>
-              </button>
+          <p className="modalCont">여러분의 사진을 업로드 해보세요!</p>
+          <div className="wrapCertContent">
+            <div className="wrapImage">
+              <div className="fileImage"></div>
+              <label for="imgaeUrl" className="fileUploadBtn">
+                업로드
+              </label>
+              <input
+                style={{ display: "none" }}
+                name="imgaeUrl"
+                type="file"
+                id="imgaeUrl"
+                accept="image/*"
+                onChange={onLoadFile}
+              ></input>
             </div>
-
+            <textarea
+              type="text"
+              id="certifyingContents"
+              name="certifyingContents"
+              className="inputCont GmarketS"
+              rows="3"
+              placeholder="본문을 입력해 주세요"
+              onChange={onChangeContent}
+            ></textarea>
+            <button
+              className="uploadBtn GmarketS"
+              type="submit"
+              onClick={handleClick}
+            >
+              업로드 !
+              <div id="circle">
+                <img src={imgArrow} id="imgArrow"></img>
+              </div>
+            </button>
+          </div>
         </Modal>
       </div>
     </>
