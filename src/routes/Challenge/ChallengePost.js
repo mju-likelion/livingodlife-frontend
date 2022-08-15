@@ -17,7 +17,7 @@ function ChallengePost() {
   });
   const [challengeCertifyList, setChallengeCertifyList] = useState([]);
   const [rankData, setRankData] = useState([]);
-  const [challengeTitle, setChallengeTitle] = useState("");
+  //const [challengeTitle, setChallengeTitle] = useState("");
   const rankNum = [
     "🥇",
     "🥈",
@@ -26,7 +26,7 @@ function ChallengePost() {
     "5"
   ];
 
-  const location = useLocation();
+  //const location = useLocation();
   useEffect(() => {
     var challengePath = window.location.pathname;
     var challengeIdPath = challengePath.split("/");
@@ -43,12 +43,12 @@ function ChallengePost() {
         const list = [];
 
         console.log(certifyData);
+        //const title = location.state.title;
+        //setChallengeTitle(title);
 
         for (const data of certifyData) {
           const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
           const date = new Date(data.dateCreated);
-          const title = location.state.title;
-          setChallengeTitle(title);
 
           list.push(
             <div>
@@ -200,7 +200,7 @@ function ChallengePost() {
       <div className="wrapPostContent">
         <div className="wrapCert">
           <div className="listCert">
-            <h1 className="certTitle GmarketS">{challengeTitle}</h1>
+            <h1 className="certTitle GmarketS"></h1>
             {challengeCertifyList}
           </div>
           <button className="GmarketS certBtn" onClick={openModal}>
