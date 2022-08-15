@@ -37,15 +37,15 @@
                 border-radius: 70px;
                 border: 3px solid #C1E6DD;
             }
+        }
 
-            .ProfileInfo{
-                margin-left:13px;
-                width:135px;
-                height:36px;
-                font-family: 'Gmarket Sans TTF';
-                font-weight: 500;
-                font-size:30px;
-            }
+        .ProfileInfo{
+            margin-left:13px;
+            width:135px;
+            height:36px;
+            font-family: 'Gmarket Sans TTF';
+            font-weight: 500;
+            font-size:30px;
         }
 
         .Write{
@@ -78,6 +78,7 @@
         width: 604px;
         height: 467px;
     }
+}
 
     .FriendBack{
         background-color: #F5F5F5;
@@ -87,6 +88,7 @@
         margin: 25px 22px 0 22px;
         width: 570px;
         height: 54px;
+        font-size:15px;
         border: 1px soild #babd43;
     }
 
@@ -104,7 +106,7 @@
         }
 
         .FriendInfo{
-            display:flex;
+            display:table;
             width: 320px;
             height: 69px;
 
@@ -120,4 +122,3 @@
 
         }
     }
-}

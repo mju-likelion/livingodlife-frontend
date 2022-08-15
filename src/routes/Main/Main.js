@@ -6,6 +6,7 @@ import img10 from '../../image/image 10.png';
 import blog from '../../image/blog.png';
 import running from '../../image/running.png';
 import Modal from "../../Components/Modal/Modal";
+import search from "../../image/search_icon.png";
 
 
 function Main() {
@@ -47,10 +48,10 @@ function Main() {
               <div className="Picture">{main.Picture}</div>
               <div className="Profile">
                 <div className="ProfileImage">{main.ProfileImage}</div>
-              </div>
-              <div className="ProfileInfo">
-                {main.ProfileInfo}
-              </div>
+                <div className="ProfileInfo">
+                  {main.ProfileInfo}
+                </div>
+              </div>  
               <div className="Write">
                 {main.Write}
               </div>
@@ -66,7 +67,6 @@ function Main() {
           </><Modal open={modalOpen} close={closeModal}>
             <div className="FriendBack">
               <input className="FriendSearch" type="text" name="title" placeholder="이름을 검색하세요"></input>
-                    <p>박원호</p>
                     <div className="Friend">
                         <div className="FriendImage"><img src={img10} id='img10'></img></div>
                         <div className="FriendInfo">
