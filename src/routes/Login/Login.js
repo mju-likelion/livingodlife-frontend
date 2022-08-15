@@ -4,6 +4,7 @@ import { Link, useNavigate  } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 axios.defaults.baseURL = "https://api.livingodlife.com";
 
@@ -17,7 +18,14 @@ function Login() {
       localStorage.setItem('login-token', accessToken);
       console.log(accessToken);
       sessionStorage.setItem("isAuthorized", true);
-      navigate("/main");
+
+      var decoded = jwt_decode(accessToken);
+
+      axios.get(`/client/${decoded.id}`).then((response)=>{
+          const ClientInfo = response.data;
+
+          return ClientInfo.client.testing ? navigate("/main"):navigate("/test");
+      });
     } catch (error) {
       const err = error.response.data;
       console.log(err);

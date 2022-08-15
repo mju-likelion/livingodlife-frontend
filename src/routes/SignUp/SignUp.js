@@ -1,16 +1,17 @@
 import "./SignUp.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost";
-
 function SignUp() {
+  const navigate = useNavigate();
+
   const signUpClient = async (data) => {
     try {
       const res = await axios.post("/client", data);
       alert("회원가입이 완료되었습니다.");
+      navigate("/");
     } catch (error) {
       const err = error.response.data;
       if (err.errorCode) {
@@ -48,7 +49,6 @@ function SignUp() {
         .required("비밀번호를 확인해주세요."),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       signUpClient(values);
     },
   });
