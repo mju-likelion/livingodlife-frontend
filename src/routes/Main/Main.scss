@@ -1,124 +1,125 @@
-.BackGround{
-    background-color:#F5F5F5;
+.BackGround {
+    background-color: #F5F5F5;
+}
 
-    .Main{
-        display: table;
-        margin: 0 auto;
-        width: 604px;
-        height: 753px;
-        
-        .Date{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 57px;
-            margin: 58px auto 0;
-            font-family: 'Gmarket Sans TTF';
-            font-weight: 500;
-            font-size: 30px;
-            color: #696969;
-        }
+.Main {
+    display: table;
+    margin: auto;
+    width: 50vw;
+    height: 80vh;
+    text-align: center;
+}
 
-        .Picture{
-            width: 604px;
-            height: 467px;
-        }
+.Date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    font-family: 'Gmarket Sans TTF';
+    font-weight: 500;
+    font-size: 25px;
+    color: #696969;
+}
 
-        .Profile{
-            display: flex;
-            margin-top: 25px;
-            width: 403px;
-            height: 73px;
+.Picture {
+    width: 30vw;
+    height: 50vh;
+}
 
-            .ProfileImage{
-                margin-left: 5px;
-                width:64px;
-                height:66px;
-                border-radius: 70px;
-                border: 3px solid #C1E6DD;
-            }
-        }
+.Profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    width: 30vw;
+    height: 70px;
+}
 
-        .ProfileInfo{
-            margin-left:13px;
-            width:135px;
-            height:36px;
-            font-family: 'Gmarket Sans TTF';
-            font-weight: 500;
-            font-size:30px;
-        }
+.ProfileImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
 
-        .Write{
-            margin-top: 17px;
-            width: 604px;
-            font-family: 'Gmarket Sans TTF';
-            font-weight: 300;
-            font-size: 25px;
-            text-align: left;
-        }
+.ProfileInfo {
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 20px;
+    font-family: 'Gmarket Sans TTF';
+    font-weight: 500;
+    font-size: 25px;
+}
 
-        .Option{
-            display:flex;
-            width:230px;
+.ProfileCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-            span{
-                margin-left: 0;
-                font-family: 'Gmarket Sans TTF';
-                font-weight: 500;
-                font-size: 25px;
-            }
+.Write {
+    margin-top: 15px;
+    width: 30vw;
+    font-family: 'Gmarket Sans TTF';
+    font-weight: 300;
+    font-size: 20px;
+    text-align: left;
+}
 
-            span:last-child{
-                margin-left: 14px;
-            }
-        }
+.Option {
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+
+    span {
+        font-family: 'Gmarket Sans TTF';
+        font-weight: 400;
+        font-size: 22px;
     }
 
-    .mainImg{
-        width: 604px;
-        height: 467px;
+    span:last-child {
+        margin-left: 14px;
     }
 }
 
-    .FriendBack{
-        background-color: #F5F5F5;
-    }
 
-    .FriendSearch{
-        margin: 25px 22px 0 22px;
-        width: 570px;
-        height: 54px;
-        font-size:15px;
-        border: 1px soild #babd43;
-    }
+.mainImg {
+    width: 604px;
+    height: 467px;
+}
 
-    .Friend{
+.FriendSearch {
+    margin: 25px 22px 0 22px;
+    width: 570px;
+    height: 54px;
+    font-size: 15px;
+    border: 1px soild #babd43;
+}
+
+.Friend {
+    display: flex;
+    margin: 30px, 0, 0, 22px;
+    width: 308px;
+    height: 62px;
+
+}
+
+.FriendImage {
+    width: 64px;
+    height: 66px;
+    border-radius: 70px;
+}
+
+.FriendInfo {
+    display: table;
+    width: 320px;
+    height: 69px;
+
+    p {
         display: flex;
-        margin: 30px,0,0,22px;
-        width: 308px;
-        height: 62px;
-
-        .FriendImage{
-            width:64px;
-            height:66px;
-            border-radius:70px;
-            border: 3px solid #c1e6dd;
-        }
-
-        .FriendInfo{
-            display:table;
-            width: 320px;
-            height: 69px;
-
-            p{
-                display:flex;
-                font-family: 'Gmarket Sans TTF';
-                font-size: small;
-            }
-
-            p:last-child{
-                color:#797979;
-            }
-
-        }
+        font-family: 'Gmarket Sans TTF';
+        font-size: small;
     }
+
+}
