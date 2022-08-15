@@ -48,6 +48,7 @@ function Challenge() {
         const list = challengeData.map((data, index) => (
           <tr className="challengeList" key={index}>
             <td>{index + 1}</td>
+            <td>{data.challengeCategory}</td>
             <td>{data.challengeName}</td>
             <td>
               <button
@@ -138,6 +139,7 @@ function Challenge() {
             <thead>
               <tr className="challengeNav">
                 <th>No.</th>
+                <th>Category</th>
                 <th>Title</th>
                 <th>Challenge</th>
               </tr>
