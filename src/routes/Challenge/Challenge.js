@@ -26,7 +26,7 @@ function Challenge() {
   ];
   const [clicked, setClicked] = useState(false);
   const [selectedType, setSelectedType] = useState();
-  
+
   const openModal = () => {
     setModalOpen(true);
   };
@@ -51,17 +51,13 @@ function Challenge() {
             <td>{data.challengeCategory}</td>
             <td>{data.challengeName}</td>
             <td>
-              <button
-                className="challengeBtn GmarketM"
+              <Link
+                to={`/challenge/${data._id}`}
+                style={{ textDecoration: "none", color: "white" }}
+                state={{ title: data.challengeName }}
               >
-                <Link
-                  to={`/challenge/${data._id}`}
-                  style={{ textDecoration: "none", color: "white" }}
-                  state={{ title: data.challengeName }}
-                >
-                  도전!
-                </Link>
-              </button>
+                <button className="challengeBtn GmarketM">도전!</button>
+              </Link>
             </td>
           </tr>
         ));
@@ -78,15 +74,19 @@ function Challenge() {
 
   const addChallenge = async (data) => {
     try {
-      await axios.post("/challenge", {
-        challengeName: data.challengeName,
-        challengeContents: "내용",
-        challengeCategory: selectedType,
-      }, {
-        headers: {
-          Authorization: localStorage.getItem("login-token"),
+      await axios.post(
+        "/challenge",
+        {
+          challengeName: data.challengeName,
+          challengeContents: "내용",
+          challengeCategory: selectedType,
         },
-      });
+        {
+          headers: {
+            Authorization: localStorage.getItem("login-token"),
+          },
+        }
+      );
       alert("챌린지가 추가 되었습니다.");
     } catch (error) {
       const err = error.response.data;
@@ -108,7 +108,7 @@ function Challenge() {
 
   const handleActive = (e) => {
     if (e.target.className == "GmarketS type") {
-      if(clicked==true){
+      if (clicked == true) {
         const selectedItem = document.querySelector(".clicked");
         selectedItem.classList.remove("clicked");
         selectedItem.classList.add("type");
