@@ -3,11 +3,14 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 
 function Header() {
+  const logout = () => {
+    sessionStorage.setItem("isAuthorized", false);
+  }
   return (
       <div className="header">
-            <div className="logo">'GOD생' 살기 <Link to="/"></Link></div>
+            <div className="logo">'GOD생' 살기 <Link to="/main"></Link></div>
             <div className="routePage">
-              <Link to="/" >
+              <Link to="/main" >
                 <span>Main</span>
               </Link>
               <Link to="/challenge">
@@ -17,9 +20,9 @@ function Header() {
                 <span>Routine</span>
               </Link>
             </div>
-            <Link to="/login">
-              <button className="loginBtn">Login</button>
-            </Link>
+           
+              <button className="loginBtn" onClick={logout}> <Link to="/"  style={{ textDecoration: "none", color: "gray"}}>Logout</Link></button>
+            
       </div>
   );
 }

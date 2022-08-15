@@ -1,31 +1,41 @@
 import "./Login.scss";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
-axios.defaults.baseURL = "http://localhost";
+axios.defaults.baseURL = "https://api.livingodlife.com";
 
 function Login() {
+  const navigate = useNavigate();
   const loginClient = async (data) => {
     try {
       const res = await axios.put("/client", data);
 
       const accessToken = res.data.token;
+      localStorage.setItem('login-token', accessToken);
       console.log(accessToken);
+      sessionStorage.setItem("isAuthorized", true);
+
+      var decoded = jwt_decode(accessToken);
+
+      axios.get(`/client/${decoded.id}`).then((response)=>{
+          const ClientInfo = response.data;
+
+          return ClientInfo.client.testing ? navigate("/main"):navigate("/test");
+      });
     } catch (error) {
       const err = error.response.data;
-
-      if (err.errorCode) {
-        switch (err.errorCode) {
-          case "WRONG_PASSWORD":
-            alert("잘못된 비밀번호입니다.");
-            break;
-          case "EMAIL_DOES_NOT_EXISTS":
-            alert("가입되지 않은 이메일입니다.");
-            break;
-        }
+      console.log(err);
+      switch (err.errorCode) {
+        case 'EMAIL_DOES_NOT_EXISTS':
+          alert("존재하지 않는 이메일입니다.");
+          break;
+        case 'EMAIL_DOES_NOT_EXISTS':
+          alert("존재하지 않는 이메일입니다.");
+          break;
       }
     }
   };
@@ -44,7 +54,6 @@ function Login() {
         .required("비밀번호를 입력해주세요."),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       loginClient(values);
     },
   });
