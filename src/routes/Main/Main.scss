@@ -1,3 +1,15 @@
+.jalan {
+    font-family: 'yg-jalnan';
+}
+
+.GmarketS {
+    font-family: 'GmarketSansLight';
+}
+
+.GmarketM {
+    font-family: 'GmarketSansMedium';
+}
+
 .BackGround {
     background-color: #F5F5F5;
 }
@@ -15,7 +27,6 @@
     align-items: center;
     justify-content: center;
     margin: 30px auto;
-    font-family: 'Gmarket Sans TTF';
     font-weight: 500;
     font-size: 25px;
     color: #696969;
@@ -45,7 +56,6 @@
     margin-top: 5px;
     margin-left: 10px;
     height: 20px;
-    font-family: 'Gmarket Sans TTF';
     font-weight: 500;
     font-size: 25px;
 }
@@ -72,13 +82,12 @@
     align-items: center;
     margin-top: 10px;
 
-    span {
-        font-family: 'Gmarket Sans TTF';
-        font-weight: 400;
-        font-size: 22px;
+    p {
+        font-weight: bold;
+        font-size: 20px;
     }
 
-    span:last-child {
+    p:last-child {
         margin-left: 14px;
     }
 }

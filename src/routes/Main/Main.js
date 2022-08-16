@@ -8,6 +8,7 @@ import running from '../../image/running.png';
 import Modal from "../../Components/Modal/Modal";
 import search from "../../image/search_icon.png";
 import axios from "axios";
+import async from "async";
 
 function Main() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -20,42 +21,46 @@ function Main() {
   const [feedList, setFeedList] = useState([]);
 
   useEffect(() => {
-    
+
     axios
       .get("/feed", {
         headers: {
           Authorization: localStorage.getItem("login-token"),
         },
       })
-      .then((response) => {
+      .then(async (response) => {
         const mainData = response.data;
+        const list = [];
+
         console.log(mainData);
 
-        const list = mainData.map((data,index) => {
-        const date = new Date(data.dateCreated);
-        console.log(date);
+        for (const data of mainData) {
+          const date = new Date(data.dateCreated);
+          const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
 
-        return (
-          <div className="Main" key={index}>
-          <div className="Date">{date.toDateString()}</div>
-          {data.imageUrl}
-          <div className="Profile">
-            <div className="ProfileImage"></div>
-            <div className="ProfileInfo">
-              {data.authorName}
+          list.push(
+            <div className="Main GmarketS">
+              <div className="Date GmarketM">{date.toDateString()}</div>
+              <img className="Picture" src={url}></img>
+              <div className="Profile">
+                <div className="ProfileImage"></div>
+                <div className="ProfileInfo GmarketS">
+                  {data.authorName}
+                </div>
+              </div>
+              <div className="ProfileCont GmarketS">
+                <div className="Write GmarketS">
+                  {data.certifyingContents}
+                </div>
+              </div>
+              <div className="Option GmarketS">
+                <p className>좋아요</p>
+                <p className>공유</p>
+              </div>
             </div>
-          </div>  
-          <div className="ProfileCont">
-          <div className="Write">
-            {data.certifyingContents}
-          </div>
-          </div>
-          <div className="Option">
-            <span>좋아요</span>
-            <span>공유</span>
-          </div>
-        </div>
-        )});
+          );
+        }
+        console.log(list);
         setFeedList(list);
       });
   }, []);
@@ -85,20 +90,20 @@ function Main() {
       <div className="BackGround">
         {feedList}
       </div>
-          <button className="FriendBtn" onClick={openModal}>친구추가 <div id = 'popup'></div>
-          </button>
-          </><Modal open={modalOpen} close={closeModal} title="친구추가">
-            <div className="FriendBack">
-              <input className="FriendSearch" type="text" name="title" placeholder="이름을 검색하세요"></input>
-                    <div className="Friend">
-                        <div className="FriendImage"><img src={img10} id='img10'></img></div>
-                        <div className="FriendInfo">
-                            <p>박원호</p>
-                            <p>친구가 된지 3일 째</p>
-                        </div>
-                    </div>
-                </div>
-          </Modal></>  
+      <button className="FriendBtn" onClick={openModal}>친구추가 <div id='popup'></div>
+      </button>
+    </><Modal open={modalOpen} close={closeModal} title="친구추가">
+        <div className="FriendBack">
+          <input className="FriendSearch" type="text" name="title" placeholder="이름을 검색하세요"></input>
+          <div className="Friend">
+            <div className="FriendImage"><img src={img10} id='img10'></img></div>
+            <div className="FriendInfo">
+              <p>박원호</p>
+              <p>친구가 된지 3일 째</p>
+            </div>
+          </div>
+        </div>
+      </Modal></>
   );
 }
 
