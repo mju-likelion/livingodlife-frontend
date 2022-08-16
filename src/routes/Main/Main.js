@@ -41,21 +41,21 @@ function Main() {
           list.push(
             <div className="Main GmarketS">
               <div className="Date GmarketM">{date.toDateString()}</div>
-              <img className="Picture" src={url}></img>
               <div className="Profile">
+              <img className="Picture" src={url}></img>
                 <div className="ProfileImage"></div>
-                <div className="ProfileInfo GmarketS">
+                <div className="ProfileInfo GmarketM">
                   {data.authorName}
                 </div>
-              </div>
-              <div className="ProfileCont GmarketS">
+                <div className="ProfileCont GmarketS">
                 <div className="Write GmarketS">
                   {data.certifyingContents}
                 </div>
               </div>
               <div className="Option GmarketS">
-                <p className>좋아요</p>
-                <p className>공유</p>
+                <button className="optionBtn GmarketS">❤ 0</button>
+                {/*<button className="optionBtn GmarketS">공유</button>*/}
+              </div>
               </div>
             </div>
           );
