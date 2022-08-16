@@ -10,6 +10,7 @@ axios.defaults.baseURL = "https://api.livingodlife.com";
 
 function Challenge() {
   const [ChallengeList, setChallengeList] = useState([]);
+
   useEffect(() => {
     axios
       .get("/challenge", {
