@@ -109,19 +109,13 @@
 }
 
 .FriendSearch {
-    margin: 25px 22px 0 22px;
-    width: 570px;
-    height: 54px;
+    width: 35vw;
+    height: 30px;
+    margin-top: 35px;
     font-size: 15px;
-    border: 1px soild #babd43;
-}
-
-.Friend {
-    display: flex;
-    margin: 30px, 0, 0, 22px;
-    width: 308px;
-    height: 62px;
-
+    border: 1px solid #696969;
+    border-radius: 20px;
+    padding-left: 10px;
 }
 
 .FriendImage {
@@ -131,14 +125,25 @@
 }
 
 .FriendInfo {
-    display: table;
-    width: 320px;
-    height: 69px;
+    width: 50vw;
+    font-size: 25px;
+    margin: 0 auto;
+}
 
-    p {
-        display: flex;
-        font-family: 'Gmarket Sans TTF';
-        font-size: small;
+.FriendBtn{
+    font-size: 20px;
+    width: 10vw;
+    height: 5vh;
+    color: white;
+    background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    Link {
+        text-decoration: none;
+        color: white;
     }
-
 }

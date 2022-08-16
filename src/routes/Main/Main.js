@@ -65,25 +65,6 @@ function Main() {
       });
   }, []);
 
-  /*const MainData = [
-    {
-      "Date":"2022.08.05",
-      "Picture":<img className='Picture' src={running} id='running'></img> ,
-      "ProfileImage":<img src={img10} id='img10'></img>,
-      "ProfileInfo": "김민규",
-      "Write": "오늘은 운동을 30분 했다." 
-    },
-
-    {
-      "Date":"2022.08.04",
-      "Picture":<img className="Picture" src={blog} id='blog'></img>,
-      "ProfileImage":<img src={img10} id='img10'></img>,
-      "ProfileInfo":"김민규",
-      "Write": "매일 배운것을 블로그에 정리한지 한달째" 
-    }
-
-  ];*/
-
   return (
     <><>
       <Header />
@@ -94,13 +75,23 @@ function Main() {
       </button>
     </><Modal open={modalOpen} close={closeModal} title="친구추가">
         <div className="FriendBack">
-          <input className="FriendSearch" type="text" name="title" placeholder="이름을 검색하세요"></input>
+          <input className="FriendSearch GmarketS" type="text" name="title" placeholder="이름을 검색하세요"></input>
           <div className="Friend">
-            <div className="FriendImage"><img src={img10} id='img10'></img></div>
-            <div className="FriendInfo">
-              <p>박원호</p>
-              <p>친구가 된지 3일 째</p>
-            </div>
+            <div className="FriendImage"></div>
+            <table className="FriendInfo GmarketS">
+              <tr>
+              <td>박원호</td>
+              <td><button className="FriendBtn GmarketM">친구 추가</button></td>
+              </tr>
+              <tr>
+              <td>윤혜민</td>
+              <td><button className="FriendBtn GmarketM">친구 추가</button></td>
+              </tr>
+              <tr>
+              <td>김민규</td>
+              <td><button className="FriendBtn GmarketM">친구 추가</button></td>
+              </tr>
+            </table>
           </div>
         </div>
       </Modal></>
