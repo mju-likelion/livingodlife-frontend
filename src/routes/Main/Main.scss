@@ -1,124 +1,149 @@
-.BackGround{
-    background-color:#F5F5F5;
+.jalan {
+    font-family: 'yg-jalnan';
+}
 
-    .Main{
-        display: table;
-        margin: 0 auto;
-        width: 604px;
-        height: 753px;
+.GmarketS {
+    font-family: 'GmarketSansLight';
+}
+
+.GmarketM {
+    font-family: 'GmarketSansMedium';
+}
+
+.BackGround {
+    background-color: #F5F5F5;
+}
+
+.Main {
+    display: table;
+    margin: auto;
+    width: 32vw;
+    height: 80vh;
+    text-align: center;
+}
+
+.Date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    font-weight: 500;
+    font-size: 25px;
+    color: #696969;
+}
+
+.Picture {
+    width: 30vw;
+    height: 52vh;
+}
+
+.Profile {
+    margin-top: 25px;
+    border-radius: 50px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background: #FFFFFF;
+    //border: 4px solid #FAC214;
+}
+
+/*.ProfileImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}*/
+
+.ProfileInfo {
+    font-size: 25px;
+    text-align: left;
+}
+
+.ProfileCont{
+    text-align: left;
+    display: block;
+}
+
+.Write {
+    margin-top: 10px;
+    width: 30vw;
+    font-family: 'Gmarket Sans TTF';
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.Option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+        font-weight: bold;
+        font-size: 20px;
         
-        .Date{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 57px;
-            margin: 58px auto 0;
-            font-family: 'Gmarket Sans TTF';
-            font-weight: 500;
-            font-size: 30px;
-            color: #696969;
-        }
-
-        .Picture{
-            width: 604px;
-            height: 467px;
-        }
-
-        .Profile{
-            display: flex;
-            margin-top: 25px;
-            width: 403px;
-            height: 73px;
-
-            .ProfileImage{
-                margin-left: 5px;
-                width:64px;
-                height:66px;
-                border-radius: 70px;
-                border: 3px solid #C1E6DD;
-            }
-        }
-
-        .ProfileInfo{
-            margin-left:13px;
-            width:135px;
-            height:36px;
-            font-family: 'Gmarket Sans TTF';
-            font-weight: 500;
-            font-size:30px;
-        }
-
-        .Write{
-            margin-top: 17px;
-            width: 604px;
-            font-family: 'Gmarket Sans TTF';
-            font-weight: 300;
-            font-size: 25px;
-            text-align: left;
-        }
-
-        .Option{
-            display:flex;
-            width:230px;
-
-            span{
-                margin-left: 0;
-                font-family: 'Gmarket Sans TTF';
-                font-weight: 500;
-                font-size: 25px;
-            }
-
-            span:last-child{
-                margin-left: 14px;
-            }
-        }
     }
 
-    .mainImg{
-        width: 604px;
-        height: 467px;
+    p:last-child {
+        margin-left: 10px;
     }
 }
 
-    .FriendBack{
-        background-color: #F5F5F5;
+.optionBtn{
+    margin: auto;
+    width: 100px;
+    height: 30px;
+    border: 3px solid ;
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 2px solid pink;
+    font-weight: 800;
+    margin-top: 15px;
+
+    &:hover {
+        background: pink;
+        color: white;
+        transition: all 0.5s;
     }
+}
 
-    .FriendSearch{
-        margin: 25px 22px 0 22px;
-        width: 570px;
-        height: 54px;
-        font-size:15px;
-        border: 1px soild #babd43;
+.mainImg {
+    width: 604px;
+    height: 467px;
+}
+
+.FriendSearch {
+    width: 35vw;
+    height: 30px;
+    margin-top: 35px;
+    font-size: 15px;
+    border: 1px solid #696969;
+    border-radius: 20px;
+    padding-left: 10px;
+}
+
+.FriendImage {
+    width: 64px;
+    height: 66px;
+    border-radius: 70px;
+}
+
+.FriendInfo {
+    width: 50vw;
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+.FriendBtn{
+    font-size: 20px;
+    width: 10vw;
+    height: 5vh;
+    color: white;
+    background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    Link {
+        text-decoration: none;
+        color: white;
     }
-
-    .Friend{
-        display: flex;
-        margin: 30px,0,0,22px;
-        width: 308px;
-        height: 62px;
-
-        .FriendImage{
-            width:64px;
-            height:66px;
-            border-radius:70px;
-            border: 3px solid #c1e6dd;
-        }
-
-        .FriendInfo{
-            display:table;
-            width: 320px;
-            height: 69px;
-
-            p{
-                display:flex;
-                font-family: 'Gmarket Sans TTF';
-                font-size: small;
-            }
-
-            p:last-child{
-                color:#797979;
-            }
-
-        }
-    }
+}
