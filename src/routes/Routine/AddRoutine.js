@@ -67,29 +67,26 @@ const AddRoutineModal = ({ closeModal }) => {
   }, []);
 
   return (
-    <>
+    <div style={{ overflow: 'hidden' }}>
       <div className="AddRoutineWrap">
         <div className="AddRoutineTypeSelectWrap">
           <div
-            className={`AddRoutineTypeSelect ${
-              routineType === "Morning" && "AddRoutineTypeSelected"
-            }`}
+            className={`AddRoutineTypeSelect ${routineType === "Morning" && "AddRoutineTypeSelected"
+              }`}
             onClick={setTypeToMorning}
           >
             Morning Routine
           </div>
           <div
-            className={`AddRoutineTypeSelect ${
-              routineType === "Night" && "AddRoutineTypeSelected"
-            }`}
+            className={`AddRoutineTypeSelect ${routineType === "Night" && "AddRoutineTypeSelected"
+              }`}
             onClick={setTypeToNight}
           >
             Night Routine
           </div>
           <div
-            className={`AddRoutineTypeSelect ${
-              routineType === "Daily" && "AddRoutineTypeSelected"
-            }`}
+            className={`AddRoutineTypeSelect ${routineType === "Daily" && "AddRoutineTypeSelected"
+              }`}
             onClick={setTypeToDaily}
           >
             Daily Routine
@@ -116,7 +113,7 @@ const AddRoutineModal = ({ closeModal }) => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

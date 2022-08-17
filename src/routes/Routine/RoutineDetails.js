@@ -8,17 +8,17 @@ import axios from "axios";
 import AddRoutineModal from "./AddRoutine";
 
 /**
- *
+ *d
  * @param {{routineType: string}} args
  * @returns
  */
 function RoutineDetails({ routineType }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const openModal = (card) => {
     setModalOpen(true);
-
     setSelectedCard(card);
   };
 
@@ -26,8 +26,9 @@ function RoutineDetails({ routineType }) {
     setModalOpen(false);
   };
 
-  const closeAddModal = () => {
+  const closeAddModal = (e) => {
     setAddModalOpen(false);
+    setIsDisabled(false);
   };
 
   const routineDone = (e, card) => {
@@ -55,7 +56,7 @@ function RoutineDetails({ routineType }) {
   const [routines, setRoutines] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
 
-  useEffect(() => {
+  useEffect((e) => {
     axios
       .get(`https://api.livingodlife.com/routine/${routineType}`, {
         headers: {
@@ -65,7 +66,6 @@ function RoutineDetails({ routineType }) {
       .then((res) => {
         const { data } = res;
         setRoutines(data.routines);
-
         console.log(data);
       });
   }, []);
@@ -108,14 +108,16 @@ function RoutineDetails({ routineType }) {
                 <dt className="routine_title">+</dt>
               </div>
 
-              <div
+              <button
+                disabled={isDisabled}
                 className="doneClick"
                 onClick={() => {
                   // Open Modal
-
                   setAddModalOpen(true);
-                }}
-              ></div>
+                  setIsDisabled(true);
+                }
+                }
+              ></button>
             </li>
           </ul>
         </div>

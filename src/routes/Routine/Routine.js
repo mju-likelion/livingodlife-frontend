@@ -33,17 +33,17 @@ function Routine() {
   return (
     <div className="routineWropContent">
       <Header />
-
       <Progress done={count} />
-
       <h1 className="routine" onClick={() => addCount}>
         Morning Routine
       </h1>
-      <RoutineDetails routineType={"Morning"} />
-      <h1 className="routine">Night Routine</h1>
-      <RoutineDetails routineType={"Night"} />
-      <h1 className="routine">Daily routine</h1>
-      <RoutineDetails routineType={"Daily"} />
+      <div className="routineDiv">
+        <RoutineDetails routineType={"Morning"} />
+        <h1 className="routine">Night Routine</h1>
+        <RoutineDetails routineType={"Night"} />
+        <h1 className="routine">Daily routine</h1>
+        <RoutineDetails routineType={"Daily"} />
+      </div>
     </div>
   );
 }
