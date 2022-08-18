@@ -74,6 +74,7 @@ function Main() {
     await findFriendList(inputName);
   };
 
+  
   const findFriendList = async (data) => {
 
     try {
@@ -165,6 +166,7 @@ function Main() {
   }
 
   function FriendName({clientId}) {
+    console.log(clientId);
     const [userName, setUserName] = useState("");
 
     const fetchUserName = async () => {
@@ -172,7 +174,6 @@ function Main() {
       const {name} = res.data;
 
       setUserName(name);
-      console.log(userName);
     };
     
     useEffect(()=> {
@@ -189,12 +190,21 @@ function Main() {
         })
         .then((response) => {
           const friendData = response.data.friends;
-          const list = friendData.map((data, index) => (
-            <tr key={index}>
-              <td>{data}</td>
-              <td><button className="DeleteBtn GmarketM" onClick={()=>deleteFriend(data)}>x</button></td>
-            </tr>
-          ));
+          const list = [];
+          friendData.map(async(data, index) => {
+            const res = await axios.get(`/client/${data}`);
+            const name = res.data.client.name;
+            console.log(name);
+
+            list.push(
+              <tr key={index}>
+                <td>{name}</td>
+                <td><button className="DeleteBtn GmarketM" onClick={()=>deleteFriend(data)}>x</button></td>
+              </tr>
+            );
+          }
+          )
+          console.log(list);
           setFriendList(list);
         });
     }, []);
