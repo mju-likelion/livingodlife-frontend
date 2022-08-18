@@ -1,4 +1,4 @@
-import "./AddRoutine.css";
+import "./AddRoutine.scss";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -67,49 +67,66 @@ const AddRoutineModal = ({ closeModal }) => {
   }, []);
 
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div style={{ overflow: "hidden" }}>
       <div className="AddRoutineWrap">
         <div className="AddRoutineTypeSelectWrap">
           <div
-            className={`AddRoutineTypeSelect ${routineType === "Morning" && "AddRoutineTypeSelected"
-              }`}
+            className={`AddRoutineTypeSelect ${
+              routineType === "Morning" && "AddRoutineTypeSelected"
+            }`}
             onClick={setTypeToMorning}
           >
             Morning Routine
           </div>
           <div
-            className={`AddRoutineTypeSelect ${routineType === "Night" && "AddRoutineTypeSelected"
-              }`}
+            className={`AddRoutineTypeSelect ${
+              routineType === "Night" && "AddRoutineTypeSelected"
+            }`}
             onClick={setTypeToNight}
           >
             Night Routine
           </div>
           <div
-            className={`AddRoutineTypeSelect ${routineType === "Daily" && "AddRoutineTypeSelected"
-              }`}
+            className={`AddRoutineTypeSelect ${
+              routineType === "Daily" && "AddRoutineTypeSelected"
+            }`}
             onClick={setTypeToDaily}
           >
             Daily Routine
           </div>
         </div>
         <div className="AddRoutineTimeSelectWrap">
+          <p id="TimeTitle">⏰ 시 간</p>
           <p>
             <input id="time" type="time" onChange={timeHandle} />
           </p>
         </div>
         <div className="AddRoutineNameWrap">
+          <p id="NameTitle">💡 제 목</p>
           <p>
-            <input id="name" type={"text"} onChange={nameHandle} />
+            <input
+              id="name"
+              type={"text"}
+              placeholder="루틴 제목을 입력해주세요 !"
+              onChange={nameHandle}
+            />
           </p>
         </div>
         <div className="AddRoutineContentWrap">
+          <p id="ContentTitle">🫧 루 틴 내 용 🫧</p>
           <p>
-            <textarea id="content" onChange={contentHandle} />
+            <textarea
+              id="content"
+              placeholder="루틴에 대한 내용을 작성해주세요 !"
+              onChange={contentHandle}
+            />
           </p>
         </div>
         <div className="AddRoutineSubmitWrap">
           <p>
-            <button onClick={submit}>추가하기</button>
+            <button id="AddBtn" onClick={submit}>
+              + 추가하기 +
+            </button>
           </p>
         </div>
       </div>
