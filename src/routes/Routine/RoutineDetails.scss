@@ -1,0 +1,180 @@
+.card {
+  width: 23.75rem;
+  margin-left: 20px;
+  padding-left: 0rem;
+  list-style-type: none;
+  float: left;
+  cursor: pointer;
+}
+
+.rtDone {
+  opacity: 0.5;
+  background-color: white;
+}
+
+.card_body {
+  width: 352px;
+  height: 175px;
+  color: black;
+
+  background-color: rgba(250, 194, 20, 0.8);
+
+  font-family: GmarketSansLight;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.routine_icon {
+  width: 40px;
+  height: 40px;
+  font-size: 2.8rem;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-left: 25px;
+  margin-right: 15px;
+  position: relative;
+}
+
+.routine_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.routine_title {
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.routine_streaks {
+  font-size: 1.563rem;
+  margin-left: -0.813rem;
+  position: relative;
+}
+
+.alarm_img {
+  max-height: 1.312rem;
+  max-width: 1.413rem;
+  margin: 0rem 0.313rem -0.063rem 0rem;
+  opacity: 0.5;
+}
+
+.card_alarm {
+  font-size: 1.563rem;
+  margin-top: 20px;
+  color: rgba(132, 132, 132, 1);
+  width: 23.75rem;
+  z-index: 1;
+}
+
+.doneClick {
+  display: inline-block;
+  width: 360px;
+  height: 180px;
+  position: absolute;
+  background-color: transparent;
+  border: 0;
+  transition-duration: 0.3s;
+  transform: translateZ(0);
+  box-shadow: inset 0 0 0 4px rgba(250, 194, 20, 0.8), 0 0 1px rgba(0, 0, 0, 0);
+  &:hover {
+    background-color: white;
+  }
+}
+
+.card_wrapper {
+  margin-left: 40px;
+  margin-right: 40px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.card_scroller {
+  display: flex;
+  flex-direction: row;
+}
+
+// MODAL //
+
+.routine_detail,
+.streaks_detail,
+.followers {
+  font-size: 20px;
+  // background-color: orange;
+}
+
+.resolution_title,
+.alarm_title,
+.repeat_title {
+  width: 200px;
+  height: 60px;
+  font-weight: bold;
+}
+
+.Sun,
+.Mon,
+.Tue,
+.Wed,
+.Thu,
+.Fri,
+.Sat,
+.active,
+.active2 {
+  border-radius: 50%;
+  font-size: 21px;
+  width: 33px;
+  height: 33px;
+  margin: 0px 2px 0px 2px;
+
+  color: rgba(182, 182, 182, 1);
+  background-color: rgba(236, 236, 236, 1);
+
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.active {
+  color: black;
+  background-color: rgba(254, 249, 167, 1);
+}
+
+.active2 {
+  color: rgba(182, 182, 182, 1);
+  background-color: rgba(236, 236, 236, 1);
+}
+
+.followers {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 20px;
+  margin: 0px 40px;
+}
+.followers::before,
+.followers::after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 20px;
+}
+
+.profile_pic1,
+.profile_pic2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 25%;
+  margin: 15px 5px 5px 5px;
+}
