@@ -10,6 +10,31 @@ axios.defaults.baseURL = "https://api.livingodlife.com";
 
 function Challenge() {
   const [ChallengeList, setChallengeList] = useState([]);
+  const [challenge, setChallenge] = useState({
+    challengeName: "",
+    challengeContents: "내용",
+    challengeCategory: "",
+  });
+  const [modalOpen, setModalOpen] = useState(false);
+  const typeName = [
+    "🥗 식사",
+    "💪 운동",
+    "🛏 취침",
+    "📍 계획",
+    "✍ 공부",
+    "☀ 아침",
+  ];
+  const [clicked, setClicked] = useState(false);
+  const [selectedType, setSelectedType] = useState();
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setClicked(false);
+  };
 
   useEffect(() => {
     axios
@@ -20,35 +45,25 @@ function Challenge() {
       })
       .then((response) => {
         const challengeData = response.data;
-        console.log(challengeData);
         const list = challengeData.map((data, index) => (
           <tr className="challengeList" key={index}>
             <td>{index + 1}</td>
+            <td>{data.challengeCategory}</td>
             <td>{data.challengeName}</td>
             <td>
-              <button
-                className="challengeBtn GmarketM"
-                title={data.challengeName}
+              <Link
+                to={`/challenge/${data._id}`}
+                style={{ textDecoration: "none", color: "white" }}
+                state={{ title: data.challengeName }}
               >
-                <Link
-                  to={`/challenge/${data._id}`}
-                  style={{ textDecoration: "none", color: "white" }}
-                >
-                  도전!
-                </Link>
-              </button>
+                <button className="challengeBtn GmarketM">도전!</button>
+              </Link>
             </td>
           </tr>
         ));
         setChallengeList(list);
       });
   }, []);
-
-  const [challenge, setChallenge] = useState({
-    challengeName: "",
-    challengeContents: "내용",
-    challengeCategory: "",
-  });
 
   const onChangeContent = (e) => {
     setChallenge({
@@ -58,13 +73,20 @@ function Challenge() {
   };
 
   const addChallenge = async (data) => {
-    //error 콘솔이 안찍힘 문제 해결 필요
     try {
-      axios.post("/challenge", data, {
-        headers: {
-          Authorization: localStorage.getItem("login-token"),
+      await axios.post(
+        "/challenge",
+        {
+          challengeName: data.challengeName,
+          challengeContents: "내용",
+          challengeCategory: selectedType,
         },
-      });
+        {
+          headers: {
+            Authorization: localStorage.getItem("login-token"),
+          },
+        }
+      );
       alert("챌린지가 추가 되었습니다.");
     } catch (error) {
       const err = error.response.data;
@@ -79,34 +101,25 @@ function Challenge() {
     }
   };
 
-  const onChallengeSubmit = () => {
-    addChallenge(challenge);
-  };
-  const [modalOpen, setModalOpen] = useState(false);
-  const typeName = [
-    "🥗 식사",
-    "💪 운동",
-    "🛏 취침",
-    "📍 계획",
-    "✍ 공부",
-    "☀ 아침",
-  ];
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
+  const onChallengeSubmit = async () => {
+    await addChallenge(challenge);
     setModalOpen(false);
   };
 
   const handleActive = (e) => {
     if (e.target.className == "GmarketS type") {
-      const selectedItem = document.querySelector(".clicked");
+      if (clicked == true) {
+        const selectedItem = document.querySelector(".clicked");
+        selectedItem.classList.remove("clicked");
+        selectedItem.classList.add("type");
+        setClicked(false);
+      }
+      setClicked(true);
       e.target.className = "GmarketS clicked";
-      selectedItem.classList.remove("clicked");
-      selectedItem.classList.add("type");
+      setSelectedType(e.target.innerText);
     } else {
       e.target.className = "GmarketS type";
+      setClicked(false);
     }
   };
 
@@ -124,8 +137,9 @@ function Challenge() {
         <div className="challengeContent GmarketM">
           <table className="challengeTable">
             <thead>
-              <tr className="challengeNav ">
+              <tr className="challengeNav">
                 <th>No.</th>
+                <th>Category</th>
                 <th>Title</th>
                 <th>Challenge</th>
               </tr>
@@ -144,7 +158,7 @@ function Challenge() {
           <h3 className="modalTitle">카테고리 선택</h3>
           <div>{typeList}</div>
           <h3 className="modalTitle">도전 제목</h3>
-          <form>
+          <div>
             <input
               className="inputTitle GmarketS"
               type="text"
@@ -164,7 +178,7 @@ function Challenge() {
                 <img src={imgArrow} id="imgArrow"></img>
               </div>
             </button>
-          </form>
+          </div>
         </Modal>
       </div>
     </>
