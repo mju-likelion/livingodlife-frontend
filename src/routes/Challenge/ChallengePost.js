@@ -18,13 +18,7 @@ function ChallengePost() {
   const [challengeCertifyList, setChallengeCertifyList] = useState([]);
   const [rankData, setRankData] = useState([]);
   //const [challengeTitle, setChallengeTitle] = useState("");
-  const rankNum = [
-    "🥇",
-    "🥈",
-    "🥉",
-    "4",
-    "5"
-  ];
+  const rankNum = ["🥇", "🥈", "🥉", "4", "5"];
 
   //const location = useLocation();
   useEffect(() => {
@@ -112,16 +106,9 @@ function ChallengePost() {
   };
 
   const handleClick = async () => {
-    //const formdata = new FormData();
-    //formdata.append("uploadImage", files[0]);
-
-    /*const config = {
-      Headers: {
-        "content-type": "multipart/form-data",
-      },
-    };*/
-    var path = window.location.pathname;
-    var afterStr = path.split("/");
+    const path = window.location.pathname;
+    const afterStr = path.split("/");
+    const challengeId = afterStr[2];
 
     /**
      * 1. 서버에서 업로드용 주소를 받아오고
@@ -130,8 +117,25 @@ function ChallengePost() {
      */
 
     try {
+      try {
+        const token = localStorage.getItem("login-token");
+        console.log(token);
+
+        await axios.post(
+          `/challenge/${challengeId}`,
+          {},
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+      } catch (err) {
+        console.log(err);
+        console.log("이미 가입된 챌린지");
+      }
+
       const { url, key } = (await axios.put("/file")).data;
-      console.log(url, key);
 
       await axios.put(url, files[0]);
 
