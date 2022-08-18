@@ -23,6 +23,12 @@ function Routine() {
 
   const [count, setCount] = useState(25);
 
+  useEffect(() => {
+    return () => {
+      console.log("한번 초기화 하고~");
+    };
+  }, []);
+
   function addCount() {
     setCount((prevCount) => prevCount + 10);
     if (count >= 100) {
