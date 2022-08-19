@@ -6,6 +6,7 @@ import Pic2 from "../../image/profile_pic2.jpg";
 import Modal from "../../Components/Modal/Modal";
 import axios from "axios";
 import AddRoutineModal from "./AddRoutine";
+import { RoutineCard } from "./RoutineCard";
 
 /**
  *d
@@ -31,15 +32,37 @@ function RoutineDetails({ routineType }) {
     setIsDisabled(false);
   };
 
-  const routineDone = (e, card) => {
-    const selectedItem = document.querySelector(".rtDone");
+  /**
+   *
+   * @param {*} e
+   * @param {{_id: string}} card
+   */
+  const routineDone = async (e, card) => {
+    //const selectedItem = document.querySelector(".rtDone");
     console.log(e.target.className);
 
-    if (e.target.className === "doneClick") {
-      e.target.className = "doneClick rtDone";
-      selectedItem.classList.add("doneClick");
-    } else {
-      e.target.className = "doneClick";
+    if (e.target.className === "doneClick routineCardWrapper") {
+      try {
+        const token = localStorage.getItem("login-token");
+        console.log(token);
+
+        const res = await axios.post(
+          `/routine/complete/${card._id}`,
+          {},
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+        console.log(res);
+
+        e.target.className = "doneClick routineCardWrapper rtDone";
+      } catch (err) {
+        console.log(err);
+      }
+
+      //selectedItem.classList.add("doneClick");
     }
   };
 
@@ -63,10 +86,24 @@ function RoutineDetails({ routineType }) {
           Authorization: localStorage.getItem("login-token"),
         },
       })
-      .then((res) => {
+      .then(async (res) => {
         const { data } = res;
-        setRoutines(data.routines);
-        console.log(data);
+        const pushRoutines = [];
+
+        for (const routine of data.routines) {
+          const res = await axios.get(`/routine/accumlate/${routine._id}`, {
+            headers: { Authorization: localStorage.getItem("login-token") },
+          });
+
+          console.log(res);
+
+          pushRoutines.push({
+            ...routine,
+            streak: res.data?.contentCount ?? 0,
+          });
+        }
+
+        setRoutines(pushRoutines);
       });
   }, []);
 
@@ -74,40 +111,16 @@ function RoutineDetails({ routineType }) {
     <>
       <div className="card_scroller">
         <div className="card_wrapper">
-          {routines.map((card) => {
-            return (
-              <>
-                <ul className="card">
-                  <li className="card_body" key={card._id}>
-                    <div className="routine_icon">{"🔥"}</div>
-                    <div className="routine_info">
-                      <dt className="routine_title">{card.routineName}</dt>
-                      <dd className="routine_streaks">{"20일째"}</dd>
-                    </div>
-
-                    <div
-                      className="doneClick"
-                      ondblClick={routineDone}
-                      onClick={() => {
-                        openModal(card);
-                      }}
-                    ></div>
-                  </li>
-                  <div className="card_alarm">
-                    <img src={Alarm} className="alarm_img" />
-                    {new Date(card.routinePlan).toLocaleTimeString()}
-                  </div>
-                </ul>
-              </>
-            );
-          })}
+          {routines.map((card) => (
+            <RoutineCard
+              card={card}
+              openModal={openModal}
+              routineDone={routineDone}
+            />
+          ))}
 
           <ul className="card">
             <li className="card_body">
-              <div className="routine_info">
-                <dt className="routine_title">+</dt>
-              </div>
-
               <button
                 disabled={isDisabled}
                 className="doneClick"
@@ -115,9 +128,12 @@ function RoutineDetails({ routineType }) {
                   // Open Modal
                   setAddModalOpen(true);
                   setIsDisabled(true);
-                }
-                }
-              ></button>
+                }}
+              >
+                <div className="routine_info">
+                  <dt className="routine_title">+</dt>
+                </div>
+              </button>
             </li>
           </ul>
         </div>
@@ -130,7 +146,7 @@ function RoutineDetails({ routineType }) {
         title={selectedCard.routineName}
       >
         <div className="streaks_detail">
-          (사용자)님은 이 루틴을 {0} 진행중입니다.
+          이 루틴을 {selectedCard.streak}일째 진행중입니다.
         </div>
         <br />
         <table className="routine_detail" border={0}>
