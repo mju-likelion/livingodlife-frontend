@@ -89,7 +89,10 @@ function Main() {
               headers: {
                 Authorization: localStorage.getItem("login-token"),
               },
-            }).then(response => alert("좋아요가 취소되었습니다."))
+            }).then(() => {
+              alert("좋아요가 취소되었습니다.");
+              window.location.reload();
+            });
             break;
         }
       }
