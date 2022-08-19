@@ -41,29 +41,27 @@ function RoutineDetails({ routineType }) {
     //const selectedItem = document.querySelector(".rtDone");
     console.log(e.target.className);
 
-    if (e.target.className === "doneClick routineCardWrapper") {
-      try {
-        const token = localStorage.getItem("login-token");
-        console.log(token);
+    try {
+      const token = localStorage.getItem("login-token");
+      console.log(token);
 
-        const res = await axios.post(
-          `/routine/complete/${card._id}`,
-          {},
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
-        console.log(res);
-        window.location.reload();
-        e.target.className = "doneClick routineCardWrapper rtDone";
-      } catch (err) {
-        console.log(err);
-      }
-
-      //selectedItem.classList.add("doneClick");
+      const res = await axios.post(
+        `/routine/complete/${card._id}`,
+        {},
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log(res);
+      window.location.reload();
+      e.target.className = "doneClick routineCardWrapper rtDone";
+    } catch (err) {
+      console.log(err);
     }
+
+    //selectedItem.classList.add("doneClick");
   };
 
   const repeatDetail = (e) => {

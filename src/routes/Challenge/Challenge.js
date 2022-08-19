@@ -148,6 +148,8 @@ function Challenge() {
         }
       );
       alert("챌린지가 추가 되었습니다.");
+
+      window.location.reload();
     } catch (error) {
       const err = error.response.data;
       if (err.errorCode) {
@@ -163,7 +165,6 @@ function Challenge() {
 
   const onChallengeSubmit = async () => {
     await addChallenge(challenge);
-    setModalOpen(false);
   };
 
   const handleActive = (e) => {
@@ -177,7 +178,6 @@ function Challenge() {
       setClicked(true);
       e.target.className = "GmarketS clicked";
       setSelectedType(e.target.innerText);
-      window.location.reload();
     } else {
       e.target.className = "GmarketS type";
       setClicked(false);
