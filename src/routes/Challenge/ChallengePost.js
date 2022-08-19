@@ -143,12 +143,9 @@ function ChallengePost() {
       );
 
       alert("챌린지가 인증되었습니다.");
-<<<<<<< HEAD
       window.location.reload();
-=======
 
       await closeModal();
->>>>>>> 7768bbc93f6e6b00cb9d487219ac6bac6898e326
     } catch (error) {
       const err = error.response.data;
       if (err.errorCode) {
