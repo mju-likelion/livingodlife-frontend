@@ -47,6 +47,21 @@ html {
   margin-bottom: 10px;
 }
 
+.challengeSearchWrapper {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  height: 34px;
+}
+
+.challengeSearchIcon {
+  height: 80%;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
 .challengeSearch {
   width: 220px;
   height: 30px;

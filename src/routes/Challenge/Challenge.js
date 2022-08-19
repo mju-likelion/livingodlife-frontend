@@ -5,6 +5,7 @@ import imgArrow from "../../image/icon_arrow.png";
 import Modal from "../../Components/Modal/Modal";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import searchIcon from "../../image/search.png";
 
 axios.defaults.baseURL = "https://api.livingodlife.com";
 
@@ -194,12 +195,15 @@ function Challenge() {
       <div className="wrapContent">
         <div className="challengeHeader">
           <div className="challengeTitle GmarketM">Challenge</div>
-          <input
-            onChange={challengeSearchHandle}
-            className="challengeSearch"
-            type={"text"}
-            placeholder={"챌린지 검색"}
-          />
+          <div className="challengeSearchWrapper">
+            <img className="challengeSearchIcon" src={searchIcon} />
+            <input
+              onChange={challengeSearchHandle}
+              className="challengeSearch"
+              type={"text"}
+              placeholder={"챌린지 검색"}
+            />
+          </div>
         </div>
 
         <div className="challengeContent GmarketM">
