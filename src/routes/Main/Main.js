@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import './Main.scss';
+import "./Main.scss";
 import Header from "../../Components/Header/Header";
 import Modal from "../../Components/Modal/Modal";
 import axios from "axios";
@@ -24,7 +24,6 @@ function Main() {
   });
 
   useEffect(() => {
-
     axios
       .get("/feed", {
         headers: {
@@ -52,9 +51,7 @@ function Main() {
               <div className="Profile">
                 <img className="Picture" src={url}></img>
                 <div className="ProfileImage"></div>
-                <div className="ProfileInfo GmarketM">
-                  {data.authorName}
-                </div>
+                <div className="ProfileInfo GmarketM">{data.authorName}</div>
                 <div className="ProfileCont GmarketS">
                   <div className="Write GmarketS">
                     {data.certifyingContents}
@@ -110,19 +107,19 @@ function Main() {
     await findFriendList(inputName);
   };
 
-
   const findFriendList = async (data) => {
-
     try {
-      await axios.get(`/client/name/${data.friendName}`, {
-        headers: {
-          Authorization: localStorage.getItem("login-token"),
-        },
-      }).then((response) => {
-        const friendData = response.data.client;
-        setClientId({
-          friend: friendData._id,
-        });
+      await axios
+        .get(`/client/name/${data.friendName}`, {
+          headers: {
+            Authorization: localStorage.getItem("login-token"),
+          },
+        })
+        .then((response) => {
+          const friendData = response.data.client;
+          setClientId({
+            friend: friendData._id,
+          });
         const list = () => (
           <tr>
             <td>{friendData.name}</td>
@@ -144,6 +141,7 @@ function Main() {
 
   const addFriend = async (data) => {
     try {
+
       await axios.post("/friend", { friend: data }, {
         headers: {
           Authorization: localStorage.getItem("login-token"),
@@ -151,6 +149,7 @@ function Main() {
       }).then(() => {
         alert("친구추가 되었습니다.");
       });
+
     } catch (error) {
       console.log(error);
       const err = error.response.data;
@@ -167,14 +166,14 @@ function Main() {
             break;
         }
       }
-    };
-  }
+    }
+  };
 
   const deleteFriend = async (data) => {
     try {
-      console.log(data)
-      await axios.delete("/friend",
-        {
+      console.log(data);
+      await axios
+        .delete("/friend", {
           headers: {
             Authorization: localStorage.getItem("login-token"),
           },
@@ -185,6 +184,7 @@ function Main() {
       ).then((response) => {
         alert("삭제 되었습니다.");
       })
+
     } catch (error) {
       console.log(error);
       const err = error.response.data;
@@ -196,7 +196,7 @@ function Main() {
         }
       }
     }
-  }
+  };
 
   useEffect(() => {
     axios
@@ -215,40 +215,56 @@ function Main() {
           list.push(
             <tr key={index}>
               <td>{name}</td>
-              <td><button className="DeleteBtn GmarketM" onClick={() => deleteFriend(data)}>x</button></td>
+              <td>
+                <button
+                  className="DeleteBtn GmarketM"
+                  onClick={() => deleteFriend(data)}
+                >
+                  x
+                </button>
+              </td>
             </tr>
           );
-        })
+        });
         setFriendList(list);
       });
   }, []);
 
 
   return (
-    <><>
-      <Header />
-      <div className="BackGround">
-        {feedList}
-      </div>
-      <button className="FriendBtn GmarketS" onClick={openModal}>친구추가 <div id='popup'></div>
-      </button>
-    </><Modal open={modalOpen} close={closeModal} title="친구추가">
+    <>
+      <>
+        <Header />
+        <div className="BackGround">{feedList}</div>
+        <div className="FriendContainer">
+          <button className="FriendBtn GmarketS" onClick={openModal}>
+            친구추가
+          </button>
+        </div>
+      </>
+      <Modal open={modalOpen} close={closeModal} title="친구추가">
         <div className="FriendBack">
-          <input className="FriendSearch GmarketS" type="text"
-            id="friendName" name="friendName" placeholder="이름을 검색하세요" onChange={onChangeName}></input>
-          <button className="FriendBtn GmarketM" onClick={frinedNameSubmit}>검색</button>
+          <input
+            className="FriendSearch GmarketS"
+            type="text"
+            id="friendName"
+            name="friendName"
+            placeholder="이름을 검색하세요"
+            onChange={onChangeName}
+          ></input>
+          <button className="FriendBtn GmarketM" onClick={frinedNameSubmit}>
+            검색
+          </button>
           <div className="Friend">
             <div className="FriendImage"></div>
             <table className="FriendInfo GmarketS">
-              <tbody>
-                {friendList}
-              </tbody>
+              <tbody>{friendList}</tbody>
             </table>
           </div>
         </div>
-      </Modal></>
+      </Modal>
+    </>
   );
 }
-
 
 export default Main;
