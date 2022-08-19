@@ -1,0 +1,28 @@
+.CommentComponentWrapper {
+  border: 1px #2e2e2e solid;
+  border-radius: 10px;
+
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.CommentsWrapper {
+}
+
+.CommentWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.CommentNameWrapper {
+  font-weight: 900px;
+  font-size: 16px;
+}
+
+.CommentContentWrapper {
+}

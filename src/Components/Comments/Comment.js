@@ -10,9 +10,9 @@ import "./Comment.scss";
 function Comment({ name, content }) {
   return (
     <>
-      <div className="commentWrapper">
-        <div className="commentNameWrapper">{name}</div>
-        <div className="commentContentWrapper">{content}</div>
+      <div className="CommentWrapper">
+        <div className="CommentNameWrapper GmarketM">{name}</div>
+        <div className="CommentContentWrapper">{content}</div>
       </div>
     </>
   );
@@ -51,12 +51,12 @@ function CommentInput({ onHandle, onSubmit }) {
  *
  * @param {{contentId: string}} param0
  */
-function Comments({ contentId }) {
+export function Comments({ contentId }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
   const fetchComments = async () => {
-    const commentsResponse = await axios.get(`/comments/${contentId}`, {
+    const commentsResponse = await axios.get(`/comment/${contentId}`, {
       headers: {
         Authorization: localStorage.getItem("login-token"),
       },
@@ -69,7 +69,7 @@ function Comments({ contentId }) {
 
   const submitComment = async () => {
     const submitResponse = await axios.post(
-      `/comments/${contentId}`,
+      `/comment/${contentId}`,
       {
         content: comment,
       },
