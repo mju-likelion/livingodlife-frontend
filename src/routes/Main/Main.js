@@ -17,6 +17,8 @@ function Main() {
   const [feedList, setFeedList] = useState([]);
   const [friendList, setFriendList] = useState([]);
   const [inputName, setInputName] = useState("");
+  const [likeData, setLikeData] = useState(0);
+
   const [clientId, setClientId] = useState({
     friend: "",
   });
@@ -36,6 +38,13 @@ function Main() {
           const date = new Date(data.dateCreated);
           const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
 
+          const response = await axios
+            .get(`/sympathy/count/${data._id}`, {
+              headers: {
+                Authorization: localStorage.getItem("login-token"),
+              },
+            })
+
           list.push(
             <div className="Main GmarketS">
               <div className="Date GmarketM">{date.toDateString()}</div>
@@ -49,7 +58,7 @@ function Main() {
                   </div>
                 </div>
                 <div className="Option GmarketS">
-                  <button className="optionBtn GmarketS">❤ 0</button>
+                  <button className="optionBtn GmarketS" onClick={() => AddSympathy(data._id)}>❤ {response.data.likeCount}</button>
                   {/*<button className="optionBtn GmarketS">공유</button>*/}
                 </div>
               </div>
@@ -59,6 +68,33 @@ function Main() {
         setFeedList(list);
       });
   }, []);
+
+  const AddSympathy = async (data) => {
+    try {
+      await axios.post(`/sympathy/${data}`, {}, {
+        headers: {
+          Authorization: localStorage.getItem("login-token"),
+        },
+      }).then(() => {
+        alert("좋아요를 눌렀습니다");
+      });
+    } catch (error) {
+      console.log(error);
+      const err = error.response.data;
+      if (err.errorCode) {
+        switch (err.errorCode) {
+          case "ALEADY_SELECTED":
+            axios.delete(`/sympathy/${data}`,{
+              headers: {
+                Authorization: localStorage.getItem("login-token"),
+              },
+            }).then(response=>alert("좋아요가 취소되었습니다."))
+            break;
+        }
+      }
+    };
+  }
+
 
   const onChangeName = (e) => {
     setInputName({
@@ -84,21 +120,13 @@ function Main() {
           setClientId({
             friend: friendData._id,
           });
-          const list = () => (
-            <tr>
-              <td>{friendData.name}</td>
-              <td>
-                <button
-                  className="FriendBtn GmarketM"
-                  onClick={() => addFriend(friendData._id)}
-                >
-                  친구 추가
-                </button>
-              </td>
-            </tr>
-          );
-          setFriendList(list);
-        });
+        const list = () => (
+          <tr>
+            <td>{friendData.name}</td>
+            <td><button className="FriendBtn GmarketM" onClick={() => addFriend(friendData._id)}>친구 추가</button></td>
+          </tr>)
+        setFriendList(list);
+      });
     } catch (error) {
       const err = error.response.data;
       if (err.errorCode) {
@@ -113,19 +141,15 @@ function Main() {
 
   const addFriend = async (data) => {
     try {
-      await axios
-        .post(
-          "/friend",
-          { friend: data },
-          {
-            headers: {
-              Authorization: localStorage.getItem("login-token"),
-            },
-          }
-        )
-        .then(() => {
-          alert("친구추가 되었습니다.");
-        });
+
+      await axios.post("/friend", { friend: data }, {
+        headers: {
+          Authorization: localStorage.getItem("login-token"),
+        },
+      }).then(() => {
+        alert("친구추가 되었습니다.");
+      });
+
     } catch (error) {
       console.log(error);
       const err = error.response.data;
@@ -154,34 +178,13 @@ function Main() {
             Authorization: localStorage.getItem("login-token"),
           },
           data: {
-            friend: data,
+            friend: data
           },
-        })
-        .then((response) => {
-          alert("삭제 되었습니다.");
-          /*axios
-      .get("/friend", {
-        headers: {
-          Authorization: localStorage.getItem("login-token"),
-        },
+        }
+      ).then((response) => {
+        alert("삭제 되었습니다.");
       })
-      .then((response) => {
-        const friendData = response.data.friends;
-        const list = [];
-        friendData.map(async (data, index) => {
-          const res = await axios.get(`/client/${data}`);
-          const name = res.data.client.name;
 
-          list.push(
-            <tr key={index}>
-              <td>{name}</td>
-              <td><button className="DeleteBtn GmarketM" onClick={() => deleteFriend(data)}>x</button></td>
-            </tr>
-          );
-        })
-        setFriendList(list);
-      });*/
-        });
     } catch (error) {
       console.log(error);
       const err = error.response.data;
@@ -226,6 +229,7 @@ function Main() {
         setFriendList(list);
       });
   }, []);
+
 
   return (
     <>
