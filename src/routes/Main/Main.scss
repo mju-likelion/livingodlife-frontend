@@ -109,13 +109,14 @@
 }
 
 .FriendSearch {
-    width: 35vw;
+    margin-right: 20px;
+    width: 20vw;
     height: 30px;
     margin-top: 35px;
     font-size: 15px;
     border: 1px solid #696969;
     border-radius: 20px;
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
 .FriendImage {
@@ -125,14 +126,14 @@
 }
 
 .FriendInfo {
-    width: 50vw;
+    width: 25vw;
     font-size: 25px;
     margin: 0 auto;
 }
 
 .FriendBtn{
     font-size: 20px;
-    width: 10vw;
+    width: 7vw;
     height: 5vh;
     color: white;
     background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
@@ -146,4 +147,45 @@
         text-decoration: none;
         color: white;
     }
+}
+
+.SearchBtn{
+    font-size: 20px;
+    width: 7vw;
+    height: 5vh;
+    color: white;
+    background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    Link {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.DeleteBtn{
+    text-align: center;
+    font-size: 15px;
+    width: 20px;
+    height: 20px;
+    color: white;
+    background: #3C3C3C;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    Link {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.delete{
+    display: none;
 }

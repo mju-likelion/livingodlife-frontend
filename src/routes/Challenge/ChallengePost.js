@@ -188,7 +188,7 @@ function ChallengePost() {
               <tr className="rankList GmarketS">
                 <td>{rankNum[index]}</td>
                 <td>{data.writerName}</td>
-                <td>{data.challengeCount}일</td>
+                <td>{data.contentCount}일</td>
               </tr>
             );
           }
