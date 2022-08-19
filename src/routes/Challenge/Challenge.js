@@ -206,10 +206,10 @@ function Challenge() {
           <table className="challengeTable">
             <thead>
               <tr className="challengeNav">
-                <th>No.</th>
-                <th>Category</th>
-                <th>Title</th>
-                <th>Challenge</th>
+                <th className="challengeNavNo">No.</th>
+                <th className="challengeNavCategory">Category</th>
+                <th className="challengeNavTitle">Title</th>
+                <th className="challengeNavChallenge">Challenge</th>
               </tr>
             </thead>
             <tbody>{ChallengeList}</tbody>
