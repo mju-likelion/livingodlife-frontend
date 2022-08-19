@@ -1,191 +1,153 @@
 .jalan {
-    font-family: 'yg-jalnan';
+  font-family: "yg-jalnan";
 }
 
 .GmarketS {
-    font-family: 'GmarketSansLight';
+  font-family: "GmarketSansLight";
 }
 
 .GmarketM {
-    font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
 }
 
 .BackGround {
-    background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .Main {
-    display: table;
-    margin: auto;
-    width: 32vw;
-    height: 80vh;
-    text-align: center;
+  display: table;
+  margin: auto;
+  width: 32vw;
+  height: 80vh;
+  text-align: center;
 }
 
 .Date {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px auto;
-    font-weight: 500;
-    font-size: 25px;
-    color: #696969;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 80px auto 30px auto;
+  font-weight: 500;
+  font-size: 25px;
+  color: #696969;
 }
 
 .Picture {
-    width: 30vw;
-    height: 52vh;
+  width: 30vw;
+  height: 52vh;
+  object-fit: cover;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  object-fit: contain;
 }
 
 .Profile {
-    margin-top: 25px;
-    border-radius: 50px;
-    padding: 20px;
-    margin-bottom: 30px;
-    background: #FFFFFF;
-    //border: 4px solid #FAC214;
+  margin: 25px 0 0 30px;
+  border-radius: 50px;
+  padding: 20px;
+  background: #ffffff;
 }
-
-/*.ProfileImage {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-}*/
 
 .ProfileInfo {
-    font-size: 25px;
-    text-align: left;
+  font-size: 25px;
+  text-align: left;
+  margin: 5px 0 0 5px;
+  font-size: 20px;
 }
 
-.ProfileCont{
-    text-align: left;
-    display: block;
+.ProfileCont {
+  text-align: left;
+  display: block;
+  margin-left: 5px;
 }
 
 .Write {
-    margin-top: 10px;
-    width: 30vw;
-    font-family: 'Gmarket Sans TTF';
-    font-weight: 300;
-    font-size: 20px;
+  margin-top: 10px;
+  width: 30vw;
+  font-family: "Gmarket Sans TTF";
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .Option {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    p {
-        font-weight: bold;
-        font-size: 20px;
-        
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    font-weight: bold;
+    font-size: 20px;
+  }
 
-    p:last-child {
-        margin-left: 10px;
-    }
+  p:last-child {
+    margin-left: 10px;
+  }
 }
 
-.optionBtn{
-    margin: auto;
-    width: 100px;
-    height: 30px;
-    border: 3px solid ;
-    border-radius: 20px;
-    background: #FFFFFF;
-    border: 2px solid pink;
-    font-weight: 800;
-    margin-top: 15px;
+.optionBtn {
+  margin: auto;
+  width: 100px;
+  height: 30px;
+  border: 3px solid;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 2px solid pink;
+  font-weight: 800;
+  margin-top: 15px;
 
-    &:hover {
-        background: pink;
-        color: white;
-        transition: all 0.5s;
-    }
+  &:hover {
+    background: pink;
+    color: white;
+    transition: all 0.5s;
+  }
 }
 
 .mainImg {
-    width: 604px;
-    height: 467px;
+  width: 604px;
+  height: 467px;
 }
 
 .FriendSearch {
-    margin-right: 20px;
-    width: 20vw;
-    height: 30px;
-    margin-top: 35px;
-    font-size: 15px;
-    border: 1px solid #696969;
-    border-radius: 20px;
-    padding-left: 15px;
+  width: 35vw;
+  height: 30px;
+  margin-top: 35px;
+  font-size: 15px;
+  border: 1px solid #696969;
+  border-radius: 20px;
+  padding-left: 10px;
 }
 
 .FriendImage {
-    width: 64px;
-    height: 66px;
-    border-radius: 70px;
+  width: 64px;
+  height: 66px;
+  border-radius: 70px;
 }
 
 .FriendInfo {
-    width: 25vw;
-    font-size: 25px;
-    margin: 0 auto;
+  width: 50vw;
+  font-size: 25px;
+  margin: 0 auto;
 }
 
-.FriendBtn{
-    font-size: 20px;
-    width: 7vw;
-    height: 5vh;
+.FriendContainer {
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 10vh;
+}
+
+.FriendBtn {
+  font-size: 20px;
+  width: 9vw;
+  height: 5vh;
+  color: white;
+  background: linear-gradient(180deg, #fac214 0%, #f77e22 100%);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+  border: none;
+  float: right;
+  cursor: pointer;
+  margin: 10px 25px 20px;
+  Link {
+    text-decoration: none;
     color: white;
-    background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 8px;
-    Link {
-        text-decoration: none;
-        color: white;
-    }
-}
-
-.SearchBtn{
-    font-size: 20px;
-    width: 7vw;
-    height: 5vh;
-    color: white;
-    background: linear-gradient(180deg, #FAC214 0%, #F77E22 100%);
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 8px;
-    Link {
-        text-decoration: none;
-        color: white;
-    }
-}
-
-.DeleteBtn{
-    text-align: center;
-    font-size: 15px;
-    width: 20px;
-    height: 20px;
-    color: white;
-    background: #3C3C3C;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 100%;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-bottom: 8px;
-    Link {
-        text-decoration: none;
-        color: white;
-    }
-}
-
-.delete{
-    display: none;
+  }
 }
