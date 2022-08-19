@@ -193,7 +193,7 @@ function Challenge() {
       <Header />
       <div className="wrapContent">
         <div className="challengeHeader">
-          <h1 className="challengeTitle GmarketS">Challenge</h1>
+          <div className="challengeTitle GmarketM">Challenge</div>
           <input
             onChange={challengeSearchHandle}
             className="challengeSearch"

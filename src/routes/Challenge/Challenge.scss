@@ -20,9 +20,14 @@ html {
   width: 100vw;
   height: 100vh;
 }
+.App {
+  text-align: center;
+  height: 100%;
+}
 
 .wrapContent {
   background-color: #f5f5f5;
+  height: 100%;
 }
 
 .challengeHeader {
@@ -37,11 +42,16 @@ html {
 .challengeTitle {
   color: #f77e22;
   font-size: 40px;
+
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .challengeSearch {
   width: 220px;
   height: 30px;
+
+  padding-left: 10px;
 
   border-radius: 10px;
   border: solid 1px #efefef;
@@ -106,7 +116,6 @@ th {
 }
 
 .newBtn {
-  width: 14vw;
   height: 10vh;
   font-size: 20px;
   background: #ffffff;

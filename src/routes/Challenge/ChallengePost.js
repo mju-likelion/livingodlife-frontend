@@ -215,7 +215,7 @@ function ChallengePost() {
           </button>
         </div>
         <div className="wrapRank">
-          <h1 className="rankTitle GmarketS">Ranking</h1>
+          <div className="rankTitle GmarketM">Ranking</div>
           <div>
             <div className="rankContent">
               <table>
