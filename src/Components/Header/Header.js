@@ -8,7 +8,7 @@ function Header() {
   }
   return (
       <div className="header">
-            <div className="logo">'GOD생' 살기 <Link to="/main"></Link></div>
+            <div className="logo jalan">'GOD생' 살기 <Link to="/main"></Link></div>
             <div className="routePage">
               <Link to="/main" >
                 <span>Main</span>
