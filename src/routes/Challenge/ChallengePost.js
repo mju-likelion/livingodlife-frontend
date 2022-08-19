@@ -124,6 +124,16 @@ function ChallengePost() {
      */
 
     try {
+      await axios.post(
+        `/challenge/${afterStr[2]}`,
+        {},
+        {
+          headers: {
+            Authorization: localStorage.getItem("login-token"),
+          },
+        }
+      );
+
       const { url, key } = (await axios.put("/file")).data;
       console.log(url, key);
 
