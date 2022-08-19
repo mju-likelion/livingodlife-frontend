@@ -136,13 +136,14 @@ function Main() {
 
   const deleteFriend = async (data) => {
     try {
+      console.log(data)
       await axios.delete("/friend",
-        {
-          friend: data
-        },
         {
           headers: {
             Authorization: localStorage.getItem("login-token"),
+          },
+          data:{
+            friend: data
           },
         }
       ).then((response)=>{
