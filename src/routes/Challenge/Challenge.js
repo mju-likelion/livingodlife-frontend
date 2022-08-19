@@ -176,6 +176,7 @@ function Challenge() {
       setClicked(true);
       e.target.className = "GmarketS clicked";
       setSelectedType(e.target.innerText);
+      window.location.reload();
     } else {
       e.target.className = "GmarketS type";
       setClicked(false);

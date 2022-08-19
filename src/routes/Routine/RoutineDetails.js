@@ -56,7 +56,7 @@ function RoutineDetails({ routineType }) {
           }
         );
         console.log(res);
-
+        window.location.reload();
         e.target.className = "doneClick routineCardWrapper rtDone";
       } catch (err) {
         console.log(err);

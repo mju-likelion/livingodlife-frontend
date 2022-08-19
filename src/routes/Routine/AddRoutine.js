@@ -40,6 +40,7 @@ const AddRoutineModal = ({ closeModal }) => {
 
       alert("루틴 생성완료!");
       closeModal();
+      window.location.reload();
     } catch (e) {
       const { data } = e.response;
       const { errorCode } = data;
@@ -71,25 +72,22 @@ const AddRoutineModal = ({ closeModal }) => {
       <div className="AddRoutineWrap">
         <div className="AddRoutineTypeSelectWrap">
           <div
-            className={`AddRoutineTypeSelect ${
-              routineType === "Morning" && "AddRoutineTypeSelected"
-            }`}
+            className={`AddRoutineTypeSelect ${routineType === "Morning" && "AddRoutineTypeSelected"
+              }`}
             onClick={setTypeToMorning}
           >
             Morning Routine
           </div>
           <div
-            className={`AddRoutineTypeSelect ${
-              routineType === "Night" && "AddRoutineTypeSelected"
-            }`}
+            className={`AddRoutineTypeSelect ${routineType === "Night" && "AddRoutineTypeSelected"
+              }`}
             onClick={setTypeToNight}
           >
             Night Routine
           </div>
           <div
-            className={`AddRoutineTypeSelect ${
-              routineType === "Daily" && "AddRoutineTypeSelected"
-            }`}
+            className={`AddRoutineTypeSelect ${routineType === "Daily" && "AddRoutineTypeSelected"
+              }`}
             onClick={setTypeToDaily}
           >
             Daily Routine
@@ -125,7 +123,7 @@ const AddRoutineModal = ({ closeModal }) => {
         <div className="AddRoutineSubmitWrap">
           <p>
             <button id="AddBtn" onClick={submit}>
-              + 추가하기 +
+              추가하기
             </button>
           </p>
         </div>

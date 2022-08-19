@@ -150,6 +150,7 @@ function ChallengePost() {
       console.log(formData);
 
       alert("챌린지가 인증되었습니다.");
+      window.location.reload();
     } catch (error) {
       const err = error.response.data;
       if (err.errorCode) {

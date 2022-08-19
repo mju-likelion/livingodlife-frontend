@@ -77,6 +77,7 @@ function Main() {
         },
       }).then(() => {
         alert("좋아요를 눌렀습니다");
+        window.location.reload();
       });
     } catch (error) {
       console.log(error);
@@ -84,11 +85,11 @@ function Main() {
       if (err.errorCode) {
         switch (err.errorCode) {
           case "ALEADY_SELECTED":
-            axios.delete(`/sympathy/${data}`,{
+            axios.delete(`/sympathy/${data}`, {
               headers: {
                 Authorization: localStorage.getItem("login-token"),
               },
-            }).then(response=>alert("좋아요가 취소되었습니다."))
+            }).then(response => alert("좋아요가 취소되었습니다."))
             break;
         }
       }
@@ -120,13 +121,13 @@ function Main() {
           setClientId({
             friend: friendData._id,
           });
-        const list = () => (
-          <tr>
-            <td>{friendData.name}</td>
-            <td><button className="FriendBtn GmarketM" onClick={() => addFriend(friendData._id)}>친구 추가</button></td>
-          </tr>)
-        setFriendList(list);
-      });
+          const list = () => (
+            <tr>
+              <td>{friendData.name}</td>
+              <td><button className="FriendBtn GmarketM" onClick={() => addFriend(friendData._id)}>친구 추가</button></td>
+            </tr>)
+          setFriendList(list);
+        });
     } catch (error) {
       const err = error.response.data;
       if (err.errorCode) {
@@ -181,9 +182,9 @@ function Main() {
             friend: data
           },
         }
-      ).then((response) => {
-        alert("삭제 되었습니다.");
-      })
+        ).then((response) => {
+          alert("삭제 되었습니다.");
+        })
 
     } catch (error) {
       console.log(error);

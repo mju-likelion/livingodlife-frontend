@@ -36,16 +36,15 @@ export function RoutineCard({ card, routineDone, openModal }) {
 
   useEffect(() => {
     checkDoneFetch();
-  }, []);
+  });
 
   return (
     <>
       <ul className="card">
         <li className="card_body" key={card._id}>
           <div
-            className={`doneClick routineCardWrapper${
-              doneMark ? " rtDone" : ""
-            }`}
+            className={`doneClick routineCardWrapper${doneMark ? " rtDone" : ""
+              }`}
             onClick={(e) => {
               routineDone(e, card);
             }}
