@@ -175,12 +175,13 @@ function ChallengePost() {
 
         console.log(rankResult);
         rankResult.map((data, index) => {
+          console.log(data);
           if (index < 5) {
             list.push(
               <tr className="rankList GmarketS">
                 <td>{rankNum[index]}</td>
                 <td>{data.writerName}</td>
-                <td>{data.challengeCount}일</td>
+                <td>{data.contentCount}일</td>
               </tr>
             );
           }
