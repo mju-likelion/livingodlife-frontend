@@ -18,13 +18,7 @@ function ChallengePost() {
   const [challengeCertifyList, setChallengeCertifyList] = useState([]);
   const [rankData, setRankData] = useState([]);
   //const [challengeTitle, setChallengeTitle] = useState("");
-  const rankNum = [
-    "🥇",
-    "🥈",
-    "🥉",
-    "4",
-    "5"
-  ];
+  const rankNum = ["🥇", "🥈", "🥉", "4", "5"];
 
   //const location = useLocation();
   useEffect(() => {
@@ -147,10 +141,14 @@ function ChallengePost() {
           },
         }
       );
-      console.log(formData);
 
       alert("챌린지가 인증되었습니다.");
+<<<<<<< HEAD
       window.location.reload();
+=======
+
+      await closeModal();
+>>>>>>> 7768bbc93f6e6b00cb9d487219ac6bac6898e326
     } catch (error) {
       const err = error.response.data;
       if (err.errorCode) {
