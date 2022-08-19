@@ -5,6 +5,7 @@ import Header from "../../Components/Header/Header";
 import running from "../../image/running-icon.png";
 
 import RoutineDetails from "./RoutineDetails";
+import axios from "axios";
 
 function Routine() {
   const Progress = ({ done }) => (
@@ -23,26 +24,32 @@ function Routine() {
 
   const [count, setCount] = useState(25);
 
-  useEffect(() => {
-    return () => {
-      console.log("한번 초기화 하고~");
-    };
-  }, []);
+  const fetchRoutineCount = async () => {
+    console.log("ㅋ");
 
-  function addCount() {
-    setCount((prevCount) => prevCount + 10);
-    if (count >= 100) {
-      setCount(100);
+    const res = await axios.get("/routine/count/count", {
+      headers: {
+        Authorization: localStorage.getItem("login-token"),
+      },
+    });
+
+    const { routineCount, completedRoutineCount } = res.data;
+    if (routineCount === 0) {
+      setCount(0);
+    } else {
+      setCount(Math.floor((completedRoutineCount / routineCount) * 100));
     }
-  }
+  };
+
+  useEffect(() => {
+    fetchRoutineCount();
+  }, []);
 
   return (
     <div className="routineWropContent">
       <Header />
       <Progress done={count} />
-      <h1 className="routine" onClick={() => addCount}>
-        Morning Routine
-      </h1>
+      <h1 className="routine">Morning Routine</h1>
       <div className="routineDiv">
         <RoutineDetails routineType={"Morning"} />
         <h1 className="routine">Night Routine</h1>
