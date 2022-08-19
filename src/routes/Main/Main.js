@@ -74,7 +74,7 @@ function Main() {
     await findFriendList(inputName);
   };
 
-  
+
   const findFriendList = async (data) => {
 
     try {
@@ -87,11 +87,10 @@ function Main() {
         setClientId({
           friend: friendData._id,
         });
-        console.log(clientId);
         const list = () => (
           <tr>
             <td>{friendData.name}</td>
-            <td><button className="FriendBtn GmarketM" onClick={addFriend}>친구 추가</button></td>
+            <td><button className="FriendBtn GmarketM" onClick={()=>addFriend(friendData._id)}>친구 추가</button></td>
           </tr>)
         setFriendList(list);
       });
@@ -107,10 +106,9 @@ function Main() {
     }
   };
 
-  const addFriend = async(data) => {
-    console.log(clientId);
+  const addFriend = async (data) => {
     try {
-      await axios.post("/friend", clientId, {
+      await axios.post("/friend", {friend:data}, {
         headers: {
           Authorization: localStorage.getItem("login-token"),
         },
@@ -137,21 +135,41 @@ function Main() {
   }
 
   const deleteFriend = async (data) => {
-    console.log(data);
-    const client = data;
     try {
-      await axios.delete("/friend", 
+      await axios.delete("/friend",
         {
-        friend: client,
-      }, 
-      {
+          friend: data
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("login-token"),
+          },
+        }
+      ).then((response)=>{
+      alert("삭제 되었습니다.");
+      /*axios
+      .get("/friend", {
         headers: {
           Authorization: localStorage.getItem("login-token"),
         },
-        
-      }
-      );
-        alert("삭제 되었습니다.");
+      })
+      .then((response) => {
+        const friendData = response.data.friends;
+        const list = [];
+        friendData.map(async (data, index) => {
+          const res = await axios.get(`/client/${data}`);
+          const name = res.data.client.name;
+
+          list.push(
+            <tr key={index}>
+              <td>{name}</td>
+              <td><button className="DeleteBtn GmarketM" onClick={() => deleteFriend(data)}>x</button></td>
+            </tr>
+          );
+        })
+        setFriendList(list);
+      });*/
+    })
     } catch (error) {
       console.log(error);
       const err = error.response.data;
@@ -165,75 +183,56 @@ function Main() {
     }
   }
 
-  function FriendName({clientId}) {
-    console.log(clientId);
-    const [userName, setUserName] = useState("");
+  useEffect(() => {
+    axios
+      .get("/friend", {
+        headers: {
+          Authorization: localStorage.getItem("login-token"),
+        },
+      })
+      .then((response) => {
+        const friendData = response.data.friends;
+        const list = [];
+        friendData.map(async (data, index) => {
+          const res = await axios.get(`/client/${data}`);
+          const name = res.data.client.name;
 
-    const fetchUserName = async () => {
-      const res = await axios.get(`/client/${clientId}`);
-      const {name} = res.data;
-
-      setUserName(name);
-    };
-    
-    useEffect(()=> {
-      fetchUserName();
-    }, []);
-  }
-
-    useEffect(() => {
-      axios
-        .get("/friend", {
-          headers: {
-            Authorization: localStorage.getItem("login-token"),
-          },
+          list.push(
+            <tr key={index}>
+              <td>{name}</td>
+              <td><button className="DeleteBtn GmarketM" onClick={() => deleteFriend(data)}>x</button></td>
+            </tr>
+          );
         })
-        .then((response) => {
-          const friendData = response.data.friends;
-          const list = [];
-          friendData.map(async(data, index) => {
-            const res = await axios.get(`/client/${data}`);
-            const name = res.data.client.name;
-            console.log(name);
+        setFriendList(list);
+      });
+  }, []);
 
-            list.push(
-              <tr key={index}>
-                <td>{name}</td>
-                <td><button className="DeleteBtn GmarketM" onClick={()=>deleteFriend(data)}>x</button></td>
-              </tr>
-            );
-          }
-          )
-          console.log(list);
-          setFriendList(list);
-        });
-    }, []);
-
-    return (
-      <><>
-        <Header />
-        <div className="BackGround">
-          {feedList}
-        </div>
-        <button className="FriendBtn GmarketS" onClick={openModal}>친구추가 <div id='popup'></div>
-        </button>
-      </><Modal open={modalOpen} close={closeModal} title="친구추가">
-          <div className="FriendBack">
-            <input className="FriendSearch GmarketS" type="text"
-              id="friendName" name="friendName" placeholder="이름을 검색하세요" onChange={onChangeName}></input>
-            <button className="FriendBtn GmarketM" onClick={frinedNameSubmit}>검색</button>
-            <div className="Friend">
-              <div className="FriendImage"></div>
-              <table className="FriendInfo GmarketS">
-                <tbody>
-                  {friendList}
-                </tbody>
-              </table>
-            </div>
+  return (
+    <><>
+      <Header />
+      <div className="BackGround">
+        {feedList}
+      </div>
+      <button className="FriendBtn GmarketS" onClick={openModal}>친구추가 <div id='popup'></div>
+      </button>
+    </><Modal open={modalOpen} close={closeModal} title="친구추가">
+        <div className="FriendBack">
+          <input className="FriendSearch GmarketS" type="text"
+            id="friendName" name="friendName" placeholder="이름을 검색하세요" onChange={onChangeName}></input>
+          <button className="FriendBtn GmarketM" onClick={frinedNameSubmit}>검색</button>
+          <div className="Friend">
+            <div className="FriendImage"></div>
+            <table className="FriendInfo GmarketS">
+              <tbody>
+                {friendList}
+              </tbody>
+            </table>
           </div>
-        </Modal></>
-    );
-  }
+        </div>
+      </Modal></>
+  );
+}
 
 
-  export default Main;
+export default Main;
