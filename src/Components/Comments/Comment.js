@@ -30,16 +30,22 @@ function CommentInput({ onHandle, onSubmit }) {
     onHandle(e.target.value);
   };
 
+  const buttonHandle = (e) => {
+    setComment("");
+    onSubmit(comment);
+  };
+
   return (
     <>
       <div className="CommentInputWrapper">
         <input
+          className="CommentInput"
           type={"text"}
           placeholder="댓글을 작성해주세요"
           onChange={commentHandle}
           value={comment}
         />
-        <div className="CommentSubmit" onClick={onSubmit}>
+        <div className="CommentSubmit GmarketM" onClick={buttonHandle}>
           보내기
         </div>
       </div>

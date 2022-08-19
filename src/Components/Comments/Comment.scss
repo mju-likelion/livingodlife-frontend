@@ -1,7 +1,4 @@
 .CommentComponentWrapper {
-  border: 1px #2e2e2e solid;
-  border-radius: 10px;
-
   margin-top: 5px;
   padding: 5px;
 }
@@ -16,7 +13,7 @@
   flex-direction: column;
 
   margin-top: 3px;
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
 
 .CommentNameWrapper {
@@ -25,4 +22,35 @@
 }
 
 .CommentContentWrapper {
+  font-size: 16px;
+
+  text-align: start;
+}
+
+.CommentInputWrapper {
+  display: flex;
+  margin-top: 12px;
+}
+
+.CommentInput {
+  flex: 1;
+
+  margin-right: 12px;
+  border: 0px black solid;
+  border-bottom: 1px #999999 solid;
+}
+
+.CommentSubmit {
+  font-size: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #3797f0;
+  color: white;
+  border-radius: 7px;
+
+  height: 28px;
+  width: 80px;
 }
