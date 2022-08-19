@@ -1,6 +1,6 @@
 import "./Login.scss";
 import React from "react";
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -21,10 +21,10 @@ function Login() {
 
       var decoded = jwt_decode(accessToken);
 
-      axios.get(`/client/${decoded.id}`).then((response)=>{
-          const ClientInfo = response.data;
+      axios.get(`/client/${decoded.id}`).then((response) => {
+        const ClientInfo = response.data;
 
-          return ClientInfo.client.testing ? navigate("/main"):navigate("/test");
+        return ClientInfo.client.testing ? navigate("/main") : navigate("/test");
       });
     } catch (error) {
       const err = error.response.data;
@@ -78,7 +78,7 @@ function Login() {
           className="inputForm notoSans"
           id="password"
           name="password"
-          type="text"
+          type="password"
           placeholder="비밀번호"
           onChange={formik.handleChange}
           value={formik.values.password}
