@@ -1,3 +1,8 @@
+.routineWrapContent {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
 
 .routine {
   margin-left: 3.438rem;
@@ -7,14 +12,21 @@
   clear: left;
 }
 
+@media (max-width: 660px) {
+  .routine {
+    font-size: 1.25rem;
+  }
+}
+
 .progress {
-  width: 75.063rem;
+  width: 75%;
   height: 2.125rem;
   border-radius: 3.125rem;
-  margin: 6.75rem;
-  margin-top: 5.25rem;
-  margin-bottom: 4rem;
   background-color: rgba(217, 217, 217, 1);
+  margin: auto;
+
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .progress-done {
@@ -25,14 +37,20 @@
 }
 
 @font-face {
-  font-family: 'GmarketSansLight';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+  font-family: "GmarketSansLight";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+.routineDiv {
+  padding-bottom: 30px;
 }

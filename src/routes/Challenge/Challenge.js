@@ -9,13 +9,6 @@ import { Link } from "react-router-dom";
 axios.defaults.baseURL = "https://api.livingodlife.com";
 
 function Challenge() {
-  const [ChallengeList, setChallengeList] = useState([]);
-  const [challenge, setChallenge] = useState({
-    challengeName: "",
-    challengeContents: "내용",
-    challengeCategory: "",
-  });
-  const [modalOpen, setModalOpen] = useState(false);
   const typeName = [
     "🥗 식사",
     "💪 운동",
@@ -24,8 +17,74 @@ function Challenge() {
     "✍ 공부",
     "☀ 아침",
   ];
+
+  const [ChallengeSource, setChallengeSource] = useState([]);
+  const [ChallengeList, setChallengeList] = useState([]);
+
+  const [challenge, setChallenge] = useState({
+    challengeName: "",
+    challengeContents: "내용",
+    challengeCategory: "",
+  });
+
+  const [modalOpen, setModalOpen] = useState(false);
   const [clicked, setClicked] = useState(false);
+
   const [selectedType, setSelectedType] = useState();
+
+  const [challengeTimeoutHandle, setChallengeTimeoutHandle] = useState();
+
+  const [challengeSearchAbort, setChallengeSearchAbort] = useState(
+    new AbortController()
+  );
+
+  const getChallenge = () => {
+    axios
+      .get("/challenge", {
+        headers: {
+          Authorization: localStorage.getItem("login-token"),
+        },
+      })
+      .then((res) => {
+        setChallengeSource(res.data);
+      });
+  };
+
+  const challengeSearchHandle = (e) => {
+    const challengeSearchValue = e.target.value;
+
+    if (challengeTimeoutHandle) {
+      clearTimeout(challengeTimeoutHandle);
+    }
+
+    if (challengeSearchValue === "") {
+      getChallenge();
+    } else {
+      const searchTimeout = setTimeout(() => {
+        challengeSearchAbort.abort();
+        const newChallengeSearchAbort = new AbortController();
+
+        setChallengeSearchAbort(newChallengeSearchAbort);
+
+        // 검색어: challengeSearch
+        axios
+          .get(`/challenge/search`, {
+            headers: {
+              Authorization: localStorage.getItem("login-token"),
+            },
+            signal: newChallengeSearchAbort.signal,
+            params: {
+              name: challengeSearchValue,
+            },
+          })
+          .then((res) => {
+            setChallengeSource(res.data);
+          });
+      }, 100);
+
+      setChallengeTimeoutHandle(searchTimeout);
+    }
+  };
 
   const openModal = () => {
     setModalOpen(true);
@@ -37,32 +96,32 @@ function Challenge() {
   };
 
   useEffect(() => {
-    axios
-      .get("/challenge", {
-        headers: {
-          Authorization: localStorage.getItem("login-token"),
-        },
-      })
-      .then((response) => {
-        const challengeData = response.data;
-        const list = challengeData.map((data, index) => (
-          <tr className="challengeList" key={index}>
-            <td>{index + 1}</td>
-            <td>{data.challengeCategory}</td>
-            <td>{data.challengeName}</td>
-            <td>
-              <Link
-                to={`/challenge/${data._id}`}
-                style={{ textDecoration: "none", color: "white" }}
-                state={{ title: data.challengeName }}
-              >
-                <button className="challengeBtn GmarketM">도전!</button>
-              </Link>
-            </td>
-          </tr>
-        ));
-        setChallengeList(list);
-      });
+    if (!ChallengeSource) {
+      return;
+    }
+
+    const challengeData = ChallengeSource;
+    const list = challengeData.map((data, index) => (
+      <tr className="challengeList" key={index}>
+        <td>{index + 1}</td>
+        <td>{data.challengeCategory}</td>
+        <td>{data.challengeName}</td>
+        <td>
+          <Link
+            to={`/challenge/${data._id}`}
+            style={{ textDecoration: "none", color: "white" }}
+            state={{ title: data.challengeName }}
+          >
+            <button className="challengeBtn GmarketM">도전!</button>
+          </Link>
+        </td>
+      </tr>
+    ));
+    setChallengeList(list);
+  }, [ChallengeSource]);
+
+  useEffect(() => {
+    getChallenge();
   }, []);
 
   const onChangeContent = (e) => {
@@ -133,7 +192,16 @@ function Challenge() {
     <>
       <Header />
       <div className="wrapContent">
-        <h1 className="challengeTitle GmarketS">Challenge</h1>
+        <div className="challengeHeader">
+          <h1 className="challengeTitle GmarketS">Challenge</h1>
+          <input
+            onChange={challengeSearchHandle}
+            className="challengeSearch"
+            type={"text"}
+            placeholder={"챌린지 검색"}
+          />
+        </div>
+
         <div className="challengeContent GmarketM">
           <table className="challengeTable">
             <thead>

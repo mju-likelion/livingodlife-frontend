@@ -10,26 +10,34 @@
     font-family: 'GmarketSansMedium';
 }
 
-.header {
+.Header {
+@font-face {
+    font-family: 'Jalnan';
+    src: url('../../font/Jalnan.ttf');
+}
     display: flex;
     width: 100%;
     height: 85px;
+    justify-content: space-between;
+    align-items: center;
 
-    .logo {
-        margin-top: 6px;
-        padding: 20px 0 0 10px;
-        width: 250px;
-        height: 89px;
+    .HeaderLogo {
+        margin-left: 20px;
+        height: 100%;
         color: #F77E22;
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 36px;
+        font-size: 26px;
+
+        white-space: nowrap;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .routePage {
+    .HeaderPages {
         display:flex;
-        margin-top: 27px;
-        margin-left: 10vw;
         width: 40vw;
         height: 40px;
         justify-content: space-between;
@@ -53,17 +61,17 @@
             color: #F77E22;
         }
     }
-}
-.loginBtn{
-    margin-left: auto;
-    margin-right: 150px;
-    margin-top: 23px;
-    height:42px;
-    width:100px;
-    font-family: 'Noto Sans KR';
-    font-weight: 500;
-    font-size: 20px;
-    color: #3C3C3C;
-    border-radius: 20px;
-    border:1px solid white;
+    
+    .HeaderLogin{
+        height:42px;
+        width:100px;
+        font-family: 'Noto Sans KR';
+        font-weight: 500;
+        font-size: 20px;
+        color: #3C3C3C;
+        border-radius: 20px;
+        border:1px solid white;
+
+        margin-right: 20px;
+    }
 }
