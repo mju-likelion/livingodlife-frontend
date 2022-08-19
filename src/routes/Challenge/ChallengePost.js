@@ -7,6 +7,7 @@ import Modal from "../../Components/Modal/Modal";
 import imgUpload from "../../image/icon_upload.png";
 import axios from "axios";
 import async from "async";
+import { Comments } from "../../Components/Comments/Comment";
 
 function ChallengePost() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,7 +52,9 @@ function ChallengePost() {
                 <img src={url}></img>
                 <p className="certTime GmarketS">{date.toDateString()}</p>
               </div>
-              <p className="certCont GmarketS">{data.certifyingContents}</p>
+              <div className="certCont GmarketS">{data.certifyingContents}</div>
+
+              <Comments contentId={data._id} />
             </div>
           );
         }
@@ -124,6 +127,18 @@ function ChallengePost() {
      */
 
     try {
+      try {
+        await axios.post(
+          `/challenge/${afterStr[2]}`,
+          {},
+          {
+            headers: {
+              Authorization: localStorage.getItem("login-token"),
+            },
+          }
+        );
+      } catch {}
+
       const { url, key } = (await axios.put("/file")).data;
       console.log(url, key);
 

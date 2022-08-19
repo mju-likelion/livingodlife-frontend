@@ -5,6 +5,7 @@ import Header from "../../Components/Header/Header";
 import Modal from "../../Components/Modal/Modal";
 import axios from "axios";
 import async from "async";
+import { Comments } from "../../Components/Comments/Comment";
 
 function Main() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -38,12 +39,11 @@ function Main() {
           const date = new Date(data.dateCreated);
           const { url } = (await axios.get(`/file/${data.imageUrl}`)).data;
 
-          const response = await axios
-            .get(`/sympathy/count/${data._id}`, {
-              headers: {
-                Authorization: localStorage.getItem("login-token"),
-              },
-            })
+          const response = await axios.get(`/sympathy/count/${data._id}`, {
+            headers: {
+              Authorization: localStorage.getItem("login-token"),
+            },
+          });
 
           list.push(
             <div className="Main GmarketS">
@@ -58,9 +58,15 @@ function Main() {
                   </div>
                 </div>
                 <div className="Option GmarketS">
-                  <button className="optionBtn GmarketS" onClick={() => AddSympathy(data._id)}>❤ {response.data.likeCount}</button>
+                  <button
+                    className="optionBtn GmarketS"
+                    onClick={() => AddSympathy(data._id)}
+                  >
+                    ❤ {response.data.likeCount}
+                  </button>
                   {/*<button className="optionBtn GmarketS">공유</button>*/}
                 </div>
+                <Comments contentId={data._id} />
               </div>
             </div>
           );
@@ -71,34 +77,41 @@ function Main() {
 
   const AddSympathy = async (data) => {
     try {
-      await axios.post(`/sympathy/${data}`, {}, {
-        headers: {
-          Authorization: localStorage.getItem("login-token"),
-        },
-      }).then(() => {
-        alert("좋아요를 눌렀습니다");
-        window.location.reload();
-      });
+      await axios
+        .post(
+          `/sympathy/${data}`,
+          {},
+          {
+            headers: {
+              Authorization: localStorage.getItem("login-token"),
+            },
+          }
+        )
+        .then(() => {
+          alert("좋아요를 눌렀습니다");
+          window.location.reload();
+        });
     } catch (error) {
       console.log(error);
       const err = error.response.data;
       if (err.errorCode) {
         switch (err.errorCode) {
           case "ALEADY_SELECTED":
-            axios.delete(`/sympathy/${data}`, {
-              headers: {
-                Authorization: localStorage.getItem("login-token"),
-              },
-            }).then(() => {
-              alert("좋아요가 취소되었습니다.");
-              window.location.reload();
-            });
+            axios
+              .delete(`/sympathy/${data}`, {
+                headers: {
+                  Authorization: localStorage.getItem("login-token"),
+                },
+              })
+              .then(() => {
+                alert("좋아요가 취소되었습니다.");
+                window.location.reload();
+              });
             break;
         }
       }
-    };
-  }
-
+    }
+  };
 
   const onChangeName = (e) => {
     setInputName({
@@ -127,8 +140,16 @@ function Main() {
           const list = () => (
             <tr>
               <td>{friendData.name}</td>
-              <td><button className="FriendBtn GmarketM" onClick={() => addFriend(friendData._id)}>친구 추가</button></td>
-            </tr>)
+              <td>
+                <button
+                  className="FriendBtn GmarketM"
+                  onClick={() => addFriend(friendData._id)}
+                >
+                  친구 추가
+                </button>
+              </td>
+            </tr>
+          );
           setFriendList(list);
         });
     } catch (error) {
@@ -145,15 +166,19 @@ function Main() {
 
   const addFriend = async (data) => {
     try {
-
-      await axios.post("/friend", { friend: data }, {
-        headers: {
-          Authorization: localStorage.getItem("login-token"),
-        },
-      }).then(() => {
-        alert("친구추가 되었습니다.");
-      });
-
+      await axios
+        .post(
+          "/friend",
+          { friend: data },
+          {
+            headers: {
+              Authorization: localStorage.getItem("login-token"),
+            },
+          }
+        )
+        .then(() => {
+          alert("친구추가 되었습니다.");
+        });
     } catch (error) {
       console.log(error);
       const err = error.response.data;
@@ -182,13 +207,12 @@ function Main() {
             Authorization: localStorage.getItem("login-token"),
           },
           data: {
-            friend: data
+            friend: data,
           },
-        }
-        ).then((response) => {
-          alert("삭제 되었습니다.");
         })
-
+        .then((response) => {
+          alert("삭제 되었습니다.");
+        });
     } catch (error) {
       console.log(error);
       const err = error.response.data;
@@ -233,7 +257,6 @@ function Main() {
         setFriendList(list);
       });
   }, []);
-
 
   return (
     <>
