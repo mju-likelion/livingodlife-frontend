@@ -1,5 +1,6 @@
 # livingodlife-frontend
 3조 갓생살기 프론트엔드
+https://livingodlife.com/
 
 ### branch name 컨벤션
 |작성|내용|

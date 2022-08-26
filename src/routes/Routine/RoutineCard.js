@@ -1,7 +1,7 @@
 import "./RoutineDetails.scss";
 import Alarm from "../../image/icon-alarm.png";
 import { useLongPress } from "use-long-press";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 
@@ -34,6 +34,8 @@ export function RoutineCard({ card, routineDone, openModal }) {
     }
   };
 
+  const card_data = useMemo(() => RoutineCard(card), [card]);
+
   useEffect(() => {
     checkDoneFetch();
   });
@@ -52,14 +54,14 @@ export function RoutineCard({ card, routineDone, openModal }) {
           >
             <div className="routine_icon">{"🔥"}</div>
             <div className="routine_info">
-              <div className="routine_title">{card.routineName}</div>
-              <div className="routine_streaks">{`${card.streak}일째`}</div>
+              <div className="routine_title">{card_data.routineName}</div>
+              <div className="routine_streaks">{`${card_data.streak}일째`}</div>
             </div>
           </div>
         </li>
         <div className="card_alarm">
           <img src={Alarm} className="alarm_img" />
-          {new Date(card.routinePlan).toLocaleTimeString()}
+          {new Date(card_data.routinePlan).toLocaleTimeString()}
         </div>
       </ul>
     </>

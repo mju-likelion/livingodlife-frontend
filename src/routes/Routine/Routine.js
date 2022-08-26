@@ -25,8 +25,6 @@ function Routine() {
   const [count, setCount] = useState(25);
 
   const fetchRoutineCount = async () => {
-    console.log("ㅋ");
-
     const res = await axios.get("/routine/count/count", {
       headers: {
         Authorization: localStorage.getItem("login-token"),
